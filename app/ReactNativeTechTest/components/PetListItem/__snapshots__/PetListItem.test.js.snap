@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components - PetListItem renders - light mode 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "height": 92,
+      "marginHorizontal": 12,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "grey",
+        "borderRadius": 45,
+        "height": 46,
+        "marginRight": 16,
+        "width": 46,
+      }
+    }
+  />
+  <View
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#444",
+          "fontSize": 26,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Bowser
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#444",
+        }
+      }
+    >
+      Rottweiler
+    </Text>
+  </View>
+</View>
+`;
