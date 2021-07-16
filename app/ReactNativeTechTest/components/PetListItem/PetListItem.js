@@ -2,9 +2,14 @@ import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-const PetListItem = ({pet, openPopup}) => {
+const PetListItem = ({pet, openPopup, setId}) => {
   return (
-    <TouchableOpacity style={styles.container} onPress={openPopup}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => {
+        openPopup();
+        setId(pet?.id);
+      }}>
       <View style={styles.iconContainer} />
       <View style={styles.nameAndTypeContainer}>
         <Text style={styles.nameText}>{pet.name}</Text>

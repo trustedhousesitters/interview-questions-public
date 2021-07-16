@@ -15,6 +15,7 @@ import {Popup} from './components/Popup';
 
 const App = () => {
   const [isModalVisible, setModalVisibility] = useState(false);
+  const [currentPetId, setCurrentPetId] = useState();
   const petList = useSelector(getPets);
 
   const backgroundStyle = {
@@ -29,12 +30,17 @@ const App = () => {
   };
   return (
     <SafeAreaView style={backgroundStyle}>
-      {isModalVisible && <Popup close={close} />}
+      {isModalVisible && <Popup close={close} id={currentPetId} />}
       <StatusBar barStyle={'dark-content'} />
       <Header />
       <View style={backgroundStyle}>
         {petList.map(pet => (
-          <PetListItem pet={pet} key={pet.id} openPopup={open} />
+          <PetListItem
+            pet={pet}
+            key={pet.id}
+            openPopup={open}
+            setId={setCurrentPetId}
+          />
         ))}
       </View>
     </SafeAreaView>
