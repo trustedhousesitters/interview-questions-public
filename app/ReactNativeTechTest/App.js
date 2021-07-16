@@ -11,7 +11,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Header from './components/Header/';
 import PetListItem from './components/PetListItem/';
 import {getPets} from './selectors';
-import {Popup} from './components/Popup';
+import {Popup} from './components/Popup/Popup';
 
 const App = () => {
   const [isModalVisible, setModalVisibility] = useState(false);

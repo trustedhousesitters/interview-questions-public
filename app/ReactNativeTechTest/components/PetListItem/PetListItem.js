@@ -2,13 +2,8 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {useDispatch} from 'react-redux';
-import {images} from '../../assets';
-import {DELETE_PET} from "../../reducers";
 
 const PetListItem = ({pet, openPopup, setId}) => {
-  const dispatch = useDispatch();
-
   return (
     <View style={styles.petRow}>
       <TouchableOpacity
@@ -22,9 +17,6 @@ const PetListItem = ({pet, openPopup, setId}) => {
           <Text style={styles.nameText}>{pet.name}</Text>
           <Text style={{color: Colors.dark}}>{pet.type}</Text>
         </View>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => dispatch({type:DELETE_PET, payload:{ petId:pet.id}})}>
-        <Image source={images.close} style={styles.deleteIcon} />
       </TouchableOpacity>
     </View>
   );
@@ -61,7 +53,6 @@ const styles = StyleSheet.create({
   petRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between'
   }
 });
 
