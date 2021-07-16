@@ -2,7 +2,7 @@
  * React Native Tech Test
  */
 
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {SafeAreaView, View, StatusBar} from 'react-native';
 import {useSelector} from 'react-redux';
 
