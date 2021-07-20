@@ -1,15 +1,13 @@
 import React from 'react';
-import { Dimensions, Image, StyleSheet, View } from 'react-native';
+import {Dimensions, Image, StyleSheet, View} from 'react-native';
 import constants from '../../constants';
-import { images } from '../../assets';
+import {images} from '../../assets';
 
 const Header = () => {
   const logoWidth = Dimensions.get('window').width - 24;
 
   return (
-    <View
-      style={styles.headingContainer}
-    >
+    <View style={styles.headingContainer}>
       <Image
         style={{
           width: logoWidth,
@@ -18,8 +16,8 @@ const Header = () => {
         source={images.logo}
       />
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   headingContainer: {

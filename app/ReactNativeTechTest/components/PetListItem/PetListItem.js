@@ -1,18 +1,31 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import PropTypes from 'prop-types';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-const PetListItem = ({ pet }) => {
-  return(
-    <View style={styles.container}>
-      <View style={styles.iconContainer} />
-      <View style={styles.nameAndTypeContainer}>
-        <Text style={styles.nameText}>{pet.name}</Text>
-        <Text style={{ color: Colors.dark }}>{pet.type}</Text>
+const PetListItem = ({pet, onPress}) => {
+  return (
+    <TouchableOpacity onPress={() => onPress(pet)}>
+      <View style={styles.container}>
+        <View style={styles.iconContainer} />
+        <View style={styles.nameAndTypeContainer}>
+          <Text style={styles.nameText}>{pet.name}</Text>
+          <Text style={{color: Colors.dark}}>{pet.type}</Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
-}
+};
+
+PetListItem.propTypes = {
+  pet: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    feeds: PropTypes.number.isRequired,
+  }).isRequired,
+  onPress: PropTypes.func.isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {
