@@ -2,20 +2,19 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import PetListItem from './PetListItem';
+import PetDetails from './PetDetails';
 
-describe('Components - PetListItem', () => {
+describe('Components - PetDetails', () => {
   it('renders - light mode', () => {
     const tree = renderer
       .create(
-        <PetListItem
+        <PetDetails
           pet={{
             name: 'Bowser',
             type: 'Rottweiler',
             feeds: 4,
             id: 1,
           }}
-          onPress={() => {}}
         />,
       )
       .toJSON();

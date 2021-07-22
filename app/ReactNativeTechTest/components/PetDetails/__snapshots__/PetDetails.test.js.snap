@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components - PetDetails renders - light mode 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "grey",
+        "borderRadius": 45,
+        "height": 60,
+        "marginBottom": 30,
+        "marginTop": -65,
+        "width": 60,
+      }
+    }
+  />
+  <Text
+    style={
+      Object {
+        "fontSize": 24,
+        "fontWeight": "bold",
+        "marginBottom": 20,
+      }
+    }
+  >
+    Bowser
+  </Text>
+  <Text
+    style={
+      Object {
+        "fontSize": 18,
+        "marginBottom": 20,
+      }
+    }
+  >
+    Rottweiler
+  </Text>
+  <Text>
+    Needs feeding
+     
+    4 times a day.
+  </Text>
+</View>
+`;

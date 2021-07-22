@@ -1,7 +1,5 @@
-const getPets = (state) => {
+const getPets = state => {
   return state.pets;
 };
 
-export {
-  getPets,
-};
+export {getPets};
