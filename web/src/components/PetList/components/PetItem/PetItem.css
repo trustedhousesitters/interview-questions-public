@@ -1,11 +1,16 @@
+.Pet-item-container {
+    flex: 1;
+    max-width: 100%;
+}
 .Pet-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border: solid 1px #D5D5D9;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.06);
-    margin-bottom: 10px;
     padding: 20px;
+    margin-bottom: 10px;
+    height: calc(100% - 50px);
 }
 
 .Pet-image {
@@ -33,4 +38,28 @@
 .New-pet-icon {
     width: 80px;
     text-align: center;
+}
+
+@media (min-width: 800px) and (max-width: 1200px) {
+    .Pet-item-container {
+        flex: 50%;
+        max-width: 50%;
+        padding-right: 10px;
+        box-sizing: border-box;
+    }
+    .Pet-item-container:nth-child(2n) {
+        padding-right: 0px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .Pet-item-container {
+        flex: 33.33%;
+        max-width: 33.33%;
+        padding-right: 10px;
+        box-sizing: border-box;
+    }
+    .Pet-item-container:nth-child(3n) {
+        padding-right: 0px;
+    }
 }

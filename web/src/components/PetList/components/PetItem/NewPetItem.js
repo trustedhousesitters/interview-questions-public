@@ -43,37 +43,39 @@ const NewPetItem = () => {
     };
 
     return (
-        <div className="Pet-item">
-            <div className="New-pet-icon">
-                <span>New</span>
+        <div className="Pet-item-container">
+            <div className="Pet-item">
+                <div className="New-pet-icon">
+                    <span>New</span>
+                </div>
+                <form ref={formRef}>
+                    <div>
+                        <label className="Pet-details-label" htmlFor="pet-name">Name: </label>
+                        <input ref={petNameRef} name="pet-name" id="pet-name"/>
+                    </div>
+                    <div>
+                        <label className="Pet-details-label" htmlFor="pet-type">Animal Type: </label>
+                        <input ref={petTypeRef} name="pet-type" id="pet-type"/>
+                    </div>
+                    <div>
+                        <label className="Pet-details-label" htmlFor="pet-feeds-number">Number of feeds: </label>
+                        <input ref={petFeedsNumberRef} name="pet-feeds-number" id="pet-feeds-number"/>
+                    </div>
+                </form>
+                <button className="Add-button" type="submit" onClick={handleAddNewPet}>
+                    Add
+                </button>
+                { successMessage &&
+                    <span className="Add-pet-success">
+                        {successMessage}
+                    </span>
+                }
+                { errorMessage &&
+                    <span className="Add-pet-error">
+                        {errorMessage}
+                    </span>
+                }
             </div>
-            <form ref={formRef}>
-                <div>
-                    <label className="Pet-details-label" htmlFor="pet-name">Name: </label>
-                    <input ref={petNameRef} name="pet-name" id="pet-name"/>
-                </div>
-                <div>
-                    <label className="Pet-details-label" htmlFor="pet-type">Animal Type: </label>
-                    <input ref={petTypeRef} name="pet-type" id="pet-type"/>
-                </div>
-                <div>
-                    <label className="Pet-details-label" htmlFor="pet-feeds-number">Number of feeds: </label>
-                    <input ref={petFeedsNumberRef} name="pet-feeds-number" id="pet-feeds-number"/>
-                </div>
-            </form>
-            <button className="Add-button" type="submit" onClick={handleAddNewPet}>
-                Add
-            </button>
-            { successMessage &&
-                <span className="Add-pet-success">
-                    {successMessage}
-                </span>
-            }
-            { errorMessage &&
-                <span className="Add-pet-error">
-                    {errorMessage}
-                </span>
-            }
         </div>
     );
 };

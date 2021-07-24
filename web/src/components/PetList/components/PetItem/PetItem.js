@@ -27,25 +27,28 @@ const PetItem = ({ pet }) => {
     };
 
     return (
-        <div className="Pet-item">
-            <div>
-                <img src={imageUrl} className="Pet-image" alt="pet" />
+        <div className="Pet-item-container">
+            <div className="Pet-item">
+                <div>
+                    <img src={imageUrl} className="Pet-image" alt="pet" />
+                </div>
+                <div>
+                    <div>
+                        <span className="Pet-details-label">Name: </span><span>{name}</span>
+                    </div>
+                    <div>
+                        <span className="Pet-details-label">Animal Type: </span><span>{type}</span>
+                    </div>
+                    <div>
+                        <span className="Pet-details-label">Number of feeds: </span><span>{feeds}</span>
+                    </div>
+                </div>
+                <button className="Delete-button" onClick={handleDelete}>
+                    <img src={close} className="Delete-icon" alt="delete" />
+                </button>
             </div>
-            <div>
-                <div>
-                    <span className="Pet-details-label">Name: </span><span>{name}</span>
-                </div>
-                <div>
-                    <span className="Pet-details-label">Animal Type: </span><span>{type}</span>
-                </div>
-                <div>
-                    <span className="Pet-details-label">Number of feeds: </span><span>{feeds}</span>
-                </div>
-            </div>
-            <button className="Delete-button" onClick={handleDelete}>
-                <img src={close} className="Delete-icon" alt="delete" />
-            </button>
         </div>
+
     );
 };
 
