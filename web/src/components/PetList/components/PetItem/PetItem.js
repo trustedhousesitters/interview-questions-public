@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import './PetItem.css';
 import close from './assets/close.svg';
 import dog from './assets/PetsPlaceholder/Dog.svg'
-import { deletePet } from '../../actions';
+import { deletePet, setPetImageUrl } from '../../actions';
 
 const PetItem = ({ pet }) => {
     const { name, type, feeds, id } = pet;
     const imageUrl = pet.imageUrl || dog;
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        fetch('https://random.dog/woof?include=jpg, jpeg').then(function(response) {
+            return response.text();
+          }).then(function(data) {
+            const url = `https://random.dog/${data}`;
+            dispatch(setPetImageUrl(url, id));
+          }).catch(function() {
+            console.log("random dog error");
+          });
+    }, []);
 
     const handleDelete = () => {
         dispatch(deletePet(id));
