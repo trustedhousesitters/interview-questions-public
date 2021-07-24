@@ -1,5 +1,5 @@
 import { generatePets } from '../../helpers/generatePets';
-import { DELETE_PET } from './constants';
+import { ADD_PET, DELETE_PET } from './constants';
 
 const initialState = {
   pets: generatePets(13),
@@ -11,6 +11,11 @@ export default function appReducer(state = initialState, action) {
       return {
         ...state,
         pets: state.pets.filter(pet => pet.id !== action.payload)
+      }
+    case ADD_PET:
+      return {
+        ...state,
+        pets: [action.payload, ...state.pets]
       }
     default:
       return state
