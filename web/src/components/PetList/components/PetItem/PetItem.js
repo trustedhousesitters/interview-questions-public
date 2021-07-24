@@ -5,6 +5,7 @@ import './PetItem.css';
 import close from './assets/close.svg';
 import dog from './assets/PetsPlaceholder/Dog.svg'
 import { deletePet, setPetImageUrl } from '../../actions';
+import { fetchRandomDogImage } from '../../../../helpers/api';
 
 const PetItem = ({ pet }) => {
     const { name, type, feeds, id } = pet;
@@ -12,15 +13,13 @@ const PetItem = ({ pet }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        fetch('https://random.dog/woof?include=jpg, jpeg').then(function(response) {
-            return response.text();
-          }).then(function(data) {
+        async function fetchData() {
+            const data = await fetchRandomDogImage()
             const url = `https://random.dog/${data}`;
             dispatch(setPetImageUrl(url, id));
-          }).catch(function() {
-            console.log("random dog error");
-          });
-    }, []);
+        }
+        fetchData();
+    }, [dispatch, id]);
 
     const handleDelete = () => {
         dispatch(deletePet(id));
