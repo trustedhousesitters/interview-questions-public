@@ -19,6 +19,8 @@
 
 .Pet-details-label {
     font-weight: 500;
+    min-width: 125px;
+    display: inline-block;
 }
 
 .Delete-button {
