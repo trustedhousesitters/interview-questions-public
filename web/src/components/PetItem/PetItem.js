@@ -1,11 +1,9 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-
+import { DELETE_ITEM } from '../../constants';
+import close from '../../assets/close.svg';
+import dog from '../../assets/Dog.svg';
 import './PetItem.css';
-import close from './assets/close.svg';
-import dog from './assets/PetsPlaceholder/Dog.svg';
-
-import { DELETE_ITEM } from '../../../../constants';
 
 const PetItem = ({ pet }) => {
   const dispatch = useDispatch();
@@ -15,7 +13,14 @@ const PetItem = ({ pet }) => {
   return (
     <div className="Pet-item">
       <div>
-        <img src={imageUrl} className="Pet-image" alt="pet" />
+        <img
+          src={imageUrl}
+          style={{ borderRadius: 40 }}
+          className="Pet-image"
+          alt="pet"
+          width="80"
+          height="80"
+        />
       </div>
       <div>
         <div>

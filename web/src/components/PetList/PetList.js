@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 
-import PetItem from './components/PetItem';
+import PetItem from '../PetItem';
 import { getPets } from './selectors';
 import './PetList.css';
-import AddItem from './components/AddItem/AddItem';
+import AddItem from '../AddItem';
 
 const PetList = () => {
   const pets = useSelector(getPets);

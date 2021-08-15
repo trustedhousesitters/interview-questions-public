@@ -1,5 +1,5 @@
-import { generatePets } from '../../helpers/generatePets';
-import { DELETE_ITEM, ADD_ITEM } from '../../constants';
+import { generatePets } from '../helpers';
+import { DELETE_ITEM, ADD_ITEM } from '../constants';
 
 const initialState = {
   pets: generatePets(13),

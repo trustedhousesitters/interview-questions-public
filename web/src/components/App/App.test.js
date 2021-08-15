@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
+import { store } from '../../app/store';
 import App from './App';
 
 test('renders logo', () => {
@@ -13,4 +13,3 @@ test('renders logo', () => {
 
   expect(getByRole('img', { name: 'logo' })).toBeInTheDocument();
 });
-

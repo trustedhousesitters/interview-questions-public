@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { ADD_ITEM, PET_TYPES, BASE_URL } from '../../../../constants';
-import { generateNumber } from '../../../../helpers/generatePets';
+import { ADD_ITEM, PET_TYPES, BASE_URL } from '../../constants';
+import { generateNumber } from '../../helpers';
 
 const AddItem = () => {
   const [inputs, setInputs] = useState({});
