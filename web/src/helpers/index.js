@@ -19,4 +19,9 @@ const generatePets = (numberOfPets = 3) => {
   return petList;
 };
 
-export { generatePets, generateNumber };
+const getItemId = (state) => {
+  const { [state.pets.length - 1]: lastItem } = state.pets;
+  return lastItem ? lastItem.id + 1 : 0;
+};
+
+export { generatePets, generateNumber, getItemId };
