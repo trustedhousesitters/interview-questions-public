@@ -19,7 +19,7 @@ const PetList = () => {
       {pets.length ? (
         pets.map((pet) => <PetItem pet={pet} key={pet.id} />)
       ) : (
-        <div>No results</div>
+        <div>No results</div> // Label if no results available, good UX?
       )}
     </Fragment>
   );

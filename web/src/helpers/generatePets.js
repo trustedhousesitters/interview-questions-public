@@ -1,14 +1,18 @@
 import { PET_NAMES, PET_TYPES } from '../constants';
 
+// extracted to helper so it can be used in PetList as well
+export const generateNumber = (multiplier, addition = 0) =>
+  Math.floor(Math.random() * multiplier) + addition;
+
 const generatePets = (numberOfPets = 3) => {
   const petList = [];
   for (let i = 0; i < numberOfPets; i += 1) {
     petList.push({
       id: i,
-      name: PET_NAMES[Math.floor(Math.random() * PET_NAMES.length)],
-      type: PET_TYPES[Math.floor(Math.random() * PET_TYPES.length)],
-      age: Math.floor(Math.random() * 15),
-      feeds: Math.floor(Math.random() * 6) + 1,
+      name: PET_NAMES[generateNumber(PET_NAMES.length)],
+      type: PET_TYPES[generateNumber(PET_TYPES.length)],
+      age: generateNumber(15),
+      feeds: generateNumber(6, 1),
     });
   }
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ADD_ITEM, PET_TYPES } from '../../../../constants';
+import { generateNumber } from '../../../../helpers/generatePets';
 
 const AddItem = () => {
   const [inputs, setInputs] = useState({});
@@ -25,7 +26,16 @@ const AddItem = () => {
       return;
     }
 
-    dispatch({ type: ADD_ITEM, payload: { name: name.trim(), type } });
+    dispatch({
+      type: ADD_ITEM,
+      payload: {
+        name: name.trim(),
+        type,
+        // quick fix to generate age/feeds numbers, no input yet
+        age: generateNumber(15),
+        feeds: generateNumber(6, 1),
+      },
+    });
     setInputs({ ...inputs, name: '' });
     // reset name after dispatch, dropdown no longer -- select -- so can stay as is
   };
