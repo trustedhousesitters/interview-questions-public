@@ -1,7 +1,7 @@
 import { PET_NAMES, PET_TYPES } from '../constants';
 
 // extracted to helper so it can be used in PetList as well
-export const generateNumber = (multiplier, addition = 0) =>
+const generateNumber = (multiplier, addition = 0) =>
   Math.floor(Math.random() * multiplier) + addition;
 
 const generatePets = (numberOfPets = 3) => {
@@ -19,4 +19,4 @@ const generatePets = (numberOfPets = 3) => {
   return petList;
 };
 
-export { generatePets };
+export { generatePets, generateNumber };

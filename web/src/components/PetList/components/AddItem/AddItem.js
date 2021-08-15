@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { ADD_ITEM, PET_TYPES } from '../../../../constants';
+import { ADD_ITEM, PET_TYPES, BASE_URL } from '../../../../constants';
 import { generateNumber } from '../../../../helpers/generatePets';
 
 const AddItem = () => {
   const [inputs, setInputs] = useState({});
+  const [imageUrl, setImageUrl] = useState();
   const dispatch = useDispatch();
 
-  console.log(inputs);
+  useEffect(() => {
+    fetchImage();
+  }, [inputs]);
+
+  const fetchImage = async () => {
+    const imageName = await fetch(`${BASE_URL}/woof?include=jpg`);
+    const imageUrl = await imageName.text();
+    setImageUrl(`${BASE_URL}/${imageUrl}`);
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInputs((prevState) => ({
@@ -34,6 +44,7 @@ const AddItem = () => {
         // quick fix to generate age/feeds numbers, no input yet
         age: generateNumber(15),
         feeds: generateNumber(6, 1),
+        imageUrl,
       },
     });
     setInputs({ ...inputs, name: '' });

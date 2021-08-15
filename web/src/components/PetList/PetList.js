@@ -9,8 +9,6 @@ import AddItem from './components/AddItem/AddItem';
 const PetList = () => {
   const pets = useSelector(getPets);
 
-  console.log(pets);
-
   return (
     <Fragment>
       <AddItem />
