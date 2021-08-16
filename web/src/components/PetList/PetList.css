@@ -5,9 +5,16 @@
   font-family: "Georgia, Times,'Times New Roman', serif";
 }
 
-@media only screen and (min-width: 468px) {
+@media only screen and (min-width: 768px) {
   .Pets-list {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .Pets-list {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
   }
 }

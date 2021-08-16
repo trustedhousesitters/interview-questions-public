@@ -33,11 +33,10 @@
   width: 15px;
 }
 
-@media only screen and (min-width: 468px) {
+@media only screen and (min-width: 568px) {
   .Pet-item {
     font-size: 1rem;
     margin-right: 10px;
-    width: 400px;
   }
 
   .Delete-icon {
