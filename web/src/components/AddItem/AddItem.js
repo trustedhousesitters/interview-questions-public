@@ -30,7 +30,7 @@ const AddItem = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { name, type, age, feeds } = inputs;
-    const noSpacesName = name.trim();
+    const noSpacesName = name && name.trim();
 
     // validation, do not dispatch if no name/all spaces/no type, age or feeds
     // add error handling, messages under inputs
