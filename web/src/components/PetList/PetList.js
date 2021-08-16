@@ -4,14 +4,12 @@ import { useSelector } from 'react-redux';
 import PetItem from '../PetItem';
 import { getPets } from './selectors';
 import './PetList.css';
-import AddItem from '../AddItem';
 
 const PetList = () => {
   const pets = useSelector(getPets);
 
   return (
     <Fragment>
-      <AddItem />
       <h1 className="Pets-title">My Pets</h1>
       <div className="Pets-list">
         {pets.length ? (

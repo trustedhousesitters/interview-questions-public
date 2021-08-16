@@ -1,57 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { ADD_ITEM, PET_TYPES, BASE_URL } from '../../constants';
+import React, { useContext } from 'react';
+import useForm from '../../hooks/useForm';
+import { PET_TYPES } from '../../constants';
+import FormContext from '../../contexts/FormContext';
 import './AddItem.css';
 
 const AddItem = () => {
-  const [inputs, setInputs] = useState({});
-  const [imageUrl, setImageUrl] = useState();
-  const dispatch = useDispatch();
-
-  // import as useFetch custom hook
-  useEffect(() => {
-    fetchImage();
-  }, [inputs]);
-
-  const fetchImage = async () => {
-    const imageName = await fetch(`${BASE_URL}/woof?include=jpg`);
-    const imageUrl = await imageName.text();
-    setImageUrl(`${BASE_URL}/${imageUrl}`);
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setInputs((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const { name, type, age, feeds } = inputs;
-    const noSpacesName = name && name.trim();
-
-    // validation, do not dispatch if no name/all spaces/no type, age or feeds
-    // add error handling, messages under inputs
-    if (!name || !noSpacesName || !type || !feeds) {
-      setInputs({ ...inputs, name: '', age: '', feeds: '' });
-      return;
-    }
-
-    dispatch({
-      type: ADD_ITEM,
-      payload: {
-        name: noSpacesName,
-        type,
-        age,
-        feeds,
-        imageUrl,
-      },
-    });
-    // reset name after dispatch, dropdown no longer -- select -- so can stay as is
-    setInputs({ ...inputs, name: '', age: '', feeds: '' });
-  };
+  const { form } = useContext(FormContext);
+  const { handleChange, handleSubmit } = useForm();
 
   return (
     <form onSubmit={handleSubmit} className="AddItem-form">
@@ -87,7 +42,7 @@ const AddItem = () => {
           onChange={handleChange}
           className="AddItem-input"
           type="text"
-          value={inputs.name || ''}
+          value={form && form.name}
         />
       </div>
 
@@ -104,7 +59,7 @@ const AddItem = () => {
           onChange={handleChange}
           className="AddItem-input"
           type="number"
-          value={inputs.age || ''}
+          value={form && form.age}
         />
       </div>
 
@@ -121,7 +76,7 @@ const AddItem = () => {
           onChange={handleChange}
           className="AddItem-input"
           type="number"
-          value={inputs.feeds || ''}
+          value={form && form.feeds}
         />
       </div>
 

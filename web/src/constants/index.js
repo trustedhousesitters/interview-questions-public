@@ -12,3 +12,5 @@ export const PET_NAMES = [
 export const PET_TYPES = ['Dog', 'Cat', 'Antelope', 'Wild Boar', 'Rock'];
 
 export const BASE_URL = 'https://random.dog';
+
+export const initialFormData = { type: '', name: '', age: '', feeds: '' };
