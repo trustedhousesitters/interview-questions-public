@@ -8,6 +8,8 @@ const AddItem = () => {
   const [imageUrl, setImageUrl] = useState();
   const dispatch = useDispatch();
 
+  // const errorMsg = 'some dummy error';
+
   // import as useFetch custom hook
   useEffect(() => {
     fetchImage();
@@ -33,6 +35,7 @@ const AddItem = () => {
     const noSpacesName = name.trim();
 
     // validation, do not dispatch if no name/all spaces/no type, age or feeds
+    // add error handling, messages under inputs
     if (!name || !noSpacesName || !type || !feeds) {
       setInputs({ ...inputs, name: '', age: '', feeds: '' });
       return;
@@ -84,46 +87,55 @@ const AddItem = () => {
         <label htmlFor="name" className="AddItem-label">
           Name:{' '}
         </label>
-        <input
-          id="name"
-          name="name"
-          onChange={handleChange}
-          className="AddItem-input"
-          type="text"
-          value={inputs.name || ''}
-        />
+        <div>
+          <input
+            id="name"
+            name="name"
+            onChange={handleChange}
+            className="AddItem-input"
+            type="text"
+            value={inputs.name || ''}
+          />
+          {/* <div>{true ? <div>{errorMsg}</div> : <div />}</div> */}
+        </div>
       </div>
 
       <div className="AddItem-labelDataGroup">
         <label htmlFor="age" className="AddItem-label">
           Age:{' '}
         </label>
-        <input
-          id="age"
-          max={99}
-          min={0}
-          name="age"
-          onChange={handleChange}
-          className="AddItem-input"
-          type="number"
-          value={inputs.age || ''}
-        />
+        <div>
+          <input
+            id="age"
+            max={99}
+            min={0}
+            name="age"
+            onChange={handleChange}
+            className="AddItem-input"
+            type="number"
+            value={inputs.age || ''}
+          />
+          {/* <div>{true ? <div>{errorMsg}</div> : <div />}</div> */}
+        </div>
       </div>
 
       <div className="AddItem-labelDataGroup">
         <label htmlFor="name" className="AddItem-label">
           Feeds:{' '}
         </label>
-        <input
-          id="feeds"
-          max={99}
-          min={0}
-          name="feeds"
-          onChange={handleChange}
-          className="AddItem-input"
-          type="number"
-          value={inputs.feeds || ''}
-        />
+        <div>
+          <input
+            id="feeds"
+            max={99}
+            min={0}
+            name="feeds"
+            onChange={handleChange}
+            className="AddItem-input"
+            type="number"
+            value={inputs.feeds || ''}
+          />
+          {/* <div>{true ? <div>{errorMsg}</div> : <div />}</div> */}
+        </div>
       </div>
 
       <input className="AddItem-button" type="submit" value="Add a Pet"></input>
