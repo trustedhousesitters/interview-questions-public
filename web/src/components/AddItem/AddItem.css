@@ -1,0 +1,46 @@
+.AddItem-form {
+  border: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  width: 258px;
+}
+
+.AddItem-button {
+  border: 1px solid black;
+  align-self: center;
+  font-size: 15px;
+  justify-content: center;
+  margin-top: 5px;
+  padding: 5px 10px;
+  width: 250px;
+}
+
+.AddItem-input {
+  border: 1px solid black;
+  min-width: 30px;
+  outline: none;
+  padding: 5px;
+  width: 150px;
+}
+
+.AddItem-label {
+  margin: 5px;
+  font-size: 18px;
+  width: 60px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.AddItem-select {
+  font-size: 15px;
+  outline: none;
+  padding: 4px;
+  width: 162px;
+}
+
+.AddItem-labelDataGroup {
+  margin-bottom: 5px;
+  display: flex;
+  width: 250px;
+}

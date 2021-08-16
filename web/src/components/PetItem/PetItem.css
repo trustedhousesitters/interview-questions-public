@@ -1,31 +1,52 @@
 .Pet-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: solid 1px #D5D5D9;
-    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.06);
-    margin-bottom: 10px;
-    padding: 20px;
+  align-items: center;
+  border: solid 1px #d5d5d9;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.06);
+  display: flex;
+  font-size: 0.9rem;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  min-width: 258px;
+  padding: 10px;
 }
 
 .Pet-image {
-    width: 80px;
+  height: 50px;
+  width: 50px;
 }
 
 .Pet-details-label {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .Delete-button {
-    background: none;
-    border: none;
+  background: none;
+  border: none;
 }
 
 .Delete-button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .Delete-icon {
+  height: 15px;
+  width: 15px;
+}
+
+@media only screen and (min-width: 468px) {
+  .Pet-item {
+    font-size: 1rem;
+    margin-right: 10px;
+    width: 400px;
+  }
+
+  .Delete-icon {
     height: 20px;
     width: 20px;
+  }
+
+  .Pet-image {
+    height: 80px;
+    width: 80px;
+  }
 }
