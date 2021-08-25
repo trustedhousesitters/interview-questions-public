@@ -2,12 +2,22 @@
 
 exports[`Components - PetListItem renders - light mode 1`] = `
 <View
+  accessible={true}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
     Object {
       "alignItems": "center",
       "flexDirection": "row",
       "height": 92,
       "marginHorizontal": 12,
+      "opacity": 1,
     }
   }
 >

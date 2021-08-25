@@ -1,0 +1,226 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components - App renders - light mode 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Object {
+      "backgroundColor": "#F3F3F3",
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "borderBottomWidth": 0.5,
+        "marginHorizontal": 12,
+        "paddingVertical": 12,
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "testUri": "../../../assets/img/logo_horizontal.png",
+        }
+      }
+      style={
+        Object {
+          "height": 100.83333333333333,
+          "width": 726,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#F3F3F3",
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "height": 92,
+          "marginHorizontal": 12,
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "grey",
+            "borderRadius": 45,
+            "height": 46,
+            "marginRight": 16,
+            "width": 46,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#444",
+              "fontSize": 26,
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Mr. Fluffings
+        </Text>
+        <Text
+          style={
+            Object {
+              "color": "#444",
+            }
+          }
+        >
+          Dog
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "height": 92,
+          "marginHorizontal": 12,
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "grey",
+            "borderRadius": 45,
+            "height": 46,
+            "marginRight": 16,
+            "width": 46,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#444",
+              "fontSize": 26,
+              "fontWeight": "bold",
+            }
+          }
+        >
+          The Whiskertron
+        </Text>
+        <Text
+          style={
+            Object {
+              "color": "#444",
+            }
+          }
+        >
+          Cat
+        </Text>
+      </View>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "height": 92,
+          "marginHorizontal": 12,
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "grey",
+            "borderRadius": 45,
+            "height": 46,
+            "marginRight": 16,
+            "width": 46,
+          }
+        }
+      />
+      <View
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#444",
+              "fontSize": 26,
+              "fontWeight": "bold",
+            }
+          }
+        >
+          Dogbert
+        </Text>
+        <Text
+          style={
+            Object {
+              "color": "#444",
+            }
+          }
+        >
+          Dog
+        </Text>
+      </View>
+    </View>
+  </View>
+</RCTSafeAreaView>
+`;

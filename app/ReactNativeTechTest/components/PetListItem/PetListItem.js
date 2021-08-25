@@ -1,16 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
-const PetListItem = ({ pet }) => {
+const PetListItem = ({ pet, onPress }) => {
   return(
-    <View style={styles.container}>
+    <TouchableOpacity onPress={onPress} style={styles.container}>
       <View style={styles.iconContainer} />
       <View style={styles.nameAndTypeContainer}>
         <Text style={styles.nameText}>{pet.name}</Text>
         <Text style={{ color: Colors.dark }}>{pet.type}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
