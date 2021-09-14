@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './PetItem.css';
+import './PetItem.scss';
 import close from './assets/close.svg';
 import dog from './assets/PetsPlaceholder/Dog.svg'
 

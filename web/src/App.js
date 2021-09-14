@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import PetList from './components/PetList/';
-import './App.css';
+import './App.scss';
 
 const App = () => (
   <div className="App">

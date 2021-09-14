@@ -1,3 +1,5 @@
+@import '../../../../theme/media-queries';
+
 .Pet-item {
     display: flex;
     justify-content: space-between;
@@ -6,6 +8,11 @@
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.06);
     margin-bottom: 10px;
     padding: 20px;
+    grid-column: span 12;
+
+    @include for-desktop {
+        grid-column: span 6;
+    }
 }
 
 .Pet-image {

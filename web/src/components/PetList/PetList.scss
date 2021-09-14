@@ -4,3 +4,9 @@
     text-align: left;
     font-family: "Georgia, Times,'Times New Roman', serif";
 }
+
+.Pets-list {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 10px;
+}
