@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 
 import PetItem from './components/PetItem';
-import { getPets } from './selectors';
+import { getPets } from './redux/selectors';
 import './PetList.scss';
 
 const PetList = () => {
