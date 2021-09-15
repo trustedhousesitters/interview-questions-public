@@ -1,0 +1,66 @@
+@import '../../../../theme/media-queries';
+
+.Add-pet-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  padding: 20px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 90%;
+  height: 270px;
+  box-sizing: border-box;
+  border: solid 1px #D5D5D9;
+
+  @include for-desktop {
+    width: 90%;
+    max-width: 700px;
+  }
+}
+
+.Modal-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Modal-cancel-button {
+  background-color: transparent;
+  padding: 8px;
+  margin-top: -8px;
+  margin-right: -8px;
+  border: solid 1px #D5D5D9;
+}
+
+.Modal-title {
+  margin: 0;
+}
+
+.Form-field {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  margin-top: 20px;
+}
+
+.Form-label {
+  line-height: 26px;
+  grid-column: span 3;
+  text-align: right;
+}
+
+.Form-input {
+  line-height: 26px;
+  font-size: 1rem;
+  border: solid 1px #4EACA2;
+  padding: 0 8px;
+  grid-column: span 9;
+}
+
+.Submit-pet-button {
+  background-color: #4EACA2;
+  color: white;
+  padding: 8px;
+  grid-column: span 12;
+  border: none;
+}
