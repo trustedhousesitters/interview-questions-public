@@ -1,6 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
-import { generatePet, generatePets } from '../../../helpers/generatePets';
-import { CREATE_PET, DELETE_PET } from './types';
+import { generatePets } from '../../../helpers/generatePets';
+import { ADD_IMAGE_TO_PET, CREATE_PET, DELETE_PET } from './types';
 
 const initialState = {
   pets: generatePets(13),
@@ -20,9 +19,29 @@ export default function appReducer(state = initialState, action) {
       return {
         ...state,
         pets: [
-          generatePet(uuidv4(), payload.name, payload.type, payload.feeds),
+          {
+            ...payload.pet,
+            imageLoading: true,
+          },
           ...state.pets,
         ],
+      };
+    }
+    case ADD_IMAGE_TO_PET: {
+      const pets = [...state.pets];
+      const petIndex = pets.findIndex((pet) => pet.id === payload.id);
+
+      if (petIndex !== -1) {
+        pets[petIndex] = {
+          ...state.pets[petIndex],
+          imageUrl: payload.url,
+          imageLoading: false,
+        };
+      }
+
+      return {
+        ...state,
+        pets,
       };
     }
     default: {
