@@ -6,7 +6,8 @@ import {Colors} from '../../constants/Colors';
 const Button = ({label, onPress, backgroundColor}) => {
   return (
     <TouchableOpacity
-      style={[styles.container, {backgroundColor}]} onPress={onPress}>
+      style={[styles.container, {backgroundColor}]}
+      onPress={onPress}>
       <Text style={styles.text}>{label}</Text>
     </TouchableOpacity>
   );

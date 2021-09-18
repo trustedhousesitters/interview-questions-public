@@ -1,4 +1,4 @@
-import { GeneratePets } from './petGenerator';
+import {GeneratePets} from './petGenerator';
 
 const initialState = {
   pets: GeneratePets(),
@@ -7,6 +7,6 @@ const initialState = {
 export default function appReducer(state = initialState, action) {
   switch (action.type) {
     default:
-      return state
+      return state;
   }
 }

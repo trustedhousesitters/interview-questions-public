@@ -5,4 +5,3 @@ export const Colors = Object.freeze({
   blue: 'blue',
   red: 'red',
 });
-

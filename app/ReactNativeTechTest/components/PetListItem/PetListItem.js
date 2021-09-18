@@ -7,7 +7,10 @@ const PetListItem = ({pet, onPressPet}) => {
   const {name, type, image} = pet;
   const onPressItem = () => onPressPet(pet);
   return (
-    <TouchableHighlight style={styles.container} onPress={onPressItem} underlayColor={Colors.light}>
+    <TouchableHighlight
+      style={styles.container}
+      onPress={onPressItem}
+      underlayColor={Colors.light}>
       <>
         <View style={styles.imageContainer}>
           <ImageCircle image={image} />
@@ -19,7 +22,7 @@ const PetListItem = ({pet, onPressPet}) => {
       </>
     </TouchableHighlight>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

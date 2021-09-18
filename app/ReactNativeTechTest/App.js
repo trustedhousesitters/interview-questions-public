@@ -16,7 +16,7 @@ import {Colors} from './constants/Colors';
 const App = () => {
   const petList = useSelector(getPets);
 
-  console.log('petList', petList)
+  console.log('petList', petList);
 
   const [selectedPet, setSelectedPet] = useState();
 
