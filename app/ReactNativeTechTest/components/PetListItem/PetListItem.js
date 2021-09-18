@@ -1,16 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import {StyleSheet, Text, View, TouchableHighlight} from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import ImageCircle from '../ImageCircle/ImageCircle';
 
-const PetListItem = ({ pet }) => {
-  return(
-    <View style={styles.container}>
-      <View style={styles.iconContainer} />
-      <View style={styles.nameAndTypeContainer}>
-        <Text style={styles.nameText}>{pet.name}</Text>
-        <Text style={{ color: Colors.dark }}>{pet.type}</Text>
-      </View>
-    </View>
+const PetListItem = ({pet, onPressPet}) => {
+  const {name, type, image} = pet;
+  const onPressItem = () => onPressPet(pet);
+  return (
+    <TouchableHighlight style={styles.container} onPress={onPressItem} underlayColor={Colors.light}>
+      <>
+        <View style={styles.imageContainer}>
+          <ImageCircle image={image} />
+        </View>
+        <View style={styles.nameAndTypeContainer}>
+          <Text style={styles.nameText}>{name}</Text>
+          <Text style={{color: Colors.dark}}>{type}</Text>
+        </View>
+      </>
+    </TouchableHighlight>
   );
 }
 
@@ -21,11 +28,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  iconContainer: {
-    height: 46,
-    width: 46,
-    borderRadius: 45,
-    backgroundColor: 'grey',
+  imageContainer: {
     marginRight: 16,
   },
   nameAndTypeContainer: {
