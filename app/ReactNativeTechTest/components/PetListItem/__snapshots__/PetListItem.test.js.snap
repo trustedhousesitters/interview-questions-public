@@ -2,6 +2,15 @@
 
 exports[`Components - PetListItem renders - light mode 1`] = `
 <View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
     Object {
       "alignItems": "center",
@@ -14,14 +23,40 @@ exports[`Components - PetListItem renders - light mode 1`] = `
   <View
     style={
       Object {
-        "backgroundColor": "grey",
-        "borderRadius": 45,
-        "height": 46,
         "marginRight": 16,
-        "width": 46,
       }
     }
-  />
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#444",
+          },
+          Object {
+            "borderRadius": 46,
+            "height": 46,
+            "width": 46,
+          },
+        ]
+      }
+    >
+      <Image
+        source={
+          Object {
+            "uri": "https://reactnative.dev/img/tiny_logo.png",
+          }
+        }
+        style={
+          Object {
+            "borderRadius": 46,
+            "height": 46,
+            "width": 46,
+          }
+        }
+      />
+    </View>
+  </View>
   <View
     style={
       Object {

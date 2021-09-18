@@ -21,7 +21,7 @@ const PetDetailsModal = ({pet, onPressCloseModal, onPressDelete}) => {
           <ImageCircle imageUri={image} size="large" />
         </View>
         <Text style={styles.name}>{name}</Text>
-        {!!type && <Text style={styles.detail}>{type}</Text>}
+        {!!type && <Text style={styles.detail} id="type">{type}</Text>}
         {!!feeds && (
           <Text
             style={styles.detail}>{`Needs feeding ${feeds} times a day`}</Text>
