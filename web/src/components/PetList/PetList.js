@@ -13,6 +13,8 @@ const PetList = () => {
     const dispatch = useDispatch()
     return (
         <Fragment>
+            <h1 className="Pets-title">Add Pets</h1>
+            <p> Add pets name and see it appear in the list below! </p>
             <AddPet data-testid="add-pet" addPet={name => {
               console.log('name', name)
               return dispatch(addPet(name))}}/>

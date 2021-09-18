@@ -14,12 +14,13 @@ const PET_TYPES = [
     'Rock',
 ];
 
-export const generatePet = (i, name =null) => ({
+export const generatePet = (i, name =null, imageUrl=null) => ({
   id: i,
   name: name ? name : PET_NAMES[Math.floor(Math.random()*PET_NAMES.length)],
   type: PET_TYPES[Math.floor(Math.random()*PET_TYPES.length)],
   age: Math.floor(Math.random() * 15),
   feeds: Math.floor(Math.random() * 6) + 1,
+  imageUrl: imageUrl,
 })
 
 const generatePets = (numberOfPets = 3) => {

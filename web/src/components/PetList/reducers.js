@@ -10,7 +10,7 @@ export default function appReducer(state = initialState, action) {
       const deletedPet = state.pets.filter(item => item.id !== action.id)
       return { ...state, pets: deletedPet };
     case 'ADD_PET':
-      const newPet = generatePet(state.pets.length + 1, action.name);
+      const newPet = generatePet(state.pets.length + 1, action.name, action.imageUrl);
       const addedPet = [newPet, ...state.pets]
       return { ...state, pets: addedPet };
     default:
