@@ -9,14 +9,14 @@ const PetDetailsModal = ({pet, onPressCloseModal, onPressDelete}) => {
   if (!pet) {
     return null;
   }
-  const {image, name, type, feeds} = pet;
+  const {image, name, type, feeds, id} = pet;
 
   return (
     <TouchableHighlight
       style={styles.container}
       onPress={onPressCloseModal}
       underlayColor="transparent">
-      <View style={styles.modal}>
+      <View style={styles.modal} onStartShouldSetResponder={event => true}>
         <View style={styles.imageContainer}>
           <ImageCircle image={image} size="large" />
         </View>
@@ -33,7 +33,7 @@ const PetDetailsModal = ({pet, onPressCloseModal, onPressDelete}) => {
           <Button
             label="Delete"
             backgroundColor={Colors.red}
-            onPress={onPressDelete}
+            onPress={() => onPressDelete(id)}
           />
         </View>
       </View>

@@ -4,19 +4,19 @@
 
 import React, {useState} from 'react';
 import {SafeAreaView, View, StatusBar, Modal} from 'react-native';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import Header from './components/Header/';
 import PetListItem from './components/PetListItem/';
 import {getPets} from './selectors';
 import PetDetailsModal from './components/PetDetailsModal/PetDetailsModal';
+import {deletePet} from './actions';
 
 import {Colors} from './constants/Colors';
 
 const App = () => {
   const petList = useSelector(getPets);
-
-  console.log('petList', petList);
+  const dispatch = useDispatch();
 
   const [selectedPet, setSelectedPet] = useState();
 
@@ -26,7 +26,10 @@ const App = () => {
   };
 
   const onPressCloseModal = () => setSelectedPet(undefined);
-  const onPressDeletePet = () => {};
+  const onPressDeletePet = petId => {
+    onPressCloseModal();
+    dispatch(deletePet(petId));
+  };
 
   return (
     <SafeAreaView style={backgroundStyle}>
