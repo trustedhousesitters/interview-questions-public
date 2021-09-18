@@ -28,8 +28,6 @@ const App = () => {
     flex: 1,
   };
 
-  console.log('petList', petList);
-
   const onPressDeletePet = petId => {
     setSelectedPet(undefined);
     dispatch(deletePet(petId));
