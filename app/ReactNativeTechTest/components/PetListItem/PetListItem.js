@@ -13,7 +13,7 @@ const PetListItem = ({pet, onPressPet}) => {
       underlayColor={Colors.light}>
       <>
         <View style={styles.imageContainer}>
-          <ImageCircle image={image} />
+          <ImageCircle imageUri={image} />
         </View>
         <View style={styles.nameAndTypeContainer}>
           <Text style={styles.nameText}>{name}</Text>

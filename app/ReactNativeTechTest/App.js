@@ -10,26 +10,37 @@ import Header from './components/Header/';
 import PetListItem from './components/PetListItem/';
 import {getPets} from './selectors';
 import PetDetailsModal from './components/PetDetailsModal/PetDetailsModal';
-import {deletePet} from './actions';
+import {addPet, deletePet} from './actions';
 
 import {Colors} from './constants/Colors';
+import AddPetModal from './components/AddPetModal/AddPetModal';
+import Button from './components/Button/Button';
 
 const App = () => {
   const petList = useSelector(getPets);
   const dispatch = useDispatch();
 
   const [selectedPet, setSelectedPet] = useState();
+  const [showAddPetModal, setShowAddPetModal] = useState(false);
 
   const backgroundStyle = {
     backgroundColor: Colors.lighter,
     flex: 1,
   };
 
-  const onPressCloseModal = () => setSelectedPet(undefined);
+  console.log('petList', petList);
+
   const onPressDeletePet = petId => {
-    onPressCloseModal();
+    setSelectedPet(undefined);
     dispatch(deletePet(petId));
   };
+
+  const onAddPet = petDetails => {
+    setShowAddPetModal(false);
+    dispatch(addPet(petDetails));
+  };
+
+  // TODO: add flatlist for displaying pets
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -41,11 +52,25 @@ const App = () => {
         ))}
       </View>
 
+      <View style={{marginHorizontal: 15}}>
+        <Button
+          label="Add pet"
+          backgroundColor={Colors.primary}
+          onPress={() => setShowAddPetModal(true)}
+        />
+      </View>
+
       <Modal visible={!!selectedPet} animationType="slide" transparent>
         <PetDetailsModal
           pet={selectedPet}
-          onPressCloseModal={onPressCloseModal}
+          onPressCloseModal={() => setSelectedPet(undefined)}
           onPressDelete={onPressDeletePet}
+        />
+      </Modal>
+      <Modal visible={showAddPetModal} animationType="slide" transparent>
+        <AddPetModal
+          onPressCloseModal={() => setShowAddPetModal(false)}
+          addPet={onAddPet}
         />
       </Modal>
     </SafeAreaView>

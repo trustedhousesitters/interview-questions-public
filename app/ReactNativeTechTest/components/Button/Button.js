@@ -13,6 +13,10 @@ const Button = ({label, onPress, backgroundColor}) => {
   );
 };
 
+Button.defaultProps = {
+  backgroundColor: Colors.dark,
+};
+
 Button.propTypes = {
   label: PropTypes.string,
   onPress: PropTypes.func,
@@ -28,6 +32,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: Colors.white,
+    textAlign: 'center',
   },
 });
 

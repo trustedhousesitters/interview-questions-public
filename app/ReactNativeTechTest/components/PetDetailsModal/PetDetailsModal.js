@@ -18,7 +18,7 @@ const PetDetailsModal = ({pet, onPressCloseModal, onPressDelete}) => {
       underlayColor="transparent">
       <View style={styles.modal} onStartShouldSetResponder={event => true}>
         <View style={styles.imageContainer}>
-          <ImageCircle image={image} size="large" />
+          <ImageCircle imageUri={image} size="large" />
         </View>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.detail}>{type}</Text>
