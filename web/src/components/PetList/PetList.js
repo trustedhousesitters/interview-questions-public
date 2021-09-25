@@ -9,8 +9,10 @@ const PetList = () => {
     const pets = useSelector(getPets);
     return (
         <Fragment>
-            <h1 className="Pets-title">My Pets</h1>
-            { pets.length > 1 && pets.map(pet => <PetItem pet={pet} key={pet.id}/>) }
+            <h1 className="c-pet-list__title">My Pets</h1>
+            <div className="c-pet-list__grid">
+                { pets.length > 1 && pets.map(pet => <PetItem pet={pet} key={pet.id}/>) }
+            </div>
         </Fragment>
     );
 };
