@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { deletePet } from '../../actions';
 
 import './PetItem.css';
 import close from './assets/close.svg';
 import dog from './assets/PetsPlaceholder/Dog.svg'
 
 const PetItem = ({ pet }) => {
+    const dispatch = useDispatch();
     const { name, type, feeds } = pet;
     const imageUrl = pet.imageUrl || dog;
+
+    const onDelete = useCallback(() => {
+        dispatch(deletePet(pet.id));
+    }, [pet.id, dispatch]);
+
     return (
         <div className="Pet-item">
             <div>
@@ -23,7 +32,10 @@ const PetItem = ({ pet }) => {
                     <span className="Pet-details-label">Number of feeds: </span><span>{feeds}</span>
                 </div>
             </div>
-            <button className="Delete-button">
+            <button
+              onClick={onDelete}
+              className="Delete-button"
+            >
                 <img src={close} className="Delete-icon" alt="delete" />
             </button>
         </div>
