@@ -1,9 +1,13 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
+import { wait } from '@testing-library/dom';
 
 import { addPet } from '../../actions';
 import AddPet from './AddPet';
+
+const mockImageUrl = 'image';
+const hideModal = jest.fn();
 
 const { getComputedStyle } = window;
 window.getComputedStyle = elt => getComputedStyle(elt);
@@ -18,8 +22,9 @@ jest.mock('react-dom', () => ({
 jest.mock('../../actions', () => ({
   addPet: jest.fn(),
 }));
-
-const hideModal = jest.fn();
+jest.mock('../../../../services/images', () => ({
+  getRandomDogImage: () => mockImageUrl,
+}));
 
 describe('Add Pet', () => {
 
@@ -52,8 +57,8 @@ describe('Add Pet', () => {
     expect(ageInput).toBeInTheDocument()
   });
 
-  test('calls addPet on form submit with correct params', () => {
-    addPet.mockReset();
+  test('calls addPet on form submit with correct params, after calling getRandomDogImage', async () => {
+    addPet.mockRestore();
 
     const name = 'My Name';
     const type = 'new type';
@@ -67,7 +72,8 @@ describe('Add Pet', () => {
 
     userEvent.click(confirmButton);
 
-    expect(addPet).toHaveBeenCalledWith({ name, type, feeds, age });
+    await wait(() => expect(addPet).toHaveBeenCalledWith({ name, type, feeds, age, imageUrl: mockImageUrl }), { timeout: 1000 });
+
   });
 
 });

@@ -1,4 +1,5 @@
 .c-add-pet form {
+    position: relative;
     width: 100%;
 }
 
@@ -16,4 +17,18 @@
 .c-add-pet__row input {
     padding: 4px;
     border-radius: 3px;
+}
+
+.c-add-pet__loading {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(255, 255, 255, .5);
+}
+
+.c-add-pet__error {
+    margin-top: 20px;
+    color: red;
 }

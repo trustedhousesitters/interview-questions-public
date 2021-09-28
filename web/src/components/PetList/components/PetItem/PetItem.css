@@ -8,7 +8,8 @@
 }
 
 .Pet-image {
-    width: 80px;
+    max-height: 80px;
+    max-width: 80px;
 }
 
 .Pet-details-label {
