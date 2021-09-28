@@ -1,0 +1,19 @@
+.c-add-pet form {
+    width: 100%;
+}
+
+.c-add-pet__row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+}
+
+.c-add-pet__row label  {
+    margin-bottom: 3px;
+    font-size: 12px;
+}
+
+.c-add-pet__row input {
+    padding: 4px;
+    border-radius: 3px;
+}

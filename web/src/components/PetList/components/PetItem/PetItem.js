@@ -26,15 +26,15 @@ const PetItem = ({ pet }) => {
                     <span className="Pet-details-label">Name: </span><span>{name}</span>
                 </div>
                 <div>
-                    <span className="Pet-details-label">Animal Type: </span><span>{type}</span>
+                    <span className="Pet-details-label">Animal Type: </span><span>{type || '--'}</span>
                 </div>
                 <div>
-                    <span className="Pet-details-label">Number of feeds: </span><span>{feeds}</span>
+                    <span className="Pet-details-label">Number of feeds: </span><span>{feeds || '--'}</span>
                 </div>
             </div>
             <button
-              onClick={onDelete}
-              className="Delete-button"
+                onClick={onDelete}
+                className="Delete-button"
             >
                 <img src={close} className="Delete-icon" alt="delete" />
             </button>

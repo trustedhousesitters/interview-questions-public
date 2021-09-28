@@ -20,6 +20,16 @@ export default function appReducer(state = initialState, action) {
         pets,
       }
     }
+    case types.ADD_PET: {
+      const { pet } = action.payload;
+      const highestId = Math.max(...state.pets.map(p => p.id));
+      const pets = [{ ...pet, id: highestId + 1 }, ...state.pets];
+
+      return {
+        ...state,
+        pets,
+      }
+    }
     default:
       return state
   }

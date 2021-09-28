@@ -1,0 +1,43 @@
+.c-modal {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.c-modal__screen {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background: rgba(0,0,0,.3);
+}
+
+.c-modal__body {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 400px;
+    max-height: 400px;
+    padding: 20px;
+    background: #fff;
+}
+
+.c-modal__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.c-modal__cancel {
+    color: #222;
+    background: darkgray;
+}

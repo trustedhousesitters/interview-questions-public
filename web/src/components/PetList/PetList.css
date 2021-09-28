@@ -1,4 +1,10 @@
+.c-pet-list__header {
+    display: flex;
+    align-items: center;
+}
+
 .c-pet-list__title {
+    margin-right: 30px;
     font-size: 22px;
     font-weight: 600;
     text-align: left;
