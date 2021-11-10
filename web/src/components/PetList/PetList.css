@@ -1,6 +1,23 @@
 .Pets-title {
-    font-size: 22px;
-    font-weight: 600;
-    text-align: left;
-    font-family: "Georgia, Times,'Times New Roman', serif";
+  font-size: 22px;
+  font-weight: 600;
+  text-align: left;
+  font-family: "Georgia, Times,'Times New Roman', serif";
+}
+
+.Pets-list {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.Pets-list p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+}
+
+@media (min-width: 760px) {
+  .Pets-list {
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  }
 }

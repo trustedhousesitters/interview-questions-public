@@ -1,0 +1,57 @@
+.Add-pet {
+  margin-bottom: 32px;
+}
+
+.Add-pet h1 {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: left;
+  font-family: "Georgia, Times,'Times New Roman', serif";
+}
+
+.Form {
+  display: grid;
+  grid-template-columns: repeat(2, 0.5fr);
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.Form label {
+  display: block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  padding: 6px 0;
+}
+
+.Form input {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border: solid 1px #d5d5d9;
+  border-radius: 6px;
+  padding: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.Form button {
+  width: 100%;
+  background-color: rgb(0, 175, 162);
+  color: white;
+  border: 0;
+  border-radius: 6px;
+  height: 42px;
+  line-height: 42px;
+}
+
+.Form button:disabled {
+  opacity: 0.75;
+  background-color: #ccc;
+}
+
+@media (min-width: 760px) {
+  .Form {
+    display: grid;
+    grid-template-columns: repeat(5, 0.5fr);
+    align-items: flex-end;
+    gap: 12px;
+  }
+}
