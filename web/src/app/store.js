@@ -6,3 +6,6 @@ export const store = configureStore({
     pets: petReducer,
   },
 });
+
+// Log the data held in the store
+console.log(store.getState());
