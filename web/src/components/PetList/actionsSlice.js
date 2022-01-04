@@ -6,7 +6,7 @@ export const actionSlice = createSlice({
 	initialState: [],
 	reducers: {
 		addPet: (state, action) => {
-
+			
 		},
 		removePet: (state, action) => {
 
