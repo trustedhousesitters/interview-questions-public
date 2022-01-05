@@ -14,10 +14,9 @@ export default function appReducer(state = initialState, action) {
 
   switch (action.type) {
     case ADD_PET:
-        return [
-            ...state,
-            action.pet
-        ];
+        return {
+        	pets: [...state.pets, action.pet],
+        }
     case REMOVE_PET:
         return {
         	pets: state.pets.filter((item, index) => action.pet !== item.id)
