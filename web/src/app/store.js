@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import petReducer from '../components/PetList/reducers';
 // Import the reducer from our actionSlice into the store
-import actionReducer from '../components/PetList/actionSlice';
+//import actionReducer from '../components/PetList/actionSlice';
 
 export const store = configureStore({
   reducer: {
     pets: petReducer,
-    actions: actionReducer		// Add our reducer to the store
+    //actions: actionReducer		// Add our reducer to the store
   },
 });
 
