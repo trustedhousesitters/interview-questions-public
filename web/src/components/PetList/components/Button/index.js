@@ -17,9 +17,17 @@ const Button = props => {
 		'btn--primary' : theme === 'primary',
 		'btn--secondary' : theme === 'secondary'
 	});
+
+	const isAnchor = url && (url.includes('http') || url.startsWith('#') || url.startsWith('mailto') || url.startsWith('/'));
+
+	const renderAsLink = () =>
+		<a href={ url } role="button" className={buttonClass}>{ children }</a>
+
+	const renderAsButton = () =>
+		<button {...{type, onClick}} className={buttonClass}>{children}</button>
 	
 	return (
-		<button {...{type, onClick}} className={buttonClass}>{children}</button>
+		isAnchor ? renderAsLink() : renderAsButton()
 	);
 };
 
