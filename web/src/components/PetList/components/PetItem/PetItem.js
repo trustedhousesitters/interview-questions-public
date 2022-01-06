@@ -20,7 +20,7 @@ const PetItem = ({ pet }) => {
             <div className="Pet-item__content">
                 <div className="Pet-item__header">
                     <Button onClick={() => dispatch(removePet(id))} className="Delete-button">
-                        <img src={close} className="icon--delete" alt="delete" />
+                        <img src={close} className="Delete-icon" alt="delete" />
                     </Button>
                 </div>
                 <div className="Pet-item__inner">

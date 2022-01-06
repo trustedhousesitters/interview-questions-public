@@ -12,7 +12,7 @@ const Modal = ({ isShowing, hide, children }) => isShowing ? ReactDOM.createPort
             <div className="modal">
                 <div className="modal__header">
                     <Button onClick={hide} className="Delete-button">
-                        <img src={close} className="icon--delete" alt="delete" />
+                        <img src={close} className="Delete-icon" alt="delete" />
                     </Button>
                 </div>
                 <div className="modal__content">
