@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addPet } from "./actions";
 import { getPets } from "./selectors";
 import PetItem from "./components/PetItem";
+import Input from "./components/Input";
 import Button from "./components/Button";
 import "./PetList.css";
 
@@ -52,10 +53,10 @@ const PetList = () => {
             <h3 onClick={addNewPet}>Add Pet</h3>
 
             <form onSubmit={addNewPet}>
-                <input onChange={addPetName} name="petname" type="text" />
-                <input onChange={addPetType} name="pettype" type="text" />
-                <input onChange={addPetAge} name="petage" type="number" />
-                <input onChange={addPetFeed} name="petfeed" type="number" />
+                <Input onChange={addPetName} name="petname" placeholder="Name" type="text" />
+                <Input onChange={addPetType} name="pettype" placeholder="Type" type="text" />
+                <Input onChange={addPetAge} name="petage" placeholder="Age" type="number" />
+                <Input onChange={addPetFeed} name="petfeed" placeholder="Feed" type="number" />
                 <Button type="submit">Add Pet</Button>
             </form>
 
