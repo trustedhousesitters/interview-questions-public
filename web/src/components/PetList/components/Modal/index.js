@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
 import Button from "../Button";
 import close from "./assets/close.svg";
 import "./Modal.css";
@@ -21,5 +22,11 @@ const Modal = ({ isShowing, hide, children }) => isShowing ? ReactDOM.createPort
         </div>
     </>, document.body
 ) : null;
+
+Modal.propTypes = {
+    isShowing: PropTypes.bool,
+    hide: PropTypes.bool,
+    children: PropTypes.string
+};
 
 export default Modal;
