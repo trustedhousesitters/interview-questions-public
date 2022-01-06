@@ -55,28 +55,31 @@ const PetList = () => {
             <div className="App-content__heading">
                 <h1 className="Pets-title">My Pets</h1>
 
-                <Button onClick={toggle}>Add Pet</Button>
+                <Button onClick={toggle} theme="primary">Add a new Pet</Button>
             </div>
 
             <Modal isShowing={isShowing} hide={toggle}>
                 <form onSubmit={addNewPet}>
                     <div className="modal__form">
+
+                        <p>Add a new pet to your <strong>My Pets</strong> list using the form below:</p>
+
                         <label htmlFor="name">
-                            <Input onChange={addPetName} id="name" name="petname" placeholder="Name" type="text" />
+                            <Input onChange={addPetName} id="name" name="petname" placeholder="I call my Pet... (e.g. Sid)" type="text" />
                         </label>
                         <label htmlFor="type">
-                            <Input onChange={addPetType} id="type" name="pettype" placeholder="Type" type="text" />
+                            <Input onChange={addPetType} id="type" name="pettype" placeholder="My Pet is a... (e.g. Dog)" type="text" />
                         </label>
                         <label htmlFor="age">
-                            <Input onChange={addPetAge} id="age" name="petage" placeholder="Age" type="number" />
+                            <Input onChange={addPetAge} id="age" name="petage" placeholder="The Age of my Pet is... (e.g. 5)" type="number" />
                         </label>
                         <label htmlFor="feed">
-                            <Input onChange={addPetFeed} id="feed" name="petfeed" placeholder="Feed" type="number" />
+                            <Input onChange={addPetFeed} id="feed" name="petfeed" placeholder="Number of Feeds (e.g. 5)" type="number" />
                         </label>
                     </div>
                     
                     <div className="modal__buttons">
-                        <Button type="submit">Add Pet</Button>
+                        <Button type="submit" theme="primary">Add Pet</Button>
                     </div>
                 </form>
             </Modal>

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Button from "../Button";
-import close from './assets/close.svg';
+import close from "./assets/close.svg";
 import "./Modal.css";
 
 const Modal = ({ isShowing, hide, children }) => isShowing ? ReactDOM.createPortal(
