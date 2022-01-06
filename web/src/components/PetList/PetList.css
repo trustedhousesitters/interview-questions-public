@@ -4,3 +4,9 @@
     text-align: left;
     font-family: "Georgia, Times,'Times New Roman', serif";
 }
+
+.App-content__heading {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 2rem;
+}
