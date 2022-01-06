@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addPet } from "./actions";
 import { getPets } from "./selectors";
 import PetItem from "./components/PetItem";
+import Button from "./components/Button";
 import "./PetList.css";
 
 const PetList = () => {
@@ -38,7 +39,7 @@ const PetList = () => {
 
             <form onSubmit={addNewPet}>
                 <input onChange={addPetName} name="petname" type="text" />
-                <button type="submit">Add</button>
+                <Button type="submit">Add Pet</Button>
             </form>
 
             {pets.length > 1 && pets.map((pet) => <PetItem pet={pet} key={pet.id} />)}
