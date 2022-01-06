@@ -53,10 +53,19 @@ const PetList = () => {
             <h3 onClick={addNewPet}>Add Pet</h3>
 
             <form onSubmit={addNewPet}>
-                <Input onChange={addPetName} name="petname" placeholder="Name" type="text" />
-                <Input onChange={addPetType} name="pettype" placeholder="Type" type="text" />
-                <Input onChange={addPetAge} name="petage" placeholder="Age" type="number" />
-                <Input onChange={addPetFeed} name="petfeed" placeholder="Feed" type="number" />
+                <label for="name">
+                    <Input onChange={addPetName} id="name" name="petname" placeholder="Name" type="text" />
+                </label>
+                <label for="type">
+                    <Input onChange={addPetType} id="type" name="pettype" placeholder="Type" type="text" />
+                </label>
+                <label for="age">
+                    <Input onChange={addPetAge} id="age" name="petage" placeholder="Age" type="number" />
+                </label>
+                <label for="feed">
+                    <Input onChange={addPetFeed} id="feed" name="petfeed" placeholder="Feed" type="number" />
+                </label>
+                
                 <Button type="submit">Add Pet</Button>
             </form>
 

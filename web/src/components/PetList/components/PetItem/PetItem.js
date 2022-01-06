@@ -13,7 +13,7 @@ const PetItem = ({ pet }) => {
     const imageUrl = pet.imageUrl || dog;
 
     const dispatch = useDispatch();
-    const pets = useSelector(state => state.appReducer);
+    //const pets = useSelector(state => state.appReducer);
 
     return (
         <div className="Pet-item">
