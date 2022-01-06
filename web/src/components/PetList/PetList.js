@@ -84,7 +84,9 @@ const PetList = () => {
                 </form>
             </Modal>
     
-            {pets.length > 1 && pets.map((pet) => <PetItem pet={pet} key={pet.id} />)}
+            <div className="Pet-item-group">
+                {pets.length > 1 && pets.map((pet) => <PetItem pet={pet} key={pet.id} />)}
+            </div>
         </Fragment>
     );
 };

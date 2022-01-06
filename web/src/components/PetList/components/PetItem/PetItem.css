@@ -1,11 +1,43 @@
 .Pet-item {
+    border: 1px solid #eee;
+    border-radius: 4px;
+    flex: 0 1 calc(33.33% - 1em);
+    width: 100%;
+    transition: 0.5s;
+}
+
+.Pet-item:hover {
+    box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    cursor: pointer;
+}
+
+.Pet-item__header {
     display: flex;
+    justify-content: flex-end;
+}
+
+.Pet-item__content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 2rem;
+    height: 100%;
     justify-content: space-between;
-    align-items: center;
-    border: solid 1px #D5D5D9;
-    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.06);
-    margin-bottom: 10px;
-    padding: 20px;
+}
+
+.Pet-item__inner {
+    flex-grow: 1;
+}
+
+.Pet-item__info ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 2rem 0;
+}
+
+.Pet-item__footer {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .Pet-image {
