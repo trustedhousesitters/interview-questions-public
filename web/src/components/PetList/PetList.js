@@ -9,6 +9,8 @@ import "./PetList.css";
 const PetList = () => {
     const [petName, setPetName] = useState(''); 
     const [petType, setPetType] = useState('');
+    const [petAge, setPetAge] = useState(''); 
+    const [petFeed, setPetFeed] = useState('');
   
     const pets = useSelector(getPets);
     const dispatch = useDispatch();
@@ -17,13 +19,25 @@ const PetList = () => {
         setPetName(e.target.value);
     };
 
+    const addPetType = e => {
+        setPetType(e.target.value);
+    };
+
+    const addPetAge = e => {
+        setPetAge(e.target.value);
+    };
+
+    const addPetFeed = e => {
+        setPetFeed(e.target.value);
+    };
+
     const addNewPet = e => {
         const newPet = {
             id: pets.length + 1,
             name: petName,
             type: petType,
-            age: 99,
-            feeds: 5,
+            age: petAge,
+            feeds: petFeed,
         };
 
         dispatch(addPet(newPet));
@@ -39,6 +53,9 @@ const PetList = () => {
 
             <form onSubmit={addNewPet}>
                 <input onChange={addPetName} name="petname" type="text" />
+                <input onChange={addPetType} name="pettype" type="text" />
+                <input onChange={addPetAge} name="petage" type="number" />
+                <input onChange={addPetFeed} name="petfeed" type="number" />
                 <Button type="submit">Add Pet</Button>
             </form>
 
