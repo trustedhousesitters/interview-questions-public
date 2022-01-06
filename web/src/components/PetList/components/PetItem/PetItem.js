@@ -1,6 +1,7 @@
 import React from 'react';
 import {removePet} from "../../actions";
 import {useSelector, useDispatch} from "react-redux";
+import Button from "../../components/Button";
 
 import './PetItem.css';
 import close from './assets/close.svg';
@@ -30,9 +31,10 @@ const PetItem = ({ pet }) => {
                     <span className="Pet-details-label">Number of feeds: </span><span>{feeds}</span>
                 </div>
             </div>
-            <button onClick={() => dispatch(removePet(id))} className="Delete-button">
+
+            <Button onClick={() => dispatch(removePet(id))} className="Delete-button">
                 <img src={close} className="Delete-icon" alt="delete" />
-            </button>
+            </Button>
         </div>
     );
 };
