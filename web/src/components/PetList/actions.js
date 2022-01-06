@@ -1,14 +1,14 @@
 export const ADD_PET = 'ADD_PET';
 export const REMOVE_PET = 'REMOVE_PET';
 
-export function addPet(pet) {
+export const addPet = pet => {
     return {
         type: 'ADD_PET',
         pet
     }
 }
 
-export function removePet(pet) {
+export const removePet = pet => {
     return {
         type: 'REMOVE_PET',
         pet

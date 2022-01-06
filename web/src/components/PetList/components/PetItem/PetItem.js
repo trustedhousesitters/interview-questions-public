@@ -8,8 +8,6 @@ import dog from './assets/PetsPlaceholder/Dog.svg'
 
 const PetItem = ({ pet }) => {
 
-    console.log(pet);
-
     const { name, type, feeds, id } = pet;
     const imageUrl = pet.imageUrl || dog;
 
