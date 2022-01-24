@@ -4,3 +4,20 @@
     text-align: left;
     font-family: "Georgia, Times,'Times New Roman', serif";
 }
+.Pets-list{
+    display: flex;
+    flex-wrap: wrap;
+    float: left;
+}
+
+@media (min-width: 768px) { 
+    .Pets-list{
+        gap: 4%;
+    }
+}
+
+@media (min-width: 1200px) { 
+    .Pets-list{
+        gap: 3%;
+    }
+ }
