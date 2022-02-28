@@ -13,6 +13,7 @@ const PetList = () => {
   const dispatch = useDispatch();
 
   const handleOnClickAdd = () => {
+    // In a real app this should use input forms instead
     const pet = generatePets(1)[0];
 
     dispatch(addPetItem(pet));
