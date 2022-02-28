@@ -1,6 +1,27 @@
 .Pets-title {
-    font-size: 22px;
-    font-weight: 600;
-    text-align: left;
-    font-family: "Georgia, Times,'Times New Roman', serif";
+  font-size: 22px;
+  font-weight: 600;
+  text-align: left;
+  font-family: "Georgia, Times,'Times New Roman', serif";
+}
+
+.Pet-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.Add-button {
+  background: none;
+  border: none;
+  margin-bottom: 5px;
+}
+
+.Add-button:hover {
+  cursor: pointer;
+}
+
+.Add-icon {
+  height: 20px;
+  width: 20px;
 }
