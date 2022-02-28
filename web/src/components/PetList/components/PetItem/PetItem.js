@@ -12,10 +12,16 @@ const PetItem = ({ pet }) => {
   const { name, type, feeds, id } = pet;
 
   const fetchData = async () => {
-    const response = await axios.get("https://random.dog/woof.json");
+    try {
+      const response = await axios.get(
+        "https://random.dog/woof.json?filter=mp4,webm"
+      );
 
-    //Some icons won't be rendered in the browser due to mp4.
-    setImageUrl(response.data.url);
+      //Some icons won't be rendered in the browser due to mp4.
+      setImageUrl(response.data.url);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
