@@ -1,5 +1,6 @@
 .Pet-item {
     display: flex;
+    height: 150px;
     justify-content: space-between;
     align-items: center;
     border: solid 1px #D5D5D9;

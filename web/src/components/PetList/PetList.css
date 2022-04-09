@@ -1,6 +1,29 @@
+.Pets-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-gap: 1rem;
+}
+
 .Pets-title {
     font-size: 22px;
     font-weight: 600;
     text-align: left;
     font-family: "Georgia, Times,'Times New Roman', serif";
+}
+
+.Pets-add {
+    background: none;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px #D5D5D9;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.06);
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.Pets-add:hover {
+    cursor: pointer;
 }
