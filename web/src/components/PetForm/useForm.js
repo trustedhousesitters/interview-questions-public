@@ -1,10 +1,7 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addPet } from "../PetList/actions";
 
 const useForm = (initialState = {}) => {
     
-    const dispatch = useDispatch()
     const [data, setData] = useState(initialState)
 
     const handleChange = (e) => {
@@ -12,9 +9,7 @@ const useForm = (initialState = {}) => {
         setData({...data, [field]: value})
     }
     
-    const handleSubmit = (e, id) => {
-        e.preventDefault();
-        dispatch(addPet({id, ...data}))
+    const handleSubmit = () => {
         setData(initialState)
     }
 

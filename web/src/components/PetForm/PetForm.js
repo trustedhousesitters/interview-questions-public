@@ -2,11 +2,12 @@ import React, { Fragment } from 'react';
 
 import './PetForm.css';
 import { useNavigate } from 'react-router-dom';
-import TextField from './TextField';
+import TextField from './components/TextField';
 import useForm from './useForm';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getPets } from '../PetList/selectors';
 import { generateNewId } from '../../helpers/generateNewId';
+import { addPet } from '../PetList/actions';
 
 const INPUTS = [
     {   
@@ -46,6 +47,7 @@ const initialValues = {
 const PetForm = () => {
     const pets = useSelector(getPets);
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const [pet, handleChange, handleSubmit] = useForm(initialValues)
 
@@ -54,8 +56,10 @@ const PetForm = () => {
     }
 
     const onSubmit = (e) => {
+        e.preventDefault();
         const id = generateNewId(pets)
-        handleSubmit(e, id)
+        dispatch(addPet({id, ...pet}))
+        handleSubmit()
         return navigate("/")
     }
     
@@ -70,7 +74,7 @@ const PetForm = () => {
                     return <TextField key={index} input={input} value={pet[input.field]} handleChange={handleChange} />
                 })}
             <div className="Pet-form-buttons">
-                <button className="Button Cancel-button" onClick={goBack}>
+                <button type="button" className="Button Cancel-button" onClick={goBack}>
                     CANCEL
                 </button>
                 <button type="submit" className="Button Save-button">
