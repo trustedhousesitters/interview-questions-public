@@ -24,10 +24,6 @@
     border: none;
 }
 
-.Delete-button:hover {
-    cursor: pointer;
-}
-
 .Delete-icon {
     height: 20px;
     width: 20px;

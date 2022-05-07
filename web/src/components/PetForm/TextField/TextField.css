@@ -1,0 +1,18 @@
+.TextField-container {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 65px;
+}
+
+.TextField-label {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.TextField-input {
+    font-size: 20px;
+    width: 200px;
+    height: 30px;
+}

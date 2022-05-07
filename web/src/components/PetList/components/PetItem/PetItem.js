@@ -31,7 +31,7 @@ const PetItem = ({ pet }) => {
                     <span className="Pet-details-label">Number of feeds: </span><span>{feeds}</span>
                 </div>
             </div>
-            <button className="Delete-button" onClick={handleDelete}>
+            <button className="Button Delete-button" onClick={handleDelete}>
                 <img src={close} className="Delete-icon" alt="delete" />
             </button>
         </div>

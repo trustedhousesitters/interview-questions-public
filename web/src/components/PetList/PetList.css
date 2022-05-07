@@ -1,3 +1,9 @@
+.Pets-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .Pets-title {
     font-size: 22px;
     font-weight: 600;
@@ -5,8 +11,15 @@
     font-family: "Georgia, Times,'Times New Roman', serif";
 }
 
+.Pets-add-button {
+    background-color: white;
+    font-size: 22px;
+    border: 1px solid gray;
+}
+
 .Pets-list {
     display: grid;
     grid-gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin: 20px 0;
 }
