@@ -12,7 +12,7 @@ const PetItem = ({ pet }) => {
             <div>
                 <img src={imageUrl} className="Pet-image" alt="pet" />
             </div>
-            <div>
+            <div className="Pet-body">
                 <div>
                     <span className="Pet-details-label">Name: </span><span>{name}</span>
                 </div>
