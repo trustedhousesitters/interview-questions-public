@@ -11,7 +11,7 @@ const PetList = () => {
         <Fragment>
             <h1 className="Pets-title">My Pets</h1>
             <div className="Pets-list">
-                { pets.length > 1 && pets.map(pet => <PetItem pet={pet} key={pet.id}/>) }
+                { pets.length > 0 && pets.map(pet => <PetItem pet={pet} key={pet.id}/>) }
             </div>
         </Fragment>
     );
