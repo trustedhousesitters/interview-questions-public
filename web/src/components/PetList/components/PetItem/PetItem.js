@@ -1,14 +1,14 @@
 import React from 'react';
 
-import './PetItem.css';
 import close from './assets/close.svg';
 import dog from './assets/PetsPlaceholder/Dog.svg'
 import { useDispatch } from 'react-redux';
 import { deletePet } from '../../actions';
+import './PetItem.css';
 
 const PetItem = ({ pet }) => {
     const { id, name, type, feeds } = pet;
-    const imageUrl = pet.imageUrl || dog;
+    const imageUrl = pet.imageUrl ? `https://random.dog/${pet.imageUrl}` : dog;
     const dispatch = useDispatch()
 
     const handleDelete = () => {
@@ -31,7 +31,7 @@ const PetItem = ({ pet }) => {
                     <span className="Pet-details-label">Number of feeds: </span><span>{feeds}</span>
                 </div>
             </div>
-            <button className="Button Delete-button" onClick={handleDelete}>
+            <button data-testid={`delete-pet-${pet.id}`} className="Button Delete-button" onClick={handleDelete}>
                 <img src={close} className="Delete-icon" alt="delete" />
             </button>
         </div>

@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 
-import './PetForm.css';
 import { useNavigate } from 'react-router-dom';
 import TextField from './components/TextField';
 import useForm from './useForm';
@@ -8,6 +7,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPets } from '../PetList/selectors';
 import { generateNewId } from '../../helpers/generateNewId';
 import { addPet } from '../PetList/actions';
+import { fetchDogPicture } from '../../api/fetchDogPicture';
+import './PetForm.css';
+
+export const ADD_PET_TEST_ID = "add-pet-id"
 
 const INPUTS = [
     {   
@@ -49,27 +52,30 @@ const PetForm = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const [pet, handleChange, handleSubmit] = useForm(initialValues)
+    const [pet, handleChange, handleSubmit, isSaving] = useForm(initialValues)
 
     const goBack = () => {
         return navigate("/")
     }
 
-    const onSubmit = (e) => {
-        e.preventDefault();
+    const onSubmit = async () => {
         const id = generateNewId(pets)
-        dispatch(addPet({id, ...pet}))
-        handleSubmit()
+        const imageUrl = await fetchDogPicture()
+        dispatch(addPet({id, imageUrl , ...pet}))
         return navigate("/")
     }
     
+    if(isSaving){
+       return  <h1>Saving</h1>
+    }
+
     return (
         <Fragment>
             <div className="Pet-form-header">
                 <h1 className="Pets-title">New Pet</h1>
             </div>
             <div className="Pet-form">
-            <form onSubmit={onSubmit}>
+            <form onSubmit={(event) => handleSubmit(event,onSubmit)}>
                 {INPUTS.map((input, index)=>{
                     return <TextField key={index} input={input} value={pet[input.field]} handleChange={handleChange} />
                 })}
@@ -77,7 +83,7 @@ const PetForm = () => {
                 <button type="button" className="Button Cancel-button" onClick={goBack}>
                     CANCEL
                 </button>
-                <button type="submit" className="Button Save-button">
+                <button data-testid={ADD_PET_TEST_ID} type="submit" className="Button Save-button">
                     SAVE
                 </button>
             </div>

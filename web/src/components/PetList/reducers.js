@@ -1,5 +1,5 @@
 import { generatePets } from '../../helpers/generatePets';
-import { ADD_PET, DELETE_PET } from './actionTypes';
+import { ADD_IMAGES, ADD_PET, DELETE_PET } from './actionTypes';
 
 
 const initialState = {
@@ -8,6 +8,8 @@ const initialState = {
 
 export default function appReducer(state = initialState, action) {
   switch (action.type) {
+    case ADD_IMAGES:
+        return {...state, pets: action.data}
     case ADD_PET:
         return {...state, pets: [...state.pets, action.data]}
     case DELETE_PET:
