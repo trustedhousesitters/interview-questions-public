@@ -8,7 +8,7 @@ const TextField = ({input, value, handleChange = ()=>{}}) => {
     return (
         <div className="TextField-container">
             <label className="TextField-label" htmlFor={field}>{label}</label>
-            <input className="TextField-input" required={required} type={type} placeholder={label} id={field} name={field} value={value} onChange={handleChange} />
+            <input data-testid={`${field}-testID`} className="TextField-input" required={required} type={type} placeholder={label} id={field} name={field} value={value} onChange={handleChange} />
         </div>
     );
 };
