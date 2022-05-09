@@ -8,13 +8,6 @@ import { fetchDogPicture } from '../../api/fetchDogPicture';
 import { addImages } from './actions';
 import './PetList.css';
 
-const createPromises = (length) => {
-    const promiseArray = []
-    for(let i = 0; i < length; i += 1) {
-        promiseArray.push(fetchDogPicture())
-    }
-    return promiseArray
-}
 
 const PetList = () => {
     const pets = useSelector(getPets);
@@ -24,8 +17,17 @@ const PetList = () => {
     
     useEffect(()=>{
         setIsloading(true)
-        const nPromises = createPromises(pets.length)
-        if(!pets[0].imageUrl){
+
+        if(!pets[0]?.imageUrl && pets.length>0){
+                const createPromises = (length) => {
+                const promiseArray = []
+                for(let i = 0; i < length; i += 1) {
+                    promiseArray.push(fetchDogPicture())
+                }
+                return promiseArray
+            }
+
+            const nPromises = createPromises(pets.length)
             Promise.all(nPromises).then((images)=>{
                 const petsWithImages = pets.map((pet, index)=>{
                     return{...pet, imageUrl: images[index] }
@@ -33,6 +35,7 @@ const PetList = () => {
                 dispatch(addImages(petsWithImages))
                 setIsloading(false)
             })
+
         }else{
             setIsloading(false)
         }
