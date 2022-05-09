@@ -5,12 +5,12 @@ import userEvent from '@testing-library/user-event'
 import { Provider } from 'react-redux';
 import { store } from '../../app/store';
 import PetForm, { ADD_PET_TEST_ID } from './PetForm';
-import { addPet } from '../PetList/actions';
+import {addPet} from "../PetList/actions";
 
-
-
-jest.mock('../PetList/actions', () => ({
-    ...jest.requireActual('../PetList/actions'),
+const mockedUseDispatch = jest.fn();
+jest.mock('react-redux', () => ({
+    ...jest.requireActual('react-redux'),
+    useDispatch: () => mockedUseDispatch
 }));
 
 const mockedUsedNavigate = jest.fn();
@@ -20,50 +20,53 @@ jest.mock('react-router-dom', () => ({
   useNavigate: () => mockedUsedNavigate,
 }));
 
+jest.mock('../../api/fetchDogPicture', () => ({
+    fetchDogPicture: () => "id",
+}));
 
-test('renders PetForm title', async() => {
-    const { getByRole } = render(
-        <Router>
+describe('Tests for PetForm', ()  => {
+    test('renders PetForm title', async() => {
+        const { getByRole } = render(
+            <Router>
+                <Provider store={store}>
+                    <PetForm />
+                </Provider>
+            </Router>
+        );
+
+        await wait(()=> expect(getByRole('heading')).toHaveTextContent('New Pet'))
+
+    });
+
+
+    test('Name Input is in the document and changes', () => {
+            render(
+            <Router>
+                <Provider store={store}>
+                    <PetForm/>
+                </Provider>
+            </Router> )
+
+            const input = screen.getByLabelText("Name")
+            userEvent.type(input, 'Ollie')
+            expect(screen.getByLabelText('Name')).toHaveValue('Ollie');
+        }
+    )
+
+    test('Dispatch action', async () => {
+        render(<Router>
             <Provider store={store}>
-                <PetForm />
+                <PetForm/>
             </Provider>
-        </Router>
-    );
-      
-    await wait(()=> expect(getByRole('heading')).toHaveTextContent('New Pet'))
-    
-});
+        </Router> )
 
+        const input = screen.getByLabelText("Name")
+        userEvent.type(input, 'Ollie')
+        userEvent.click(screen.getByTestId(ADD_PET_TEST_ID))
 
-test('Name Input is in the document and changes', async () => {
-    render(<Router>
-        <Provider store={store}>
-            <PetForm/>
-        </Provider>
-    </Router> )
+        const expectedCallArguments = addPet({age: 0, feeds: 0, id: 13, imageUrl: "id", name: "Ollie", type: ""})
 
-    const input = screen.getByLabelText("Name")
-    userEvent.type(input, 'Ollie')
-    expect(screen.getByLabelText('Name')).toHaveValue('Ollie');
-  }
-)
+        await wait(()=>expect(mockedUseDispatch).toHaveBeenCalledWith(expectedCallArguments))
 
-// test('Dispatch action', () => {
-//     render(<Router>
-//         <Provider store={store}>
-//             <PetForm/>
-//         </Provider>
-//     </Router> )
-//     const mockedAddPet = jest.fn();
-//     addPet.mockReturnValue(mockedAddPet)
-//     const input = screen.getByLabelText("Name")
-//     userEvent.type(input, 'Ollie')
-//     userEvent.click(screen.getByTestId(ADD_PET_TEST_ID))
-//     expect(mockedAddPet).toHaveBeenCalled();
-
-//   })
-
-
-
-
-  
+    })
+})
