@@ -1,3 +1,5 @@
+import { v4 } from 'uuid';
+
 const PET_NAMES = [
   'Mr. Fluffings',
   'The Whiskertron',
@@ -9,7 +11,7 @@ const PET_NAMES = [
 const PET_TYPES = ['Dog', 'Cat', 'Antelope', 'Wild Boar', 'Rock'];
 
 export const createPet = ({ name, id }) => ({
-  id,
+  id: id || v4(),
   name: name || PET_NAMES[Math.floor(Math.random() * PET_NAMES.length)],
   type: PET_TYPES[Math.floor(Math.random() * PET_TYPES.length)],
   age: Math.floor(Math.random() * 15),
