@@ -7,9 +7,15 @@ export const AddPet = () => {
   const [petName, setPetName] = useState('');
   const dispatch = useDispatch();
 
-  const handleOnSubmit = e => {
+  const handleOnSubmit = async e => {
     e.preventDefault();
-    dispatch(addPet(petName));
+
+    const json = await (
+      await fetch('https://random.dog/woof.json?filter=mp4,webm')
+    ).json();
+    const { url } = json;
+
+    dispatch(addPet({ name: petName, imageUrl: url }));
     setPetName('');
   };
 

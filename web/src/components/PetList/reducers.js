@@ -11,7 +11,9 @@ const slice = createSlice({
   initialState,
   reducers: {
     addPet: (state, { payload }) => {
-      const pet = createPet({ name: payload });
+      const { name, imageUrl } = payload;
+      const pet = createPet({ name, imageUrl });
+
       state.pets = [...state.pets, pet];
     },
     deletePetById: (state, { payload }) => {

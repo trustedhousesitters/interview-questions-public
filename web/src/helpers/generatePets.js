@@ -10,8 +10,9 @@ const PET_NAMES = [
 
 const PET_TYPES = ['Dog', 'Cat', 'Antelope', 'Wild Boar', 'Rock'];
 
-export const createPet = ({ name, id }) => ({
+export const createPet = ({ id, imageUrl, name }) => ({
   id: id || v4(),
+  imageUrl,
   name: name || PET_NAMES[Math.floor(Math.random() * PET_NAMES.length)],
   type: PET_TYPES[Math.floor(Math.random() * PET_TYPES.length)],
   age: Math.floor(Math.random() * 15),
