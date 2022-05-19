@@ -1,11 +1,15 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { addPet } from '../../reducers';
 
 export const AddPet = () => {
   const [petName, setPetName] = useState('');
+  const dispatch = useDispatch();
 
   const handleOnSubmit = e => {
     e.preventDefault();
-    console.log('Add addPet dispatch here');
+    dispatch(addPet(petName));
   };
 
   const handleOnChange = e => {
