@@ -10,3 +10,15 @@
   grid-template: auto / repeat(3, 1fr);
   gap: 1em;
 }
+
+@media screen and (max-width: 1080px) {
+  .Pets-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Pets-content {
+    grid-template-columns: 1fr;
+  }
+}
