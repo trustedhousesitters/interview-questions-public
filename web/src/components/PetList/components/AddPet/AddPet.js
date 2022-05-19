@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { addPet } from '../../reducers';
 
 export const AddPet = () => {
-  const [petName, setPetName] = useState('');
+  const [name, setName] = useState('');
   const [type, setType] = useState('');
   const [feeds, setFeeds] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -19,20 +19,20 @@ export const AddPet = () => {
       const json = await (
         await fetch('https://random.dog/woof.json?filter=mp4,webm')
       ).json();
-      const { url } = json;
+      const { url: imageUrl } = json;
 
-      dispatch(addPet({ name: petName, imageUrl: url }));
+      dispatch(addPet({ name, imageUrl }));
       setIsLoading(false);
     } catch (e) {
       setIsLoading(false);
       console.error('There was an error fetching an image for this pet', e);
     }
 
-    setPetName('');
+    setName('');
   };
 
   const handleNameOnChange = e => {
-    setPetName(e.target.value);
+    setName(e.target.value);
   };
 
   const handleTypeOnChange = e => {
@@ -51,7 +51,7 @@ export const AddPet = () => {
         <label htmlFor="add-pet-name-input">Name</label>
         <input
           id="add-pet-name-input"
-          value={petName}
+          value={name}
           onChange={handleNameOnChange}
         />
         <label htmlFor="add-pet-type-input">Type</label>
