@@ -10,6 +10,7 @@ export const AddPet = () => {
   const handleOnSubmit = e => {
     e.preventDefault();
     dispatch(addPet(petName));
+    setPetName('');
   };
 
   const handleOnChange = e => {
