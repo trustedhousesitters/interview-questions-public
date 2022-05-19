@@ -21,7 +21,7 @@ export const AddPet = () => {
       ).json();
       const { url: imageUrl } = json;
 
-      dispatch(addPet({ name, imageUrl }));
+      dispatch(addPet({ feeds, name, imageUrl, type }));
     } catch (e) {
       console.error('There was an error fetching an image for this pet', e);
     }
