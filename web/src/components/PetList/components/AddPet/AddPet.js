@@ -22,12 +22,11 @@ export const AddPet = () => {
       const { url: imageUrl } = json;
 
       dispatch(addPet({ name, imageUrl }));
-      setIsLoading(false);
     } catch (e) {
-      setIsLoading(false);
       console.error('There was an error fetching an image for this pet', e);
     }
 
+    setIsLoading(false);
     setName('');
   };
 
