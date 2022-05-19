@@ -5,28 +5,69 @@ import { addPet } from '../../reducers';
 
 export const AddPet = () => {
   const [petName, setPetName] = useState('');
+  const [type, setType] = useState('');
+  const [feeds, setFeeds] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
   const handleOnSubmit = async e => {
     e.preventDefault();
 
-    const json = await (
-      await fetch('https://random.dog/woof.json?filter=mp4,webm')
-    ).json();
-    const { url } = json;
+    setIsLoading(true);
 
-    dispatch(addPet({ name: petName, imageUrl: url }));
+    try {
+      const json = await (
+        await fetch('https://random.dog/woof.json?filter=mp4,webm')
+      ).json();
+      const { url } = json;
+
+      dispatch(addPet({ name: petName, imageUrl: url }));
+      setIsLoading(false);
+    } catch (e) {
+      setIsLoading(false);
+      console.error('There was an error fetching an image for this pet', e);
+    }
+
     setPetName('');
   };
 
-  const handleOnChange = e => {
+  const handleNameOnChange = e => {
     setPetName(e.target.value);
   };
 
-  return (
+  const handleTypeOnChange = e => {
+    setType(e.target.value);
+  };
+
+  const handleFeedsOnChange = e => {
+    setFeeds(e.target.value);
+  };
+
+  return isLoading ? (
+    <p>Loading....</p>
+  ) : (
     <div className="Pets-add-pet">
       <form onSubmit={handleOnSubmit}>
-        <input value={petName} onChange={handleOnChange} />
+        <label htmlFor="add-pet-name-input">Name</label>
+        <input
+          id="add-pet-name-input"
+          value={petName}
+          onChange={handleNameOnChange}
+        />
+        <label htmlFor="add-pet-type-input">Type</label>
+        <input
+          id="add-pet-type-input"
+          value={type}
+          onChange={handleTypeOnChange}
+        />
+        <label htmlFor="add-pet-feeds-input">Number of feeds</label>
+        <input
+          type="number"
+          step="1"
+          id="add-pet-feeds-input"
+          value={feeds}
+          onChange={handleFeedsOnChange}
+        />
         <button type="submit">+</button>
       </form>
     </div>
