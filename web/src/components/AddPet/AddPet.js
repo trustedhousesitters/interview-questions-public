@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addPet } from '../../reducers';
+import { addPet } from '../PetList/reducers';
+
+import './AddPet.css';
 
 export const AddPet = () => {
   const [name, setName] = useState('');
@@ -42,33 +44,36 @@ export const AddPet = () => {
     setFeeds(e.target.value);
   };
 
-  return isLoading ? (
-    <p>Loading....</p>
-  ) : (
-    <div className="Pets-add-pet">
-      <form onSubmit={handleOnSubmit}>
-        <label htmlFor="add-pet-name-input">Name</label>
-        <input
-          id="add-pet-name-input"
-          value={name}
-          onChange={handleNameOnChange}
-        />
-        <label htmlFor="add-pet-type-input">Type</label>
-        <input
-          id="add-pet-type-input"
-          value={type}
-          onChange={handleTypeOnChange}
-        />
-        <label htmlFor="add-pet-feeds-input">Number of feeds</label>
-        <input
-          type="number"
-          step="1"
-          id="add-pet-feeds-input"
-          value={feeds}
-          onChange={handleFeedsOnChange}
-        />
-        <button type="submit">+</button>
-      </form>
+  return (
+    <div className="Add-Pet">
+      <h1 className="Add-Pet-title">Add Pet</h1>
+      {isLoading ? (
+        <p>Loading....</p>
+      ) : (
+        <form onSubmit={handleOnSubmit}>
+          <label htmlFor="add-pet-name-input">Name</label>
+          <input
+            id="add-pet-name-input"
+            value={name}
+            onChange={handleNameOnChange}
+          />
+          <label htmlFor="add-pet-type-input">Type</label>
+          <input
+            id="add-pet-type-input"
+            value={type}
+            onChange={handleTypeOnChange}
+          />
+          <label htmlFor="add-pet-feeds-input">Number of feeds</label>
+          <input
+            type="number"
+            step="1"
+            id="add-pet-feeds-input"
+            value={feeds}
+            onChange={handleFeedsOnChange}
+          />
+          <button type="submit">+</button>
+        </form>
+      )}
     </div>
   );
 };

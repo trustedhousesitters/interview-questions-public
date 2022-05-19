@@ -1,0 +1,24 @@
+.Add-Pet {
+  margin-bottom: 2em;
+}
+
+.Add-Pet label {
+  margin-right: 0.5em;
+}
+
+.Add-Pet input {
+  margin-right: 1em;
+  padding: 0.5em;
+}
+
+.Add-Pet button {
+  padding: 0.25em 1em;
+  background-color: #00afa2;
+  border: 0;
+  color: white;
+  cursor: pointer;
+}
+
+.Add-Pet-title {
+  margin-bottom: 0.5em;
+}

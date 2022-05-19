@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 
 import PetItem from './components/PetItem';
 import { getPets } from './selectors';
-import { AddPet } from './components/AddPet';
 
 import './PetList.css';
 
@@ -13,7 +12,6 @@ const PetList = () => {
   return (
     <Fragment>
       <h1 className="Pets-title">My Pets</h1>
-      <AddPet />
       <div className="Pets-content">
         {pets.length > 1 && pets.map(pet => <PetItem pet={pet} key={pet.id} />)}
       </div>
