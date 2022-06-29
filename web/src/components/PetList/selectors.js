@@ -1,1 +1,1 @@
-export const getPets = state => state.pets.pets;
+export const getPets = state => state.pets.petsList;

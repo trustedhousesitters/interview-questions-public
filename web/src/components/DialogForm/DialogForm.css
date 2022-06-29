@@ -1,0 +1,17 @@
+.Dialog__Title {
+  font-size: large;
+}
+
+.Action-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.form-group {
+  margin-bottom: 8px;
+}
+
+.form-group label {
+  margin-right: 8px;
+}
