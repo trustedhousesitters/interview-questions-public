@@ -24,12 +24,15 @@ const PetList = () => {
 
   return (
     <Fragment>
-      <h1 className="Pets-title">My Pets</h1>
-      <button className="Pets-add" onClick={() => setNewPetDialogOpen(true)}>
+      <h1 className="pets-title">My Pets</h1>
+      <button
+        className="button pets-add"
+        onClick={() => setNewPetDialogOpen(true)}
+      >
         Add Pet
       </button>
       {pets.length > 0 && (
-        <div className="Pets-list">
+        <div className="pets-list">
           {pets.map((pet) => (
             <PetItem pet={pet} key={pet.id} onDeleteClicked={handleDelete} />
           ))}
@@ -80,16 +83,16 @@ const PetList = () => {
         }}
         handleCancel={() => setNewPetDialogOpen(false)}
       >
-        <div class="form-group">
-          <label for="name">Name:</label>
+        <div className="form-group">
+          <label htmlFor="name">Name:</label>
           <input type="text" name="name" id="name" required />
         </div>
-        <div class="form-group">
-          <label for="type">Animal Type:</label>
+        <div className="form-group">
+          <label htmlFor="type">Animal type:</label>
           <input type="text" name="type" id="type" />
         </div>
-        <div class="form-group">
-          <label for="feeds">Number of feeds:</label>
+        <div className="form-group">
+          <label htmlFor="feeds">Number of feeds:</label>
           <input
             type="number"
             name="feeds"

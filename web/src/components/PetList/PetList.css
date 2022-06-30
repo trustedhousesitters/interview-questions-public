@@ -1,16 +1,16 @@
-.Pets-title {
+.pets-title {
   font-size: 22px;
   font-weight: 600;
   text-align: left;
   font-family: "Georgia, Times,'Times New Roman', serif";
 }
 
-.Pets-list {
+.pets-list {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 }
 
-.Pets-add {
+.pets-add {
   margin-bottom: 8px;
 }

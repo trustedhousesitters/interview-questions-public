@@ -1,31 +1,34 @@
-.Pet-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: solid 1px #D5D5D9;
-    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.06);
-    margin-bottom: 10px;
-    padding: 20px;
+.pet-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: solid 1px #d5d5d9;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.06);
+  margin-bottom: 10px;
+  padding: 20px;
 }
 
-.Pet-image {
-    width: 80px;
+.pet-image {
+  width: 80px;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
-.Pet-details-label {
-    font-weight: 500;
+.pet-details-label {
+  font-weight: 500;
 }
 
-.Delete-button {
-    background: none;
-    border: none;
+.delete-button {
+  background: none;
+  border: none;
 }
 
-.Delete-button:hover {
-    cursor: pointer;
+.delete-button:hover {
+  cursor: pointer;
 }
 
-.Delete-icon {
-    height: 20px;
-    width: 20px;
+.delete-icon {
+  height: 20px;
+  width: 20px;
 }

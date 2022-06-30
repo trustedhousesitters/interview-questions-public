@@ -1,5 +1,6 @@
 import { generatePets } from "../../helpers/generatePets";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createPet } from "../../services/pet-service";
 
 export const deletePet = createAsyncThunk(
   "app/deletePet",
@@ -17,21 +18,12 @@ export const deletePet = createAsyncThunk(
   }
 );
 
-export const addPet = createAsyncThunk(
-  "app/addPet",
-  async (newPet, thunkAPI) => {
-    const petsList = thunkAPI.getState().pets.petsList;
-    // NOTE: Traditionally you would call a service here to add the pet from the BE
-    const test = await fetch("https://random.dog/woof?include=png").then(
-      (response) => response.text()
-    );
-
-    newPet.id = petsList.length + 1;
-    newPet.imageUrl = `https://random.dog/${test}`;
-    const pets = [newPet, ...petsList];
-    return pets;
-  }
-);
+export const addPet = createAsyncThunk("app/addPet", async (pet, thunkAPI) => {
+  const petsList = thunkAPI.getState().pets.petsList;
+  const newPet = await createPet(pet);
+  const pets = [newPet, ...petsList];
+  return pets;
+});
 
 export const petSlice = createSlice({
   name: "pets",

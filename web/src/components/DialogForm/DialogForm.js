@@ -1,20 +1,32 @@
 import React from "react";
 import "./DialogForm.css";
 import PropTypes from "prop-types";
+import classNames from "classnames";
 
 const DialogForm = ({ open, title, children, handleSubmit, handleCancel }) => {
   return (
-    <dialog className="Dialog" open={open}>
-      <div className="Dialog__Title">{title}</div>
-      <form method="dialog" onSubmit={handleSubmit}>
-        <div className="Form-content">{children}</div>
+    <div
+      className={classNames({
+        "dialog-container": true,
+        open,
+      })}
+    >
+      <dialog className="dialog" open={true}>
+        <div className="dialog-title">{title}</div>
+        <form method="dialog" onSubmit={handleSubmit}>
+          <div className="Form-content">{children}</div>
 
-        <div className="Action-container">
-          <button type="submit">Submit</button>
-          <button onClick={handleCancel}>Cancel</button>
-        </div>
-      </form>
-    </dialog>
+          <div className="Action-container">
+            <button className="button" onClick={handleCancel}>
+              Cancel
+            </button>
+            <button className="button" type="submit">
+              Submit
+            </button>
+          </div>
+        </form>
+      </dialog>
+    </div>
   );
 };
 
