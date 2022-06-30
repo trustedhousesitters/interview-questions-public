@@ -56,7 +56,4 @@ export const petSlice = createSlice({
   },
 });
 
-// Action creators are generated for each case reducer function
-//export const { } = petSlice.actions
-
 export default petSlice.reducer;
