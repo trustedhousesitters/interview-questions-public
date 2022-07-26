@@ -1,8 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import petReducer from '../components/PetList/reducers';
 
-export const store = configureStore({
-  reducer: {
-    pets: petReducer,
-  },
-});
+export const setupStore = (preloadedState) => {
+  return configureStore({
+    reducer: {
+      pets: petReducer,
+    },
+    preloadedState,
+  });
+};
+
+export const store = setupStore();
