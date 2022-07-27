@@ -20,7 +20,7 @@ const PetList = () => {
 
     return (
         <Fragment>
-            <h1 className='Pet-title'>My Pets</h1>
+            <h1 className='Pets-title'>My Pets</h1>
             {isAddPetFormVisible ? (
                 <PetForm onCancel={hidePetForm} />
             ) : (
@@ -32,7 +32,7 @@ const PetList = () => {
                     Add pet
                 </button>
             )}
-            <div className='Pet-list'>
+            <div className='Pets-list'>
                 {pets.length >= 1 &&
                     pets.map((pet) => <PetItem pet={pet} key={pet.id} />)}
             </div>

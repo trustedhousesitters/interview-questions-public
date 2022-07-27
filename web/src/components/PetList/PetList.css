@@ -1,20 +1,15 @@
 .Pets-title {
     font-size: 22px;
     font-weight: 600;
-    grid-column: span 10;
     text-align: left;
     font-family: "Georgia, Times,'Times New Roman', serif";
 }
 
-.Pet-list {
+.Pets-list {
     display: grid;
     gap: 10px;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     margin-top: 10px;
-}
-
-.Add-pet-button {
-    grid-column: span 2;
 }
 
 .Button {
