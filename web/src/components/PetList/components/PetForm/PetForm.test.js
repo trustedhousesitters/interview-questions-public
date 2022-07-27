@@ -14,7 +14,7 @@ test('can add a pet', async () => {
     };
 
     const { store, getByRole, getByLabelText } = renderWithProviders(
-        <PetForm />
+        <PetForm onCancel={jest.fn()} />
     );
 
     expect(store.getState().pets.pets).toEqual(
