@@ -1,4 +1,5 @@
 import { PET_ADDED, PET_DELETED } from '../../app/actions';
+import { fetchPetImageUrl } from '../../app/api';
 import { generatePets } from '../../helpers/generatePets';
 
 const initialState = {
@@ -25,4 +26,17 @@ export default function appReducer(state = initialState, action) {
         default:
             return state;
     }
+}
+
+export function addNewPet(pet) {
+    return async function addNewPetThunk(dispatch, _getState) {
+        const imageUrl = await fetchPetImageUrl();
+        dispatch({
+            type: PET_ADDED,
+            pet: {
+                ...pet,
+                imageUrl,
+            },
+        });
+    };
 }

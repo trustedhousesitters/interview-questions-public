@@ -3,17 +3,15 @@ import React from 'react';
 import './PetForm.css';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { PET_ADDED } from '../../../../app/actions';
+import { addNewPet } from '../../reducers';
 
 const PetForm = ({ onCancel }) => {
     const { register, handleSubmit } = useForm();
     const dispatch = useDispatch();
 
     const addPet = (pet) => {
-        dispatch({
-            type: PET_ADDED,
-            pet,
-        });
+        const addNewPetThunk = addNewPet(pet);
+        dispatch(addNewPetThunk);
         // In future this might be another dedicated method, but for now it's the same behaviour so we call it
         onCancel();
     };
@@ -48,7 +46,10 @@ const PetForm = ({ onCancel }) => {
                 <input
                     type='number'
                     id='feeds'
-                    {...register('feeds', { valueAsNumber: true })}
+                    {...register('feeds', {
+                        required: true,
+                        valueAsNumber: true,
+                    })}
                 />
             </div>
             <div>
