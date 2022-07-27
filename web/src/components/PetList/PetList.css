@@ -4,3 +4,21 @@
     text-align: left;
     font-family: "Georgia, Times,'Times New Roman', serif";
 }
+
+.Pets-list {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    margin-top: 10px;
+}
+
+.Button {
+    background-color: white;
+    border: 2px solid #00b2a2;
+    color: #00b2a2;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 15px;
+    padding: 5px;
+    max-width: 500px;
+}
