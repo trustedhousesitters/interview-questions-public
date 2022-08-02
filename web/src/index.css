@@ -1,6 +1,17 @@
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font: normal 1.4rem 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #585668;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
