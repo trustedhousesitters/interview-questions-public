@@ -1,14 +1,15 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
 
-import { getPets } from './components/PetList/selectors';
-
 import PetList from './components/PetList/';
 
+import { selectPets } from './features/pets/petSlice';
+
 const App = () => {
-  const pets = useSelector(getPets);
+  const pets = useSelector(selectPets);
+  const dispatch = useDispatch();
 
   return (
     <div className="App">
@@ -17,7 +18,7 @@ const App = () => {
       </header>
 
       <main className="App-content">
-        <PetList pets={pets} data-testid="pet-list" />
+        <PetList dispatch={dispatch} pets={pets} data-testid="pet-list" />
       </main>
     </div>
   );

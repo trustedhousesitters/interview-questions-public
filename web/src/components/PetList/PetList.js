@@ -4,7 +4,7 @@ import PetItem from './components/PetItem';
 
 import './PetList.css';
 
-const PetList = ({ pets }) => {
+const PetList = ({ dispatch, pets }) => {
   return (
     <Fragment>
       <h1 className="Pets-title">My Pets</h1>
@@ -16,7 +16,7 @@ const PetList = ({ pets }) => {
       ) : (
         <div className="Pets-container">
           {pets.map((pet) => (
-            <PetItem pet={pet} key={pet.id} />
+            <PetItem dispatch={dispatch} pet={pet} key={pet.id} />
           ))}
         </div>
       )}
