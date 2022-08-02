@@ -14,4 +14,3 @@ test('renders logo', () => {
 
   expect(getByRole('img', { name: 'logo trusted housesitters' })).toBeInTheDocument();
 });
-
