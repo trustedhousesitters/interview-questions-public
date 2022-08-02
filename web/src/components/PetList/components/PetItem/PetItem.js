@@ -10,7 +10,7 @@ const PetItem = ({ pet }) => {
     return (
         <div className="Pet-item">
             <div>
-                <img src={imageUrl} className="Pet-image" alt="pet" />
+                <img height="80" width="80" src={imageUrl} className="Pet-image" alt="pet" />
             </div>
             <div>
                 <div>

@@ -2,10 +2,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
     border: solid 0.1rem #D5D5D9;
     box-shadow: 0 0.4rem 2rem 0 rgba(0, 0, 0, 0.06);
     padding: 2rem;
-    margin-bottom: 2rem;
 }
 
 .Pet-image {

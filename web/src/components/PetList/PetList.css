@@ -4,3 +4,9 @@
     text-align: left;
     font-family: Georgia, Times, 'Times New Roman', serif;
 }
+
+.Pets-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+    gap: 2rem;
+}
