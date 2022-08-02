@@ -1,20 +1,27 @@
 import React, { Fragment } from 'react';
-import { useSelector } from 'react-redux';
 
 import PetItem from './components/PetItem';
-import { getPets } from './selectors';
+
 import './PetList.css';
 
-const PetList = () => {
-    const pets = useSelector(getPets);
-    return (
-        <Fragment>
-            <h1 className="Pets-title">My Pets</h1>
-            <div className="Pets-container">
-                { pets.length > 1 && pets.map(pet => <PetItem pet={pet} key={pet.id}/>) }
-            </div>
-        </Fragment>
-    );
+const PetList = ({ pets }) => {
+  return (
+    <Fragment>
+      <h1 className="Pets-title">My Pets</h1>
+
+      {pets.length === 0 ? (
+        <div className="Pets-no-pets" data-testid="pet-list-empty">
+          <h2>No Pets</h2>
+        </div>
+      ) : (
+        <div className="Pets-container">
+          {pets.map((pet) => (
+            <PetItem pet={pet} key={pet.id} />
+          ))}
+        </div>
+      )}
+    </Fragment>
+  );
 };
 
 export default PetList;

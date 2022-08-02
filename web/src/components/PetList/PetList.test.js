@@ -1,15 +1,19 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { store } from '../../app/store';
+import { generatePets } from '../../helpers/generatePets';
 import PetList from './PetList';
 
-test('renders title', () => {
-    const { getByRole } = render(
-        <Provider store={store}>
-            <PetList />
-        </Provider>
-    );
-      
-    expect(getByRole('heading')).toHaveTextContent('My Pets')
+const renderPetList = (pets) => render(<PetList pets={pets} />);
+
+test('renders the correct amount of pets', () => {
+  const numberOfPets = 10;
+  const { getAllByTestId } = renderPetList(generatePets(numberOfPets));
+
+  expect(getAllByTestId('pet-item')).toHaveLength(numberOfPets);
+});
+
+test('renders an empty message when no pets are present', () => {
+  const { getByTestId } = renderPetList([]);
+
+  expect(getByTestId('pet-list-empty')).toHaveTextContent('No Pets');
 });

@@ -1,12 +1,17 @@
 .Pets-title {
-    font-size: 2.2rem;
-    font-weight: 600;
-    text-align: left;
-    font-family: Georgia, Times, 'Times New Roman', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: left;
+  font-family: Georgia, Times, 'Times New Roman', serif;
 }
 
 .Pets-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
-    gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  gap: 2rem;
+}
+
+.Pets-no-pets {
+  display: flex;
+  justify-content: center;
 }
