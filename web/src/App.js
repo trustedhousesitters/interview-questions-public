@@ -6,11 +6,12 @@ import './App.css';
 const App = () => (
   <div className="App">
     <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
+      <img src={logo} className="App-logo" alt="logo trusted housesitters" />
     </header>
-      <div className="App-content">
-        <PetList data-testid="pet-list" />
-      </div>
+
+    <main className="App-content">
+      <PetList data-testid="pet-list" />
+    </main>
   </div>
 );
 
