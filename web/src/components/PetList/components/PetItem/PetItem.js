@@ -1,5 +1,6 @@
 // @ts-check
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import './PetItem.css';
 import dog from './assets/PetsPlaceholder/Dog.svg';
@@ -17,10 +18,11 @@ import { removePetById } from '../../../../features/pets/petSlice';
  */
 
 /**
- * @param {{ dispatch: any; pet: Pet }} props
+ * @param {{ pet: Pet }} props
  * @returns {JSX.Element}
  */
-const PetItem = ({ dispatch, pet }) => {
+const PetItem = ({ pet }) => {
+  const dispatch = useDispatch();
   const { id, name, type, feeds, imageUrl = dog } = pet;
 
   return (

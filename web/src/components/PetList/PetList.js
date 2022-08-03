@@ -1,11 +1,16 @@
 // @ts-check
 import React, { Fragment, useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import PetItem from './components/PetItem';
+import { selectPets } from '../../features/pets/petSlice';
 
 import './PetList.css';
 
-const PetList = ({ dispatch, pets }) => {
+const PetList = () => {
+  const dispatch = useDispatch()
+  const pets = useSelector(selectPets);
+  
   /** @type {React.MutableRefObject<HTMLDivElement|null>} */
   const noPetsText = useRef(null);
 

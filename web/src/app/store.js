@@ -7,3 +7,12 @@ export const store = configureStore({
     pets: petReducer,
   },
 });
+
+export const setupStore = (preloadedState) => {
+  return configureStore({
+    reducer: {
+      pets: petReducer,
+    },
+    preloadedState,
+  });
+};
