@@ -23,12 +23,13 @@
   border: none;
   outline-width: 0;
   transition: outline 0.3s ease;
+  cursor: pointer;
 }
 
-.Delete-button:hover,
-.Delete-button:focus {
-  outline: 0.3rem solid #000;
-  cursor: pointer;
+
+.Delete-button:focus-visible {
+  outline: 0.2rem solid #000;
+  outline-offset: 0.7rem;
 }
 
 .Delete-button-text {
