@@ -2,12 +2,12 @@
 import React, { Fragment, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 
-import { selectPets } from '../../features/pets/petSlice';
+import { selectPets } from '../petSlice';
 import PetItem from './components/PetItem';
 
 import './PetList.css';
 
-/** @typedef { import("../../features/pets/pet").Pet } Pet */
+/** @typedef { import("../pet").Pet } Pet */
 
 const PetList = () => {
   /** @type {{ a11yInfo: string, pets: Pet[] }} */

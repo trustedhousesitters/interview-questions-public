@@ -5,9 +5,9 @@ import { useDispatch } from 'react-redux';
 import './PetItem.css';
 import dog from './assets/PetsPlaceholder/Dog.svg';
 
-import { removePetById } from '../../../../features/pets/petSlice';
+import { removePetById } from '../../../petSlice';
 
-/** @typedef { import("../../../../features/pets/pet").Pet } Pet */
+/** @typedef { import("../../../pet").Pet } Pet */
 
 /**
  * @param {{ pet: Pet }} props

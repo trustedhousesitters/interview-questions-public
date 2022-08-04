@@ -1,12 +1,12 @@
 // @ts-check
 import { createSlice } from '@reduxjs/toolkit';
 
-import { getDogImage } from '../../api';
-import { generatePets } from '../../helpers/pets';
-import { loadImage } from '../../helpers/image';
-import { pluralise } from '../../helpers/pluralise';
+import { getDogImage } from '../api';
+import { generatePets } from '../helpers/pets';
+import { loadImage } from '../helpers/image';
+import { pluralise } from '../helpers/pluralise';
 
-/** @typedef { import(".././../features/pets/pet").Pet } Pet */
+/** @typedef { import("./pet").Pet } Pet */
 
 /**
  * Remove the pet with the matching id from the list of pets

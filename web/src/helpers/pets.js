@@ -1,7 +1,7 @@
 // @ts-check
 import { nanoid } from '@reduxjs/toolkit';
 
-/** @typedef { import("../features/pets/pet").Pet } Pet */
+/** @typedef { import("../components/pet").Pet } Pet */
 
 const PET_NAMES = ['Mr. Fluffings', 'The Whiskertron', 'Dogbert', 'Keith', 'Woofo'];
 

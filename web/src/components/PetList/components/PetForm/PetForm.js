@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 
-import { addPet, updatePetImageThunk } from '../../../../features/pets/petSlice';
+import { addPet, updatePetImageThunk } from '../../../petSlice';
 import { buildPet } from '../../../../helpers/pets';
 
 import './PetForm.css';
