@@ -28,7 +28,7 @@
   cursor: pointer;
   background: #02afa2;
   border: none;
-  border-radius: 0.4rem;
+  border-radius: var(--border-radius);
   padding: 1rem 2rem;
   font-weight: bold;
   font-size: 1.4rem;
@@ -47,7 +47,7 @@
   border: 1px solid grey;
   width: 100%;
   padding: 0.9rem 0.9rem;
-  border-radius: 0.4rem;
+  border-radius: var(--border-radius);
   font-size: 1.4rem;
   transition: box-shadow 0.2s ease;
   outline: none;

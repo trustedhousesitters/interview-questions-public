@@ -1,5 +1,5 @@
 /**
- * Resolves an empty Promise once the image has been loaded
+ * Resolves a Promise once the image has loaded
  * @param {string} imageUrl
  * @returns {Promise<void>}
  */
