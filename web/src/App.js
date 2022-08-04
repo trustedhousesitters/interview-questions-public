@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import PetList from './components/PetList/';
+import PetForm from './components/PetList/components/PetForm'
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       </header>
 
       <main className="App-content">
+        <PetForm />
         <PetList data-testid="pet-list" />
       </main>
     </div>

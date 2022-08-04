@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { generatePets } from '../../helpers/generatePets';
+import { generatePets } from '../../helpers/pets';
 
 const petSlice = createSlice({
   name: 'pet',
@@ -8,6 +8,9 @@ const petSlice = createSlice({
     pets: generatePets(13),
   },
   reducers: {
+    addPet: (state, action) => {
+      state.pets = [action.payload, ...state.pets];
+    },
     removePetById: (state, action) => {
       state.pets = state.pets.filter((pet) => pet.id !== action.payload);
     },
@@ -16,8 +19,8 @@ const petSlice = createSlice({
 
 const selectPets = (state) => state.pets.pets;
 
-const { removePetById } = petSlice.actions;
+const { addPet, removePetById } = petSlice.actions;
 
 export default petSlice.reducer;
 
-export { petSlice, removePetById, selectPets };
+export { addPet, petSlice, removePetById, selectPets };

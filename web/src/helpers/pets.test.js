@@ -1,4 +1,4 @@
-import { generatePets } from './generatePets';
+import { generatePets } from './pets';
 
 test('should genderate the correct number of pets', () => {
   expect(generatePets()).toHaveLength(3);
@@ -11,7 +11,7 @@ test('should genderate the correct number of pets', () => {
 test('should genderate a pet', () => {
   const [pet] = generatePets(1);
 
-  expect(pet.id).toEqual(expect.any(Number));
+  expect(pet.id).toEqual(expect.any(String));
   expect(pet.age).toEqual(expect.any(Number));
   expect(pet.feeds).toEqual(expect.any(Number));
   expect(pet.name).toEqual(expect.any(String));

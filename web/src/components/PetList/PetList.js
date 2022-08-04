@@ -1,14 +1,13 @@
 // @ts-check
 import React, { Fragment, useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import PetItem from './components/PetItem';
 import { selectPets } from '../../features/pets/petSlice';
+import PetItem from './components/PetItem';
 
 import './PetList.css';
 
 const PetList = () => {
-  const dispatch = useDispatch()
   const pets = useSelector(selectPets);
   
   /** @type {React.MutableRefObject<HTMLDivElement|null>} */
@@ -31,7 +30,7 @@ const PetList = () => {
       ) : (
         <div className="Pets-container">
           {pets.map((pet) => (
-            <PetItem dispatch={dispatch} pet={pet} key={pet.id} />
+            <PetItem pet={pet} key={pet.id} />
           ))}
         </div>
       )}

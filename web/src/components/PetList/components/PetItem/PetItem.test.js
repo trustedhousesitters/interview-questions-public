@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { renderWithProviders } from '../../../../test-utils';
-import { generatePets } from '../../../../helpers/generatePets';
+import { generatePets } from '../../../../helpers/pets';
 import PetItem from './PetItem';
 
 /** HELPERS */

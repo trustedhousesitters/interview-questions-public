@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent} from '@testing-library/react';
 
 import { renderWithProviders } from '../../test-utils';
-import { generatePets } from '../../helpers/generatePets';
+import { generatePets } from '../../helpers/pets';
 import PetList from './PetList';
 
 /** HELPERS */
