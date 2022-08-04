@@ -1,18 +1,16 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { applyMiddleware, configureStore } from '@reduxjs/toolkit';
+import thunkMiddleware from 'redux-thunk';
 
 import petReducer from '../features/pets/petSlice';
 
-export const store = configureStore({
-  reducer: {
-    pets: petReducer,
-  },
-});
-
 export const setupStore = (preloadedState) => {
-  return configureStore({
-    reducer: {
-      pets: petReducer,
+  return configureStore(
+    {
+      reducer: {
+        pets: petReducer,
+      },
+      preloadedState,
     },
-    preloadedState,
-  });
+    applyMiddleware(thunkMiddleware)
+  );
 };

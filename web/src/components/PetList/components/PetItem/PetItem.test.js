@@ -18,13 +18,13 @@ test('should use the fallback dog image when image prop is omitted', () => {
 });
 
 test('should use the specified dog image when image prop is present', () => {
-  const imageUrl =  'https://random.dog/9834720938472.jpg';
+  const imageUrl = 'https://random.dog/9834720938472.jpg';
   const { getByRole } = renderPetItem({
     id: 32,
     name: 'Charles The Chimp',
     type: 'Chimp',
     feeds: 5,
-    imageUrl
+    imageUrl,
   });
 
   expect(getByRole('img').src).toEqual(expect.stringContaining(imageUrl));

@@ -9,7 +9,7 @@ import './PetList.css';
 
 const PetList = () => {
   const pets = useSelector(selectPets);
-  
+
   /** @type {React.MutableRefObject<HTMLDivElement|null>} */
   const noPetsText = useRef(null);
 

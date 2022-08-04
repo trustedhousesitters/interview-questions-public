@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import PetList from './components/PetList/';
-import PetForm from './components/PetList/components/PetForm'
+import PetForm from './components/PetList/components/PetForm';
 
 const App = () => {
   return (

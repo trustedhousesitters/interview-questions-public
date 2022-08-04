@@ -1,58 +1,59 @@
 :root {
-    --housesitters-green: hsl(175deg 98% 35%);
-    --housesitters-green-half: hsl(175deg 98% 35% / 50%);
-    --border-radius: 0.4rem;
+  --housesitters-green: hsl(175deg 98% 35%);
+  --housesitters-green-half: hsl(175deg 98% 35% / 50%);
+  --border-radius: 0.4rem;
 }
 
 .Form-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 20rem;
-    row-gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 20rem;
+  row-gap: 2rem;
 }
 
 .Form-title {
-    font-size: 2.2rem;
-    font-weight: 600;
-    text-align: left;
-    font-family: Georgia, Times, 'Times New Roman', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: left;
+  font-family: Georgia, Times, 'Times New Roman', serif;
 }
 
 .Form-label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 0.7rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.7rem;
 }
 
 .Form-add-button {
-    cursor: pointer;
-    background: #02afa2;
-    border: none;
-    border-radius: 0.4rem;
-    padding: 1rem 2rem;
-    font-weight: bold;
-    font-size: 1.4rem;
-    color: white;
-    transition: box-shadow 0.2s ease;
+  cursor: pointer;
+  background: #02afa2;
+  border: none;
+  border-radius: 0.4rem;
+  padding: 1rem 2rem;
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: white;
+  transition: box-shadow 0.2s ease;
+  outline: none;
 }
 
 .Form-add-button:hover,
 .Form-add-button:focus {
-    border-color: var(--housesitters-green-half);
-    box-shadow: 0 0 0 3px var(--housesitters-green-half);   
+  border-color: var(--housesitters-green-half);
+  box-shadow: 0 0 0 3px var(--housesitters-green-half);
 }
 
 .Form-text-input {
-    border: 1px solid grey;
-    width: 100%;
-    padding: 0.9rem 0.9rem;
-    border-radius: 0.4rem;
-    font-size: 1.4rem;
-    transition: box-shadow 0.2s ease;
-    outline: none;
+  border: 1px solid grey;
+  width: 100%;
+  padding: 0.9rem 0.9rem;
+  border-radius: 0.4rem;
+  font-size: 1.4rem;
+  transition: box-shadow 0.2s ease;
+  outline: none;
 }
 
 .Form-text-input:focus {
-    border-color: var(--housesitters-green-half);
-    box-shadow: 0 0 0 3px var(--housesitters-green-half);
+  border-color: var(--housesitters-green-half);
+  box-shadow: 0 0 0 3px var(--housesitters-green-half);
 }

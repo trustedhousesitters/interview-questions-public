@@ -18,10 +18,10 @@ const PET_TYPES = ['Dog', 'Cat', 'Antelope', 'Wild Boar', 'Rock'];
 
 /**
  * Generates a random number between zero and the supplied number
- * @param {number} max 
+ * @param {number} max
  * @returns {number}
  */
-const getRandomInt = (max) => Math.floor(Math.random() * max)
+const getRandomInt = (max) => Math.floor(Math.random() * max);
 
 /**
  * Returns the specified number of randomly generated pets
@@ -43,15 +43,13 @@ const generatePets = (numberOfPets = 3) => {
  * @param {Partial<Pet>} partialPet
  * @returns {Pet}
  */
- const buildPet = (partialPet) => 
-  ({
-    id: nanoid(),
-    feeds: 0,
-    age: 0,
-    type: 'Unknown',
-    name: 'Unknown',
-    ...partialPet
-  });
-
+const buildPet = (partialPet) => ({
+  id: nanoid(),
+  feeds: 0,
+  age: 0,
+  type: 'Unknown',
+  name: 'Unknown',
+  ...partialPet,
+});
 
 export { buildPet, generatePets };

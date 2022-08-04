@@ -2,8 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { store } from './app/store';
+import { setupStore } from './app/store';
 import { Provider } from 'react-redux';
+import { generatePets } from './helpers/pets';
+
+const store = setupStore({ pets: { pets: generatePets(13) } });
 
 ReactDOM.render(
   <React.StrictMode>

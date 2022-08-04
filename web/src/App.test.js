@@ -1,8 +1,6 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
-import { Provider } from 'react-redux';
+import { fireEvent } from '@testing-library/react';
 
-import { store } from './app/store';
 import App from './App';
 
 import { renderWithProviders } from './test-utils';
@@ -24,11 +22,7 @@ const renderApp = (pets) =>
   });
 
 test('renders logo', () => {
-  const { getByRole } = render(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
+  const { getByRole } = renderApp(generatePets());
 
   expect(getByRole('img', { name: 'logo trusted housesitters' })).toBeInTheDocument();
 });

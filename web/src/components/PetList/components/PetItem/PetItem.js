@@ -44,11 +44,7 @@ const PetItem = ({ pet }) => {
           <span>{feeds}</span>
         </div>
       </div>
-      <button
-        className="Delete-button"
-        type="button"
-        onClick={() => dispatch(removePetById(id))}
-      >
+      <button className="Delete-button" type="button" onClick={() => dispatch(removePetById(id))}>
         <span className="Delete-button-text">Remove {name}</span>
       </button>
     </div>

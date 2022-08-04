@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 
-import './PetForm.css';
-
-import { addPet } from '../../../../features/pets/petSlice';
+import { addPet, updatePetImageThunk } from '../../../../features/pets/petSlice';
 import { buildPet } from '../../../../helpers/pets';
+
+import './PetForm.css';
 
 const AddPetForm = () => {
   const dispatch = useDispatch();
@@ -19,20 +19,26 @@ const AddPetForm = () => {
   return (
     <form
       className="Form-form"
-      data-testid='petform'
+      data-testid="petform"
       onSubmit={(e) => {
         e.preventDefault();
 
+        const newPetId = nanoid();
         const pet = buildPet({
-          id: nanoid(),
+          id: newPetId,
           name,
           type: animalType,
         });
 
+        /**
+         * Ensure the pet gets added to the list of pets instantly.
+         * In the background, we'll go and fetch the image as that
+         * not as critical to the app.
+         */
         dispatch(addPet(pet));
-
-        setName('')
-        setAnimalType('')
+        dispatch(updatePetImageThunk(newPetId));
+        setName('');
+        setAnimalType('');
       }}
     >
       <h2 className="Form-title">Add Pet</h2>
@@ -43,7 +49,7 @@ const AddPetForm = () => {
         </label>
         <input
           className="Form-text-input"
-          onChange={e => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
           value={name}
           id="name"
           data-testid="name"
@@ -51,7 +57,7 @@ const AddPetForm = () => {
           required
           minLength={2}
           maxLength={30}
-          />
+        />
       </div>
 
       <div>
@@ -60,7 +66,7 @@ const AddPetForm = () => {
         </label>
         <input
           className="Form-text-input"
-          onChange={e => setAnimalType(e.target.value)}
+          onChange={(e) => setAnimalType(e.target.value)}
           value={animalType}
           data-testid="animaltype"
           id="animal-type"
@@ -71,10 +77,7 @@ const AddPetForm = () => {
         />
       </div>
 
-      <button 
-      data-testid="form-submit"
-      className="Form-add-button" 
-      type="submit">
+      <button data-testid="form-submit" className="Form-add-button" type="submit">
         Add Pet
       </button>
     </form>

@@ -10,6 +10,7 @@
 
 .Pet-image {
   width: 8rem;
+  border-radius: 50%;
 }
 
 .Pet-details-label {
@@ -26,7 +27,6 @@
   border-radius: 50%;
   cursor: pointer;
 }
-
 
 .Delete-button:hover,
 .Delete-button:focus-visible {
