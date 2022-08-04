@@ -6,7 +6,7 @@ import { setupStore } from './app/store';
 import { Provider } from 'react-redux';
 import { generatePets } from './helpers/pets';
 
-const store = setupStore({ pets: { pets: generatePets(13) } });
+const store = setupStore({ pets: { pets: generatePets(13), a11yInfo: '' } });
 
 ReactDOM.render(
   <React.StrictMode>

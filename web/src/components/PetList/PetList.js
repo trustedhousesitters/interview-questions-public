@@ -7,8 +7,11 @@ import PetItem from './components/PetItem';
 
 import './PetList.css';
 
+/** @typedef { import("../../features/pets/pet").Pet } Pet */
+
 const PetList = () => {
-  const pets = useSelector(selectPets);
+  /** @type {{ a11yInfo: string, pets: Pet[] }} */
+  const { a11yInfo, pets } = useSelector(selectPets);
 
   /** @type {React.MutableRefObject<HTMLDivElement|null>} */
   const noPetsText = useRef(null);
@@ -22,6 +25,10 @@ const PetList = () => {
   return (
     <Fragment>
       <h1 className="Pets-title">My Pets</h1>
+
+      <div className="Pets-status" role="status">
+        {a11yInfo}
+      </div>
 
       {pets.length === 0 ? (
         <div className="Pets-no-pets" ref={noPetsText} tabIndex={-1} data-testid="pet-list-empty">

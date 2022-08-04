@@ -5,6 +5,10 @@
   font-family: Georgia, Times, 'Times New Roman', serif;
 }
 
+.Pets-status {
+  margin-bottom: 2rem;
+}
+
 .Pets-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));

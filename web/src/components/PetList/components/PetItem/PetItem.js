@@ -7,19 +7,10 @@ import dog from './assets/PetsPlaceholder/Dog.svg';
 
 import { removePetById } from '../../../../features/pets/petSlice';
 
-/**
- * Our main pet object
- * @typedef {Object} Pet
- * @property {number} id - The unique ID for the Pet
- * @property {string} name - The name of the Pet
- * @property {string} type - Animal classification. eg Dog, Cat, etc.
- * @property {number} feeds - How many times the pet has been fed
- * @property {string} [imageUrl] - A url to the image of the Pet
- */
+/** @typedef { import("../../../../features/pets/pet").Pet } Pet */
 
 /**
  * @param {{ pet: Pet }} props
- * @returns {JSX.Element}
  */
 const PetItem = ({ pet }) => {
   const dispatch = useDispatch();

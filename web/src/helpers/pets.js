@@ -1,16 +1,7 @@
 // @ts-check
 import { nanoid } from '@reduxjs/toolkit';
 
-/**
- * Our main pet object
- * @typedef {Object} Pet
- * @property {string} id - The unique ID for the Pet
- * @property {string} name - The name of the Pet
- * @property {string} type - Animal classification. eg Dog, Cat, etc.
- * @property {number} age - How old (in human years) is the pet
- * @property {number} feeds - How many times the pet has been fed
- * @property {string} [imageUrl] - A url to the image of the Pet
- */
+/** @typedef { import("../features/pets/pet").Pet } Pet */
 
 const PET_NAMES = ['Mr. Fluffings', 'The Whiskertron', 'Dogbert', 'Keith', 'Woofo'];
 
