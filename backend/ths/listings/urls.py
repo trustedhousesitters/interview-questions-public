@@ -1,5 +1,5 @@
 from django.urls import path
 
-from .views import ListingList
+from listings.views import ListingListCreate
 
-urlpatterns = [path("", ListingList.as_view())]
+urlpatterns = [path("", ListingListCreate.as_view())]
