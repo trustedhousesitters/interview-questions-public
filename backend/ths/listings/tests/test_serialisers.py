@@ -31,7 +31,7 @@ class TestAssignmentSerializer:
         listing = ListingFactory()
 
         assignment = factory.build(
-            dict, FACTORY_CLASS=AssignmentFactory, listing=listing
+            dict, FACTORY_CLASS=AssignmentFactory, listing=listing.id
         )
 
         clash = AssignmentFactory(
@@ -53,7 +53,7 @@ class TestAssignmentSerializer:
         listing = ListingFactory()
 
         assignment = factory.build(
-            dict, FACTORY_CLASS=AssignmentFactory, listing=listing
+            dict, FACTORY_CLASS=AssignmentFactory, listing=listing.id
         )
 
         AssignmentFactory(
@@ -84,9 +84,8 @@ class TestAssignmentSerializer:
         listing = ListingFactory()
 
         assignment = factory.build(
-            dict, FACTORY_CLASS=AssignmentFactory, listing=listing
+            dict, FACTORY_CLASS=AssignmentFactory, listing=listing.id
         )
-        assignment["listing"] = listing.id
 
         serializer = AssignmentSerializer(data=assignment)
 

@@ -5,9 +5,10 @@ from .models import Listing
 from .serializers import ListingSerializer, AssignmentSerializer
 
 
-class ListingListCreate(LoginRequiredMixin, generics.ListAPIView):
+class ListingList(LoginRequiredMixin, generics.ListAPIView):
     serializer_class = ListingSerializer
-    queryset = Listing.objects.all()
+    # Most Recent first.
+    queryset = Listing.objects.all().order_by("-id")
 
 
 class CreateAssignment(LoginRequiredMixin, generics.CreateAPIView):
