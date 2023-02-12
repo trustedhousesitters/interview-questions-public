@@ -23,18 +23,21 @@ class TestListingList:
         """
         Setup boilerplate before each test case.
         """
-        self.listing_1 = ListingFactory(first_name="Ross", last_name="Geller")
-        self.listing_2 = ListingFactory(first_name="Phoebe", last_name="Buffay")
         self.assignment_1 = AssignmentFactory(
             start_date=date(2023, 2, 7),
             end_date=date(2023, 2, 15),
-            listing=self.listing_1,
+            listing__first_name="Ross",
+            listing__last_name="Geller"
         )
         self.assignment_2 = AssignmentFactory(
             start_date=date(2023, 4, 1),
             end_date=date(2023, 4, 4),
-            listing=self.listing_2,
+            listing__first_name="Phoebe",
+            listing__last_name="Buffay"
         )
+
+        self.listing_1 = self.assignment_1.listing
+        self.listing_2 = self.assignment_2.listing
 
     def test_get_200(self, admin_client):
         """
@@ -63,7 +66,8 @@ class TestListingList:
         ]
 
         response = admin_client.get(reverse("get_all_listings"))
-        assert response.data["results"] == expected_response
+        result = response.data["results"]
+        assert [dict(listing) for listing in result] == expected_response
 
     def test_cache(self, admin_client):
         """
