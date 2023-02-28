@@ -18,6 +18,8 @@ class AssigmentCreate(generics.CreateAPIView):
     def create(self, request, *args, **kwargs):
         start_date = request.data.get("start_date")
         end_date = request.data.get("end_date")
+
+        # Ensure assignments are in the future
         try:
             # DRF defaults to iso format
             if date.fromisoformat(start_date) <= date.today():
@@ -25,6 +27,7 @@ class AssigmentCreate(generics.CreateAPIView):
         except (TypeError, ValueError):
             return HttpResponseBadRequest()
 
+        # Refuse overlapping assingments
         try:
             listing = Listing.objects.get(pk=request.data.get("listing"))
             if listing.assignments.filter(
