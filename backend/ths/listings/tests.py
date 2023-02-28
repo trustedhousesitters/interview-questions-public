@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, timedelta
 from unittest.mock import patch
 
 from parameterized import parameterized
@@ -9,6 +9,8 @@ from .models import Assignment, Listing
 
 
 class ListingList(APITestCase):
+    ENDPOINT = "/listings/"
+
     def setUp(self):
         self.listing_1 = Listing.objects.create(first_name="Ross", last_name="Geller")
         self.listing_2 = Listing.objects.create(first_name="Phoebe", last_name="Buffay")
@@ -24,11 +26,11 @@ class ListingList(APITestCase):
         )
 
     def test_get_200(self):
-        response = self.client.get("/listings/")
+        response = self.client.get(self.ENDPOINT)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_get_data(self):
-        response = self.client.get("/listings/")
+        response = self.client.get(self.ENDPOINT)
         self.assertEqual(
             response.data,
             [
@@ -46,6 +48,26 @@ class ListingList(APITestCase):
                 },
             ],
         )
+
+    def test_query_count(self):
+        # Create a larger set of listings, assignments and pets
+        for i in range(0, 50):
+            listing = Listing.objects.create(first_name="Test", last_name="Listing")
+            start_date = date(2023, 2, 7)
+            for i in range(0, 80, 10):
+                listing.assignments.create(
+                    start_date=start_date + timedelta(days=i),
+                    end_date=start_date + timedelta(days=i + 5),
+                )
+            for i in range(0, 5):
+                listing.pets.create(
+                    name="kitty",
+                    animal_type="cat",
+                )
+        # We expect three queries only, one for each of listing,
+        # assignment and pet tables
+        with self.assertNumQueries(3):
+            self.client.get(self.ENDPOINT)
 
 
 class AssignmentCreate(APITestCase):
@@ -126,7 +148,7 @@ class AssignmentCreate(APITestCase):
         ]
     )
     @patch("listings.views.date", fromisoformat=date.fromisoformat)
-    def test_start_tomorrow_or_later_required(
+    def test_assignemt_starts_tomorrow_or_later(
         self, start_date, end_date, expected, date_mock
     ):
         date_mock.today.return_value = date(2023, 2, 5)
@@ -160,7 +182,9 @@ class AssignmentCreate(APITestCase):
         ]
     )
     @patch("listings.views.date", fromisoformat=date.fromisoformat)
-    def test_no_overlap_this_listing(self, existing_start, existing_end, date_mock):
+    def test_no_assignment_overlap_this_listing(
+        self, existing_start, existing_end, date_mock
+    ):
         date_mock.today.return_value = date(2023, 2, 5)
 
         # create existing assignment according to parameterised data
@@ -197,7 +221,7 @@ class AssignmentCreate(APITestCase):
         ]
     )
     @patch("listings.views.date", fromisoformat=date.fromisoformat)
-    def test_assignment_no_overlap_ignore_other_listings(
+    def test_no_assignment_overlap_ignore_other_listings(
         self, existing_start, existing_end, date_mock
     ):
         # Assignments on other listings should not affect ours

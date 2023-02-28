@@ -9,7 +9,7 @@ from .serializers import AssignmentSerializer, ListingSerializer
 
 class ListingList(generics.ListAPIView):
     serializer_class = ListingSerializer
-    queryset = Listing.objects.all()
+    queryset = Listing.objects.all().prefetch_related("assignments", "pets")
 
 
 class AssigmentCreate(generics.CreateAPIView):
