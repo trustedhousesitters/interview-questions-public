@@ -2,4 +2,9 @@ from django.urls import path
 
 from .views import ListingList
 
-urlpatterns = [path("", ListingList.as_view())]
+from .views import AssignmentCreateView
+
+urlpatterns = [
+    path("", ListingList.as_view()),
+    path("assignments", AssignmentCreateView.as_view()),
+]
