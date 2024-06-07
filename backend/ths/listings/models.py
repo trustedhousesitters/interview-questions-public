@@ -5,6 +5,9 @@ class Listing(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
 
+    class Meta:
+        ordering = ['last_name', 'first_name']
+
 
 class Assignment(models.Model):
     start_date = models.DateField()

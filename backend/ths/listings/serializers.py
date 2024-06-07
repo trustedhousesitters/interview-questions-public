@@ -13,11 +13,14 @@ class AssignmentSerializer(serializers.ModelSerializer):
         start_date = data['start_date']
         end_date = data['end_date']
 
+        if start_date == end_date:
+            raise serializers.ValidationError("Start and End dates cannot be the same")
+
         if start_date <= (timezone.now().date()):
             raise serializers.ValidationError("Assignments must start the future")
 
         if start_date > end_date:
-            raise serializers.ValidationError("End Date cannot be greater than Start date")
+            raise serializers.ValidationError("Start Date cannot be greater than End date")
 
         return data
 
