@@ -15,3 +15,7 @@ class Assignment(models.Model):
         help_text="The listing that this assignment relates to",
         related_name="assignments",
     )
+    class Meta:
+        indexes = [
+            models.Index(fields=['start_date', 'end_date'])
+        ]
