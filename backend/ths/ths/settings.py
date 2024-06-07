@@ -51,11 +51,6 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'your_app.pagination.StandardResultsSetPagination',
-    'PAGE_SIZE': 10,  # Default page size if not specified in the pagination class
-}
-
 ROOT_URLCONF = "ths.urls"
 
 TEMPLATES = [
@@ -73,6 +68,12 @@ TEMPLATES = [
         },
     },
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'listings.pagination.StandardResultsSetPagination',
+    'PAGE_SIZE': 2
+}
 
 WSGI_APPLICATION = "ths.wsgi.application"
 
