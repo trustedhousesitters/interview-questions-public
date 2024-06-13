@@ -28,7 +28,7 @@ class ListingList(APITestCase):
     def test_get_data(self):
         response = self.client.get("/listings/")
         self.assertEqual(
-            response.data,
+            response.data["results"],
             [
                 {
                     "first_name": self.listing_1.first_name,
