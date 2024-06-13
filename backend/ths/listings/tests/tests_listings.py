@@ -2,7 +2,8 @@ from datetime import date
 
 from rest_framework import status
 from rest_framework.test import APITestCase
-from .models import Listing, Assignment
+
+from listings.models import Listing, Assignment
 
 
 class ListingList(APITestCase):
