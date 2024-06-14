@@ -16,7 +16,7 @@ class AssignmentCreateTestCase(APITestCase):
             end_date=self.current_time + timedelta(days=7),
             listing=self.listing,
         )
-        self.assignments_url = f'/listings/{self.listing.pk}/assignments/'
+        self.assignments_url = f"/listings/{self.listing.pk}/assignments/"
 
         self.create_data = {
             "start_date": (self.current_time + timedelta(days=10)).date().isoformat(),
@@ -28,27 +28,27 @@ class AssignmentCreateTestCase(APITestCase):
         Helper method to assert overlaping dates
         Another option would be to use parameterized or pytest.fixture
         """
-        overlap_response = self.client.post(self.assignments_url, overlap_data, format='json')
+        overlap_response = self.client.post(self.assignments_url, overlap_data, format="json")
         self.assertEqual(overlap_response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertIn(
             "Assignment dates overlap with an existing assignment.",
-            overlap_response.json()["non_field_errors"]
+            overlap_response.json()["non_field_errors"],
         )
 
     def test_post_create_assignment__valid_data__created_201(self):
-        response = self.client.post(self.assignments_url, self.create_data, format='json')
+        response = self.client.post(self.assignments_url, self.create_data, format="json")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED, response.json())
 
         created_assignment = Assignment.objects.filter(
             listing=self.listing,
             start_date=self.create_data["start_date"],
-            end_date=self.create_data["end_date"]
+            end_date=self.create_data["end_date"],
         ).exists()
 
         self.assertTrue(created_assignment)
 
     def test_post_create_assignment__invalid_listing__not_found_404(self):
-        response = self.client.post("/listings/635463456/assignments/", self.create_data, format='json')
+        response = self.client.post("/listings/635463456/assignments/", self.create_data, format="json")
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_post_create_assignment__past_date__bad_request_400(self):
@@ -56,7 +56,7 @@ class AssignmentCreateTestCase(APITestCase):
             "start_date": (self.current_time - timedelta(days=1)).date().isoformat(),
             "end_date": (self.current_time + timedelta(days=1)).date().isoformat(),
         }
-        response = self.client.post(self.assignments_url, data, format='json')
+        response = self.client.post(self.assignments_url, data, format="json")
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertIn("Assignment date should be in the future.", response.json()["start_date"])
 
@@ -65,7 +65,7 @@ class AssignmentCreateTestCase(APITestCase):
             "start_date": (self.current_time + timedelta(days=10)).date().isoformat(),
             "end_date": (self.current_time + timedelta(days=1)).date().isoformat(),
         }
-        response = self.client.post(self.assignments_url, data, format='json')
+        response = self.client.post(self.assignments_url, data, format="json")
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertIn("Start date should be before end date.", response.json()["non_field_errors"])
 

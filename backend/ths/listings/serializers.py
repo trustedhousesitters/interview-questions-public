@@ -55,8 +55,8 @@ class AssignmentSerializer(serializers.ModelSerializer):
         """
         Performs additional validations on multiple fields
         """
-        start_date = attrs.get('start_date')
-        end_date = attrs.get('end_date')
+        start_date = attrs.get("start_date")
+        end_date = attrs.get("end_date")
 
         self.validate_dates_overlap(start_date, end_date)
         self.validate_dates_range(start_date, end_date)
