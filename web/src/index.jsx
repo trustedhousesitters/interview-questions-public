@@ -5,11 +5,18 @@ import App from "./App";
 import { store } from "./app/store";
 import { Provider } from "react-redux";
 
-const root = createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-);
+async function setupMocking() {
+  const { worker } = await import("./mocks/browser");
+  return worker.start();
+}
+
+setupMocking().then(() => {
+  const root = createRoot(document.getElementById("root"));
+  root.render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </React.StrictMode>,
+  );
+});
