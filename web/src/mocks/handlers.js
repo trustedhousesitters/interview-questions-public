@@ -3,9 +3,7 @@ import { generatePets } from "./generatePets";
 
 const handlers = [
   http.get("/api/pets", () => {
-    return HttpResponse.json({
-      data: generatePets(13),
-    });
+    return HttpResponse.json(generatePets(13));
   }),
 ];
 
