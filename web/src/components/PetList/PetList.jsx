@@ -1,12 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
-
 import PetItem from "./components/PetItem";
-import { getPets } from "./selectors";
 import "./PetList.css";
 
 const PetList = () => {
-  const pets = useSelector(getPets);
+  const pets = [];
   return (
     <>
       <h1 className="Pets-title">My Pets</h1>

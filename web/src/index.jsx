@@ -2,8 +2,6 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { store } from "./app/store";
-import { Provider } from "react-redux";
 
 async function setupMocking() {
   const { worker } = await import("./mocks/browser");
@@ -14,9 +12,7 @@ setupMocking().then(() => {
   const root = createRoot(document.getElementById("root"));
   root.render(
     <React.StrictMode>
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <App />
     </React.StrictMode>,
   );
 });
