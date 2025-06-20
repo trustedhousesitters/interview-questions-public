@@ -9,7 +9,7 @@
     "react-redux": "^7.2.3"
   },
   "scripts": {
-    "start": "vite",
+    "dev": "vite",
     "build": "vite build",
     "test": "vitest"
   },
