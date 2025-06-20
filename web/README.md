@@ -1,3 +1,9 @@
+# Pet Listing App
+
+This repository contains a basic React application, with a listing page for pets which is currently empty.
+
+Mock service worker (MSW) is set up to intercept API calls, allowing us to simulate server responses without needing a real backend. Currently there is 1 api endpoint available at /api/pets which returns a randomised list of pets. Please note that this endpoint is not queryable outside of the app as MSW patches the browser to intercept requests.
+
 ## Available Scripts
 
 In the project directory, you can run:
