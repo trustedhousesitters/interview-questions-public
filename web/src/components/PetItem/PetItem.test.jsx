@@ -12,7 +12,7 @@ test("renders pet image", () => {
       <PetItem pet={pets[0]} />
     </PetProvider>
   );
-  expect(getByRole("img", { name: "pet" })).toBeInTheDocument();
+  expect(getByRole("img", { name: `Pet ${pets[0].name}` })).toBeInTheDocument();
 });
 
 test("renders pet name", () => {

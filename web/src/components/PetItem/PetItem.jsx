@@ -18,7 +18,7 @@ const PetItem = ({ pet }) => {
         x
       </button>
       <div>
-        <img src={imageUrl} className="Pet-image" alt="pet" />
+        <img src={imageUrl} className="Pet-image" alt={`Pet ${name}`} />
       </div>
       <div>
         <div>

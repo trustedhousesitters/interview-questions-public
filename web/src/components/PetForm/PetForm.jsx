@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { usePets } from "@/context/PetContext";
+import { fetchDogImage } from "@/utils/fetchDogImage";
 import "./PetForm.css";
 
 const PetForm = (props) => {
@@ -9,7 +10,7 @@ const PetForm = (props) => {
   const [feeds, setFeeds] = useState(1);
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!name || !type) {
@@ -17,11 +18,14 @@ const PetForm = (props) => {
       return;
     }
 
+    const imageUrl = await fetchDogImage();
+
     const newPet = {
       id: Date.now(),
       name,
       type,
       feeds: Number(feeds),
+      imageUrl,
     };
 
     dispatch({ type: "ADD_PET", payload: newPet });
