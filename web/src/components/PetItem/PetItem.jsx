@@ -7,7 +7,7 @@ const PetItem = ({ pet }) => {
   const { name, type, feeds } = pet;
   const imageUrl = pet.imageUrl || dog;
   return (
-    <div className="Pet-item">
+    <div className="Pet-item" data-testid="pet-item">
       <div>
         <img src={imageUrl} className="Pet-image" alt="pet" />
       </div>
