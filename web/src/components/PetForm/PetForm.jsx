@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { usePets } from "@/context/PetContext";
 import "./PetForm.css";
 
-const PetForm = () => {
+const PetForm = (props) => {
   const { dispatch } = usePets();
   const [name, setName] = useState("");
   const [type, setType] = useState("");
@@ -33,7 +33,7 @@ const PetForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="PetForm">
+    <form onSubmit={handleSubmit} className="PetForm" {...props}>
       <h2 className="Pet-form-title">Add a New Pet</h2>
       {error && (
         <p className="Pet-form-error" role="alert">

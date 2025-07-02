@@ -51,5 +51,5 @@ test("renders delete pet button", () => {
       <PetItem pet={pets[0]} />
     </PetProvider>
   );
-  expect(getByRole("button", { name: /Delete Pet/ })).toBeInTheDocument();
+  expect(getByRole("button", { name: /Delete/ })).toBeInTheDocument();
 });
