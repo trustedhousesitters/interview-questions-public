@@ -1,5 +1,5 @@
 import React from "react";
-import { usePets } from "../../context/PetContext";
+import { usePets } from "@/context/PetContext";
 import PetItem from "../PetItem/PetItem";
 import "./PetList.css";
 

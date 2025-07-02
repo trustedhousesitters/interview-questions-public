@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { PetProvider } from "../../context/PetContext";
+import { PetProvider } from "@/context/PetContext";
 import PetList from "./PetList";
 
 test("renders title", async () => {

@@ -1,0 +1,74 @@
+.PetForm {
+  background-color: #003c3c;
+  padding: 2rem;
+  border-radius: 12px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 55%;
+  margin: 2rem auto;
+}
+
+.Pet-form-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.Pet-form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.Pet-form-field {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.PetForm button[type="submit"] {
+  margin-top: 1rem;
+  padding: 0.75rem 2rem;
+  background-color: #c4f33a;
+  color: #003c3c;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.PetForm button[type="submit"]:hover {
+  background-color: #b0e02f;
+}
+
+@media (max-width: 900px) {
+  .Pet-form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .Pet-form-grid .Pet-form-field:nth-child(3) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 600px) {
+  .Pet-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .Pet-form-grid .Pet-form-field:nth-child(3) {
+    grid-column: auto;
+    justify-self: stretch;
+  }
+}

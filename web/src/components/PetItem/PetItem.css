@@ -1,4 +1,5 @@
 .Pet-item {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -14,4 +15,20 @@
 
 .Pet-details-label {
   font-weight: 500;
+}
+
+.Pet-delete-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 8px;
+  background: darkgray;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.Pet-delete-button:hover {
+  background: gray;
 }

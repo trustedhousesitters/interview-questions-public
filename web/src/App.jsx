@@ -1,7 +1,8 @@
 import React from "react";
-import logo from "./logo.svg";
 import PetList from "./components/PetList/";
 import { PetProvider } from "./context/PetContext";
+import PetForm from "./components/PetForm/PetForm";
+import logo from "./logo.svg";
 import "./App.css";
 
 const App = () => (
@@ -12,6 +13,7 @@ const App = () => (
     <div className="App-content">
       <PetProvider>
         <PetList data-testid="pet-list" />
+        <PetForm />
       </PetProvider>
     </div>
   </div>

@@ -1,13 +1,22 @@
 import React from "react";
-
+import { usePets } from "@/context/PetContext";
 import "./PetItem.css";
 import dog from "./assets/PetsPlaceholder/Dog.svg";
 
 const PetItem = ({ pet }) => {
+  const { dispatch } = usePets();
   const { name, type, feeds } = pet;
   const imageUrl = pet.imageUrl || dog;
+
+  const handleDelete = () => {
+    dispatch({ type: "REMOVE_PET", payload: pet.id });
+  };
+
   return (
     <div className="Pet-item" data-testid="pet-item">
+      <button className="Pet-delete-button" onClick={handleDelete} aria-label={`Delete ${name}`}>
+        x
+      </button>
       <div>
         <img src={imageUrl} className="Pet-image" alt="pet" />
       </div>
