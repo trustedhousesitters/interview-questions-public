@@ -32,10 +32,9 @@ const PetItem = ({ pet }) => {
       <div>
         <img src={imageUrl} className="Pet-image" alt="pet" />
       </div>
-      <div>
+      <div className="Text-wrapper">
         <div>
-          <span className="Pet-details-label">Name: </span>
-          <span>{name}</span>
+          <span className="Pet-details-label Pet-name">{name}</span>
         </div>
         <div>
           <span className="Pet-details-label">Animal Type: </span>

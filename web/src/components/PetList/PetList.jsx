@@ -26,11 +26,13 @@ const PetList = () => {
       <div className="Wrapper">
         <h1 className="Pets-title">My Pets</h1>
         <div className="Grid-wrapper">
-          {petData.length > 0
-            ? petData.map((pet) => {
-                return <PetItem pet={pet} key={pet.id} />;
-              })
-            : ""}
+          {petData.length > 0 ? (
+            petData.map((pet) => {
+              return <PetItem pet={pet} key={pet.id} />;
+            })
+          ) : (
+            <p>Pets will appear here...</p>
+          )}
         </div>
       </div>
     </>
