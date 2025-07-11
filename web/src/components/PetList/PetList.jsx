@@ -4,7 +4,6 @@ import PetItem from "./components/PetItem/PetItem";
 
 const PetList = () => {
   const [petData, setPetData] = useState([]);
-  console.log(petData);
 
   useEffect(() => {
     async function getPetData() {
@@ -22,15 +21,18 @@ const PetList = () => {
     }
     getPetData();
   }, []);
-
   return (
     <>
-      <h1 className="Pets-title">My Pets</h1>
-      {petData.length > 0
-        ? petData.map((pet) => {
-            return <PetItem pet={pet} key={pet.id} />;
-          })
-        : ""}
+      <div className="Wrapper">
+        <h1 className="Pets-title">My Pets</h1>
+        <div className="Grid-wrapper">
+          {petData.length > 0
+            ? petData.map((pet) => {
+                return <PetItem pet={pet} key={pet.id} />;
+              })
+            : ""}
+        </div>
+      </div>
     </>
   );
 };
