@@ -28,7 +28,7 @@ const PetItem = ({ pet }) => {
   const { name, type, feeds } = pet;
   const imageUrl = getPetImage(type);
   return (
-    <div className="Pet-item">
+    <li className="Pet-item">
       <div>
         <img src={imageUrl} className="Pet-image" alt="pet" />
       </div>
@@ -45,7 +45,7 @@ const PetItem = ({ pet }) => {
           <span>{feeds}</span>
         </div>
       </div>
-    </div>
+    </li>
   );
 };
 
