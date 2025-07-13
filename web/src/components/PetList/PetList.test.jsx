@@ -1,14 +1,9 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
+import { http, HttpResponse } from "msw";
+import { server } from "../../mocks/server";
 import PetList from "./PetList";
-import PetItem from "./components/PetItem/PetItem";
-
-const mockPets = [
-  { id: 1, name: "Fido", petType: "Dog" },
-  { id: 2, name: "Whiskers", petType: "Cat" },
-  { id: 3, name: "Montgomery", petType: "Horse" },
-  { id: 4, name: "Rocky", petType: "Rock" },
-];
+import PetItem from "./components/PetItem/";
 
 test("renders title", () => {
   const { getByRole } = render(<PetList />);
@@ -16,14 +11,15 @@ test("renders title", () => {
   expect(getByRole("heading")).toHaveTextContent("My Pets");
 });
 
-test("renders pet list", () => {
+test("renders pet list from API", async () => {
   render(<PetList />);
-  const { getByRole } = render(<PetItem />);
+  // Would consider using fixed data for the test so it's deterministic, and we can expect specific strings
+  const petItems = await screen.findAllByRole("listitem");
+  expect(petItems.length).toBeGreaterThan(0);
+});
 
-  render(
-    mockPets.map((pet) => {
-      render(<PetItem pet={pet} key={pet.id} />);
-      expect(getByRole("name")).toBeInTheDocument();
-    })
-  );
+test("shows placeholder when no pets", async () => {
+  server.use(http.get("/api/pets", () => HttpResponse.json([])));
+  render(<PetList />);
+  expect(await screen.findByText(/Pets will appear here/)).toBeInTheDocument();
 });
