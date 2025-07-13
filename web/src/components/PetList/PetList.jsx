@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./PetList.css";
-import PetItem from "./components/PetItem/PetItem";
+import PetItem from "./components/PetItem/";
 
 const PetList = () => {
   const [petData, setPetData] = useState([]);

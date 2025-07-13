@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./ListingCarousel.css";
 import { carouselListings } from "./assets/carouselListings";
 
-import CarouselItem from "./components/CarouselItem/CarouselItem";
+import CarouselItem from "./components/CarouselItem/";
 
 const ListingCarousel = () => {
   const carouselRef = useRef(null);
@@ -56,6 +56,7 @@ const ListingCarousel = () => {
   const dragging = (event) => {
     if (!isDragging) return;
     // Updates carousel scroll position based on cursor movement
+    carouselRef.current.style.scrollBehavior = "auto";
     carouselRef.current.scrollLeft = startScrollLeft - (event.pageX - startX);
   };
 
@@ -72,7 +73,9 @@ const ListingCarousel = () => {
           carouselRef.current.scrollWidth - carouselRef.current.offsetWidth
       )
     ) {
+      carouselRef.current.style.scrollBehavior = "auto";
       carouselRef.current.scrollLeft = carouselRef.current.offsetWidth;
+      carouselRef.current.style.scrollBehavior = "smooth";
     }
   };
 
@@ -81,6 +84,7 @@ const ListingCarousel = () => {
     if (!isHovered && firstCardWidth && window.innerWidth > 800) {
       const interval = setInterval(() => {
         if (carouselRef.current) {
+          carouselRef.current.style.scrollBehavior = "smooth";
           carouselRef.current.scrollLeft += firstCardWidth;
         }
       }, 2500);
@@ -113,7 +117,7 @@ const ListingCarousel = () => {
                 return (
                   <CarouselItem
                     listing={listing}
-                    key={listing.id}
+                    key={index}
                     ref={firstCardRef}
                   />
                 );
