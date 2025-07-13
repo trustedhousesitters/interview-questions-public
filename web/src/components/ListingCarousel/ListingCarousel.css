@@ -1,0 +1,58 @@
+.Carousel-body-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Carousel {
+  padding-left: 0;
+}
+
+.Carousel .Listing-card {
+  list-style: none;
+  scroll-snap-align: start;
+}
+
+.Carousel-wrapper {
+  max-width: 1100px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.Carousel-wrapper .Carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% / 3) - 12px);
+  gap: 16px;
+  overflow: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.Carousel.Dragging {
+  cursor: grab;
+  user-select: none;
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+}
+
+@media screen and (max-width: 900px) {
+  .Carousel-wrapper .Carousel {
+    grid-auto-columns: calc((100% / 2) - 9px);
+  }
+  .Carousel .Listing-card {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .Carousel-wrapper .Carousel {
+    grid-auto-columns: 100%;
+  }
+
+  .Carousel .Listing-card {
+    margin: 0 auto;
+  }
+}

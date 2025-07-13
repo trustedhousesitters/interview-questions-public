@@ -1,0 +1,54 @@
+.Listing-info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+  gap: 6px;
+}
+
+.Listing-image {
+  width: 100%;
+  max-width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.Listing-title {
+  margin: 0;
+  padding: 0;
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-overflow: ellipsis;
+  color: #003939;
+}
+
+.Dates {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  color: #003939;
+}
+
+.Location {
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
+  color: #657373;
+}
+
+.Pet-count {
+  margin-right: 6px;
+  padding: 0;
+  color: #657373;
+  display: flex;
+  align-items: center;
+}
+
+.Small-pet-icon {
+  width: 30px;
+  margin-left: 6px;
+}
+
+.Pets-list {
+  display: flex;
+  padding: 0;
+}
