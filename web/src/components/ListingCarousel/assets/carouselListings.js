@@ -1,5 +1,6 @@
 export const carouselListings = [
   {
+    id: 1,
     name: "Lovely Dog, Lovely House",
     dates: "Sep 04, 2025 - Sep 20, 2025",
     location: "Penarth, United Kingdom",
@@ -11,6 +12,7 @@ export const carouselListings = [
     
   },
   {
+    id: 2,
     name: "Friendly 5 month old kittens",
     dates: "Sep 04, 2025 - Sep 20, 2025",
     location: "Penarth, United Kingdom",
@@ -22,6 +24,7 @@ export const carouselListings = [
     }]
   },
   {
+    id: 3,
     name: "comfortable house sit required for 1 adult female cat",
     dates: "Sep 16, 2025 - Sep 24, 2025",
     location: "Pontypridd, United Kingdom",
@@ -35,6 +38,7 @@ export const carouselListings = [
     ]
   },
   {
+    id: 4,
     name: "Quaint cottage in the woods, rural location",
     dates: "Sep 05, 2025 - Sep 07, 2025",
     location: "Hereford, United Kingdom",
@@ -52,6 +56,7 @@ export const carouselListings = [
     ]
   },
   {
+    id: 5,
     name: "Husky in Rural Cottage Pandy Brecon Beacons",
     dates: "Sep 08, 2025 - Sep 12, 2025",
     location: "Pandy, United Kingdom",
@@ -65,6 +70,7 @@ export const carouselListings = [
     ]
   },
   {
+    id: 6,
     name: "Caring for dogs and cats in a historic house near Bristol",
     dates: "Sep 06, 2025 - Sep 20, 2025",
     location: "Bristol, United Kingdom",
@@ -82,6 +88,7 @@ export const carouselListings = [
     ]
   },
   {
+    id: 7,
     name: "Two bed GF flat with dog and cat",
     dates: "Sep 22, 2025 - Sep 24, 2025",
     location: "Weston-super-Mare, United Kingdom",
@@ -99,6 +106,7 @@ export const carouselListings = [
     ]
   },
   {
+    id: 8,
     name: "Village Location close to The city of Wells",
     dates: "Sep 08, 2025 - Sep 15, 2025",
     location: "Wells, United Kingdom",
@@ -116,6 +124,7 @@ export const carouselListings = [
     ]
   },
   {
+    id: 9,
     name: "Pet and house sitter required for two labs in Bristol",
     dates: "Sep 04, 2025 - Sep 08, 2025",
     location: "Bristol, United Kingdom",

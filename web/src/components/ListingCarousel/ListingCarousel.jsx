@@ -8,12 +8,12 @@ const ListingCarousel = () => {
   const carouselRef = useRef(null);
   const firstCardRef = useRef(null);
 
-  const [firstCardWidth, setFirstCardWidth] = useState();
+  const [firstCardWidth, setFirstCardWidth] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [startX, setStartX] = useState(null);
   const [startScrollLeft, setStartScrollLeft] = useState(null);
-  const [cardsPerView, setCardsPerView] = useState();
+  const [cardsPerView, setCardsPerView] = useState(null);
 
   // Inserts duplicates of cards to the beginning and end of the carousel
   const loopedListings =
@@ -29,7 +29,7 @@ const ListingCarousel = () => {
     if (firstCardRef.current) {
       setFirstCardWidth(firstCardRef.current.offsetWidth);
     }
-  }, [carouselListings]);
+  }, []);
 
   useEffect(() => {
     // Roughly calculates how many listing cards are visible on the page at once based on width
@@ -42,7 +42,6 @@ const ListingCarousel = () => {
 
   const startDragging = (event) => {
     setIsDragging(true);
-    carouselRef.current.classList.add("Dragging");
     // Records initial cursor and scroll positions of the carousel
     setStartX(event.pageX);
     setStartScrollLeft(carouselRef.current.scrollLeft);
@@ -52,7 +51,6 @@ const ListingCarousel = () => {
     setIsDragging(false);
     setStartScrollLeft(null);
     setStartX(null);
-    carouselRef.current.classList.remove("Dragging");
   };
 
   const dragging = (event) => {
@@ -87,7 +85,7 @@ const ListingCarousel = () => {
       }, 2500);
       return () => clearInterval(interval);
     }
-  }, [isHovered, firstCardWidth]);
+  }, [isHovered, firstCardWidth, carouselRef]);
 
   return (
     <div className="Carousel-body-wrapper">
@@ -98,12 +96,15 @@ const ListingCarousel = () => {
         onMouseLeave={() => setIsHovered(false)}
       >
         <ul
-          className="Carousel"
+          className={`Carousel ${isDragging ? "Dragging" : ""}`}
           ref={carouselRef}
-          onMouseMove={dragging}
-          onMouseDown={startDragging}
-          onMouseUp={stopDragging}
           onScroll={infiniteScroll}
+          onMouseDown={startDragging}
+          onMouseMove={dragging}
+          onMouseUp={stopDragging}
+          onTouchStart={startDragging}
+          onTouchMove={dragging}
+          onTouchEnd={stopDragging}
         >
           {loopedListings.length > 0 ? (
             loopedListings.map((listing, index) => {
@@ -111,7 +112,7 @@ const ListingCarousel = () => {
                 return (
                   <CarouselItem
                     listing={listing}
-                    key={index}
+                    key={listing.id}
                     ref={firstCardRef}
                   />
                 );
