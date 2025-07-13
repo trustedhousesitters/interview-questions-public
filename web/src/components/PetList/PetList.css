@@ -18,6 +18,12 @@
   gap: 16px;
 }
 
+.Error-text {
+  font-weight: 600;
+  color: rgb(222, 28, 10);
+  font-size: 1.2rem;
+}
+
 @media screen and (min-width: 640px) {
   .Grid-wrapper {
     grid-template-columns: repeat(2, 1fr);

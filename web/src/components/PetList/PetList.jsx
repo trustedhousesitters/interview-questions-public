@@ -4,6 +4,7 @@ import PetItem from "./components/PetItem/";
 
 const PetList = () => {
   const [petData, setPetData] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     async function getPetData() {
@@ -16,7 +17,8 @@ const PetList = () => {
         const json = await response.json();
         setPetData(json);
       } catch (error) {
-        console.error(error.message);
+        setError(error);
+        console.error("fetch error:", error.message);
       }
     }
     getPetData();
@@ -26,11 +28,14 @@ const PetList = () => {
       <div className="Wrapper">
         <h1 className="Pets-title">My Pets</h1>
         <ul className="Grid-wrapper">
-          {petData.length > 0 ? (
-            petData.map((pet) => <PetItem pet={pet} key={pet.id} />)
-          ) : (
-            <p>Pets will appear here...</p>
+          {error && (
+            <p className="Error-text">
+              An error has occurred retrieving pet data.
+            </p>
           )}
+          {petData.length > 0 &&
+            petData.map((pet) => <PetItem pet={pet} key={pet.id} />)}
+          {!error && petData.length === 0 && <p>Pets will appear here...</p>}
         </ul>
       </div>
     </>
