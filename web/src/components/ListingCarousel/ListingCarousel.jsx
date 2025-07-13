@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import "./ListingCarousel.css";
 import { carouselListings } from "./assets/carouselListings";
 
@@ -25,7 +25,7 @@ const ListingCarousel = () => {
         ]
       : carouselListings;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (firstCardRef.current) {
       setFirstCardWidth(firstCardRef.current.offsetWidth);
     }
@@ -39,6 +39,19 @@ const ListingCarousel = () => {
       Math.round(carouselRef.current.offsetWidth / firstCardWidth)
     );
   }, [firstCardWidth]);
+
+  useEffect(() => {
+    // Autoplays the carousel, once every 2.5s
+    if (!isHovered && firstCardWidth && window.innerWidth > 800) {
+      const interval = setInterval(() => {
+        if (carouselRef.current) {
+          carouselRef.current.style.scrollBehavior = "smooth";
+          carouselRef.current.scrollLeft += firstCardWidth;
+        }
+      }, 2500);
+      return () => clearInterval(interval);
+    }
+  }, [isHovered, firstCardWidth, carouselRef]);
 
   const startDragging = (event) => {
     setIsDragging(true);
@@ -79,19 +92,6 @@ const ListingCarousel = () => {
     }
   };
 
-  useEffect(() => {
-    // Autoplays the carousel, once every 2.5s
-    if (!isHovered && firstCardWidth && window.innerWidth > 800) {
-      const interval = setInterval(() => {
-        if (carouselRef.current) {
-          carouselRef.current.style.scrollBehavior = "smooth";
-          carouselRef.current.scrollLeft += firstCardWidth;
-        }
-      }, 2500);
-      return () => clearInterval(interval);
-    }
-  }, [isHovered, firstCardWidth, carouselRef]);
-
   return (
     <div className="Carousel-body-wrapper">
       <h1>Listings</h1>
@@ -101,8 +101,9 @@ const ListingCarousel = () => {
         onMouseLeave={() => setIsHovered(false)}
       >
         <ul
-          className={`Carousel ${isDragging ? "Dragging" : ""}`}
+          className="Carousel"
           ref={carouselRef}
+          data-dragging={isDragging || undefined}
           onScroll={infiniteScroll}
           onMouseDown={startDragging}
           onMouseMove={dragging}
