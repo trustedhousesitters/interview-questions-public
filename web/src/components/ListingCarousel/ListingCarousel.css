@@ -9,7 +9,7 @@
   padding-left: 0;
 }
 
-.Carousel .Listing-card {
+.Listing {
   list-style: none;
   scroll-snap-align: start;
   place-items: center stretch;
@@ -21,7 +21,7 @@
   cursor: grab;
 }
 
-.Carousel-wrapper .Carousel {
+.Carousel {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: calc((100% / 3) - 12px);
@@ -47,13 +47,13 @@
 }
 
 @media screen and (max-width: 900px) {
-  .Carousel-wrapper .Carousel {
+  .Carousel {
     grid-auto-columns: calc((100% / 2) - 9px);
   }
 }
 
 @media screen and (max-width: 600px) {
-  .Carousel-wrapper .Carousel {
+  .Carousel {
     grid-auto-columns: 100%;
   }
 }

@@ -31,36 +31,33 @@ const CarouselItem = React.forwardRef(({ listing }, ref) => {
   const { name, dates, location, imageUrl, imageAlt, pets } = listing;
 
   return (
-    <li className="Listing-card" ref={ref}>
-      <img
-        src={imageUrl}
-        alt={imageAlt}
-        className="Listing-image"
-        draggable="false"
-      />
+    <li className="Listing" ref={ref}>
+      <img src={imageUrl} alt={imageAlt} className="Image" draggable="false" />
       <div className="Listing-info">
-        <h2 className="Listing-title">{name}</h2>
+        <h2 className="Title">{name}</h2>
         <p className="Dates">{dates}</p>
         <p className="Location">{location}</p>
-        <ul className="Pets-list">
-          {pets.length > 0
-            ? pets.map((pet, index) => {
-                const petAvatarUrl = getPetAvatarUrl(pet.type);
-                return (
-                  <li className="Pet-count" key={index}>
-                    {pet.count}
-                    <span>
-                      <img
-                        src={petAvatarUrl}
-                        className="Small-pet-icon"
-                        alt="pet"
-                        draggable="false"
-                      />
-                    </span>
-                  </li>
-                );
-              })
-            : ""}
+        <ul className="Pets">
+          {pets.length > 0 ? (
+            pets.map((pet, index) => {
+              const petAvatarUrl = getPetAvatarUrl(pet.type);
+              return (
+                <li className="Pet-count" key={index}>
+                  {pet.count}
+                  <span>
+                    <img
+                      src={petAvatarUrl}
+                      className="Small-pet-icon"
+                      alt="pet"
+                      draggable="false"
+                    />
+                  </span>
+                </li>
+              );
+            })
+          ) : (
+            <p>No Pets...</p>
+          )}
         </ul>
       </div>
     </li>
