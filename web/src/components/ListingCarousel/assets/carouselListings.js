@@ -19,7 +19,7 @@ export const carouselListings = [
     imageUrl: "/ListingPlaceholders/house-02.webp",
     imageAlt: "house",
     pets: [{
-      count: 1,
+      count: 3,
       type: "Cat"
     }]
   },

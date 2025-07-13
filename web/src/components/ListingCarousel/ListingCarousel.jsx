@@ -77,6 +77,7 @@ const ListingCarousel = () => {
   };
 
   useEffect(() => {
+    // Autoplays the carousel, once every 2.5s
     if (!isHovered && firstCardWidth && window.innerWidth > 800) {
       const interval = setInterval(() => {
         if (carouselRef.current) {
