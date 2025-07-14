@@ -8,7 +8,6 @@ const ListingCarousel = () => {
   const carouselRef = useRef(null);
   const firstListingRef = useRef(null);
 
-  const [firstListingWidth, setFirstListingWidth] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [startX, setStartX] = useState(null);
@@ -25,35 +24,33 @@ const ListingCarousel = () => {
         ]
       : carouselListings;
 
-  useLayoutEffect(() => {
-    if (firstListingRef.current) {
-      setFirstListingWidth(firstListingRef.current.offsetWidth);
-    }
-  }, []);
-
   useEffect(() => {
     // Roughly calculates how many listings are visible on the page at once based on width
-    if (!carouselRef.current || !firstListingWidth) return;
+    if (!carouselRef.current || !firstListingRef.current) return;
+
+    console.log(carouselRef.current.offsetWidth);
 
     setListingsPerView(
-      Math.round(carouselRef.current.offsetWidth / firstListingWidth)
+      Math.round(
+        carouselRef.current.offsetWidth / firstListingRef.current.offsetWidth
+      )
     );
-  }, [firstListingWidth]);
+  }, [firstListingRef]);
 
   useEffect(() => {
-    if (!firstListingWidth || window.innerWidth > 800) return;
+    if (!firstListingRef.current || window.innerWidth > 800) return;
 
     // Autoplays the carousel, once every 2.5s
     if (!isHovered) {
       const interval = setInterval(() => {
         if (carouselRef.current) {
           carouselRef.current.style.scrollBehavior = "smooth";
-          carouselRef.current.scrollLeft += firstListingWidth;
+          carouselRef.current.scrollLeft += firstListingRef.current.offsetWidth;
         }
       }, 2500);
       return () => clearInterval(interval);
     }
-  }, [isHovered, firstListingWidth, carouselRef]);
+  }, [isHovered, firstListingRef, carouselRef]);
 
   const startDragging = (event) => {
     setIsDragging(true);
@@ -104,6 +101,7 @@ const ListingCarousel = () => {
       >
         <ul
           className="Carousel"
+          aria-label="listing-carousel"
           ref={carouselRef}
           data-dragging={isDragging || undefined}
           onScroll={infiniteScroll}

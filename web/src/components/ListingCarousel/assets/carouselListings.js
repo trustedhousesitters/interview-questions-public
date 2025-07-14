@@ -9,7 +9,7 @@ export const carouselListings = [
     pets: [
       {
         count: 1,
-      type: "Dog"
+        type: "Dog"
       }
     ]
     
