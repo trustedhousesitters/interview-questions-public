@@ -32,13 +32,6 @@
   scroll-behavior: smooth;
 }
 
-.Carousel.Dragging {
-  cursor: grabbing;
-  user-select: none;
-  scroll-behavior: auto;
-  scroll-snap-type: none;
-}
-
 .Carousel[data-dragging] {
   cursor: grabbing;
   user-select: none;
