@@ -96,7 +96,7 @@ const ListingCarousel = () => {
 
   return (
     <div className="Carousel-body-wrapper">
-      <h1>Listings</h1>
+      <h1 className="Carousel-title">Listings</h1>
       <div
         className="Carousel-wrapper"
         onMouseEnter={() => setIsHovered(true)}
