@@ -7,8 +7,11 @@ export const carouselListings = [
     imageUrl: "/ListingPlaceholders/house-01.webp",
     imageAlt: "house",
     pets: [
-      {count: 1,
-      type: "Dog"}]
+      {
+        count: 1,
+      type: "Dog"
+      }
+    ]
     
   },
   {
@@ -18,10 +21,12 @@ export const carouselListings = [
     location: "Penarth, United Kingdom",
     imageUrl: "/ListingPlaceholders/house-02.webp",
     imageAlt: "house",
-    pets: [{
+    pets: [
+      {
       count: 3,
       type: "Cat"
-    }]
+      }
+    ]
   },
   {
     id: 3,

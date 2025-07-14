@@ -6,54 +6,54 @@ import CarouselItem from "./components/CarouselItem/";
 
 const ListingCarousel = () => {
   const carouselRef = useRef(null);
-  const firstCardRef = useRef(null);
+  const firstListingRef = useRef(null);
 
-  const [firstCardWidth, setFirstCardWidth] = useState(null);
+  const [firstListingWidth, setFirstListingWidth] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [startX, setStartX] = useState(null);
   const [startScrollLeft, setStartScrollLeft] = useState(null);
-  const [cardsPerView, setCardsPerView] = useState(null);
+  const [listingsPerView, setListingsPerView] = useState(null);
 
-  // Inserts duplicates of cards to the beginning and end of the carousel
+  // Inserts duplicates of listings to the beginning and end of the carousel
   const loopedListings =
-    cardsPerView && carouselListings.length > 0
+    listingsPerView && carouselListings.length > 0
       ? [
-          ...carouselListings.slice(-cardsPerView),
+          ...carouselListings.slice(-listingsPerView),
           ...carouselListings,
-          ...carouselListings.slice(0, cardsPerView),
+          ...carouselListings.slice(0, listingsPerView),
         ]
       : carouselListings;
 
   useLayoutEffect(() => {
-    if (firstCardRef.current) {
-      setFirstCardWidth(firstCardRef.current.offsetWidth);
+    if (firstListingRef.current) {
+      setFirstListingWidth(firstListingRef.current.offsetWidth);
     }
   }, []);
 
   useEffect(() => {
-    // Roughly calculates how many listing cards are visible on the page at once based on width
-    if (!carouselRef.current || !firstCardWidth) return;
+    // Roughly calculates how many listings are visible on the page at once based on width
+    if (!carouselRef.current || !firstListingWidth) return;
 
-    setCardsPerView(
-      Math.round(carouselRef.current.offsetWidth / firstCardWidth)
+    setListingsPerView(
+      Math.round(carouselRef.current.offsetWidth / firstListingWidth)
     );
-  }, [firstCardWidth]);
+  }, [firstListingWidth]);
 
   useEffect(() => {
-    if (!firstCardWidth || window.innerWidth > 800) return;
+    if (!firstListingWidth || window.innerWidth > 800) return;
 
     // Autoplays the carousel, once every 2.5s
     if (!isHovered) {
       const interval = setInterval(() => {
         if (carouselRef.current) {
           carouselRef.current.style.scrollBehavior = "smooth";
-          carouselRef.current.scrollLeft += firstCardWidth;
+          carouselRef.current.scrollLeft += firstListingWidth;
         }
       }, 2500);
       return () => clearInterval(interval);
     }
-  }, [isHovered, firstCardWidth, carouselRef]);
+  }, [isHovered, firstListingWidth, carouselRef]);
 
   const startDragging = (event) => {
     setIsDragging(true);
@@ -121,7 +121,7 @@ const ListingCarousel = () => {
                   <CarouselItem
                     listing={listing}
                     key={index}
-                    ref={firstCardRef}
+                    ref={firstListingRef}
                   />
                 );
               }
