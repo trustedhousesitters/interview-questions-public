@@ -41,8 +41,10 @@ const ListingCarousel = () => {
   }, [firstCardWidth]);
 
   useEffect(() => {
+    if (!firstCardWidth || window.innerWidth > 800) return;
+
     // Autoplays the carousel, once every 2.5s
-    if (!isHovered && firstCardWidth && window.innerWidth > 800) {
+    if (!isHovered) {
       const interval = setInterval(() => {
         if (carouselRef.current) {
           carouselRef.current.style.scrollBehavior = "smooth";
