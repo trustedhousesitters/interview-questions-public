@@ -1,6 +1,36 @@
 .Pets-title {
-    font-size: 22px;
-    font-weight: 600;
-    text-align: left;
-    font-family: "Georgia, Times,'Times New Roman', serif";
+  font-size: 2rem;
+  font-weight: 600;
+  color: #006263;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.Wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Grid-wrapper {
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
+}
+
+.Error-text {
+  font-weight: 600;
+  color: rgb(222, 28, 10);
+  font-size: 1.2rem;
+}
+
+@media screen and (min-width: 640px) {
+  .Grid-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 960px) {
+  .Grid-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

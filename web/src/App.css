@@ -1,5 +1,7 @@
 .App-logo {
   margin: 20px 0;
+  width: 291px;
+  height: 40px;
 }
 
 .App-header {
@@ -8,5 +10,5 @@
 
 .App-content {
   margin: 0 20px;
-  margin-top: 60px;
+  margin-bottom: 40px;
 }

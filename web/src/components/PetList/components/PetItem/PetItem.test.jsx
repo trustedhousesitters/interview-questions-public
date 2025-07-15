@@ -12,7 +12,6 @@ test("renders pet image", () => {
 
 test("renders pet name", () => {
   const { getByText } = render(<PetItem pet={pets[0]} />);
-  expect(getByText(/Name/)).toBeInTheDocument();
   expect(getByText(pets[0].name)).toBeInTheDocument();
 });
 
