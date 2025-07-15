@@ -37,7 +37,7 @@ const CarouselItem = React.forwardRef(({ listing }, ref) => {
         <h2 className="Title">{name}</h2>
         <p className="Dates">{dates}</p>
         <p className="Location">{location}</p>
-        <ul className="Pets" data-testid="pets-list">
+        <ul className="Pets">
           {pets.length > 0
             ? pets.map((pet, index) => {
                 const petAvatarUrl = getPetAvatarUrl(pet.type);

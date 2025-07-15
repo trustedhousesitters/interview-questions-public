@@ -27,7 +27,7 @@ test("renders a single pet", () => {
     ],
   };
   const screen = render(<CarouselItem listing={singlePetListing} />);
-  const petsList = screen.getByTestId("pets-list");
+  const petsList = screen.getByRole("list");
 
   expect(screen.getByTestId("carousel-slide")).toBeInTheDocument();
   expect(screen.getByAltText(singlePetListing.imageAlt)).toBeInTheDocument();
@@ -56,7 +56,7 @@ test("renders multiple pets", () => {
     ],
   };
   const screen = render(<CarouselItem listing={multiPetListing} />);
-  const petsList = screen.getByTestId("pets-list");
+  const petsList = screen.getByRole("list");
 
   expect(screen.getByTestId("carousel-slide")).toBeInTheDocument();
   expect(screen.getByAltText(multiPetListing.imageAlt)).toBeInTheDocument();
@@ -76,7 +76,7 @@ test("renders item without pet", () => {
     pets: [],
   };
   const screen = render(<CarouselItem listing={noPetListing} />);
-  const petsList = screen.getByTestId("pets-list");
+  const petsList = screen.getByRole("list");
 
   expect(screen.getByTestId("carousel-slide")).toBeInTheDocument();
   expect(screen.getByAltText(noPetListing.imageAlt)).toBeInTheDocument();
