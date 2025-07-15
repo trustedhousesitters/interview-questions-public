@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./ListingCarousel.css";
 import { carouselListings } from "./assets/carouselListings";
-
 import CarouselItem from "./components/CarouselItem/";
 
 const ListingCarousel = () => {
