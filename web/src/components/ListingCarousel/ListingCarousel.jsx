@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./ListingCarousel.css";
 import { carouselListings } from "./assets/carouselListings";
 
@@ -27,8 +27,6 @@ const ListingCarousel = () => {
   useEffect(() => {
     // Roughly calculates how many listings are visible on the page at once based on width
     if (!carouselRef.current || !firstListingRef.current) return;
-
-    console.log(carouselRef.current.offsetWidth);
 
     setListingsPerView(
       Math.round(

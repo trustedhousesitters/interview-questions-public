@@ -38,24 +38,22 @@ const CarouselItem = React.forwardRef(({ listing }, ref) => {
         <p className="Dates">{dates}</p>
         <p className="Location">{location}</p>
         <ul className="Pets" data-testid="pets-list">
-          {pets.length > 0 ? (
-            pets.map((pet, index) => {
-              const petAvatarUrl = getPetAvatarUrl(pet.type);
-              return (
-                <li className="Pet-count" key={index}>
-                  {pet.count}
-                  <img
-                    src={petAvatarUrl}
-                    className="Small-pet-icon"
-                    alt="pet"
-                    draggable="false"
-                  />
-                </li>
-              );
-            })
-          ) : (
-            <p>No Pets...</p>
-          )}
+          {pets.length > 0
+            ? pets.map((pet, index) => {
+                const petAvatarUrl = getPetAvatarUrl(pet.type);
+                return (
+                  <li className="Pet-count" key={index}>
+                    {pet.count}
+                    <img
+                      src={petAvatarUrl}
+                      className="Small-pet-icon"
+                      alt="pet"
+                      draggable="false"
+                    />
+                  </li>
+                );
+              })
+            : ""}
         </ul>
       </div>
     </li>

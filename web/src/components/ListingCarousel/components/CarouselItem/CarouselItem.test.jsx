@@ -69,3 +69,23 @@ test("renders multiple pets", () => {
   expect(petsList).toBeInTheDocument();
   expect(petsList.children).toHaveLength(2);
 });
+
+test("renders item without pet", () => {
+  const noPetListing = {
+    ...mockedListing,
+    pets: [],
+  };
+  const screen = render(<CarouselItem listing={noPetListing} />);
+  const petsList = screen.getByTestId("pets-list");
+
+  expect(screen.getByTestId("carousel-slide")).toBeInTheDocument();
+  expect(screen.getByAltText(noPetListing.imageAlt)).toBeInTheDocument();
+  expect(
+    screen.getByRole("heading", { name: noPetListing.name })
+  ).toBeInTheDocument();
+  expect(screen.getByText(noPetListing.dates)).toBeInTheDocument();
+  expect(screen.getByText(noPetListing.location)).toBeInTheDocument();
+
+  expect(petsList).toBeInTheDocument();
+  expect(petsList.children).toHaveLength(0);
+});
