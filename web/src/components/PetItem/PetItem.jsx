@@ -1,15 +1,13 @@
 import React from "react";
-
 import "./PetItem.css";
-import dog from "./assets/PetsPlaceholder/Dog.svg";
 
 const PetItem = ({ pet }) => {
-  const { name, type, feeds } = pet;
-  const imageUrl = pet.imageUrl || dog;
+  const { name, type, feeds, icon } = pet;
+  
   return (
     <div className="Pet-item">
       <div>
-        <img src={imageUrl} className="Pet-image" alt="pet" />
+        <img src={icon} className="Pet-image" alt="pet" />
       </div>
       <div>
         <div>

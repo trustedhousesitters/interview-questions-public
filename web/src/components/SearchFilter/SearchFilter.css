@@ -1,0 +1,41 @@
+.SF-wrap {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr;
+    margin: 8px 0 16px;
+  }
+  
+  @media (min-width: 640px) {
+    .SF-wrap {
+      grid-template-columns: 1fr 200px;
+      align-items: end;
+    }
+  }
+  
+  .SF-field {
+    display: grid;
+    gap: 6px;
+  }
+  
+  .SF-label {
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .SF-input,
+  .SF-select {
+    border: 1px solid #d5d5d9;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    outline: none;
+    width: 100%;
+    background: #fff;
+  }
+  
+  .SF-input:focus,
+  .SF-select:focus {
+    border-color: #9aa0a6;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.12);
+  }
+  

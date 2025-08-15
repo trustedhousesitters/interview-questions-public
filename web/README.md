@@ -1,46 +1,81 @@
-# Pet Listing App
+# TrustedHousesitters – Pet Listing App
 
-This repository contains a basic React application, with a listing page for pets which is currently empty.
+It is a React web application designed for a technical assessment. It fetches and displays pet listings from a mock API, provides a responsive grid layout, and allows users to search and filter pets by type.
 
-Mock service worker (MSW) is set up to intercept API calls, allowing us to simulate server responses without needing a real backend. Currently there is 1 api endpoint available at `/api/pets` which returns a randomised list of pets. Please note that this endpoint is not queryable outside of the app as MSW patches the browser to intercept requests.
+The app also includes **pet categorization logic** that maps animal types to one of eight categories, each with its own SVG placeholder image.
 
-Hitting the `/api/pets` endpoint will return a list of pets in the following format:
+## Screenshots
 
-```json
-[
-  {
-    "id": 0,
-    "name": "Fluffy",
-    "type": "Dog",
-    "age": 3,
-    "feeds": 6
-  },
-  {
-    "id": 1,
-    "name": "Whiskers",
-    "type": "Cat",
-    "age": 2,
-    "feeds": 2
-  }
-]
+### Pet List View
+![Pet List View](./screenshots/WebView.png)
+
+### Search & Filter
+![Search and Filter](./screenshots/SearchView.png)
+
+### Mobile View
+![Mobile View](./screenshots/MobileView.png)
+
+---
+
+## **Frontend**
+
+### Navigate to Directory
+
+```sh
+cd interview-questions-public/web
 ```
 
-## Available Scripts
+### Install Dependencies
 
-In the project directory, you can run:
+```sh
+npm install
+```
 
-### `yarn dev`
+### Run (Development)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+```sh
+npm run dev
+```
 
-The page will reload if you make edits.<br />
+Then open the provided URL in your browser (default: `http://localhost:5173`).
 
-### `yarn test`
+---
 
-Launches the test runner in the interactive watch mode.<br />
+## **Mock API (MSW)**
 
-### `yarn build`
+This project uses [Mock Service Worker (MSW)](https://mswjs.io/) to intercept `/api/pets` requests and return mock pet data.
+No extra server setup is required — it runs automatically in development.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
+
+## **Tests**
+
+### Run Unit Tests
+
+```sh
+npx vitest --config vite.config.js
+```
+
+The tests cover:
+
+* **PetList** – fetches pets, handles loading/error states, filters by search/type.
+* **SearchFilter** – responds to input changes and renders available filter options.
+* **PetItem** – displays pet details and the correct placeholder icon.
+
+---
+
+## **Access URLs**
+
+* **Frontend:** [http://localhost:5173](http://localhost:5173)
+
+---
+
+## **Features**
+
+* **Fetch & Display Pets:** Data from `/api/pets` displayed in a responsive grid.
+* **Search & Filter:** Search by pet name/type; filter by animal type.
+* **Categorization:** 8 SVG placeholders (Dog, Cat, Farm Animal, Fish, Horse, Poultry, Reptile, Small Pet) chosen dynamically via `utils.js`.
+* **Responsive UI:** Adapts to mobile, tablet, and desktop layouts.
+* **Test Coverage:** Component behavior verified with Vitest + React Testing Library.
+
+---

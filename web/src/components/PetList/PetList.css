@@ -1,6 +1,41 @@
 .Pets-title {
-    font-size: 22px;
-    font-weight: 600;
+    font-size: 28px;
+    font-weight: 700;
     text-align: left;
-    font-family: "Georgia, Times,'Times New Roman', serif";
-}
+    font-family: "Georgia, Times, 'Times New Roman', serif";
+    margin-bottom: 24px;
+    color: #2c3e50;
+  }
+  
+  .Pets-grid {
+    display: grid;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .Pets-state {
+    margin: 20px 0;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  
+  .Pets-state--muted {
+    color: #6c757d;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+  }
+  
+  .Pets-state--error {
+    color: #dc3545;
+    background: #f8d7da;
+    border-color: #f5c6cb;
+  }
+  
+  .Pets-grid {
+    transition: all 0.3s ease;
+  }
+  
+  .Pets-grid:hover .Pet-item:not(:hover) {
+    opacity: 0.8;
+  }
