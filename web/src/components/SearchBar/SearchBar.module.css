@@ -1,0 +1,36 @@
+.SearchBar {
+  padding: 20px 0;
+  display: flex;
+  gap: 10px 20px;
+}
+
+.SearchInput {
+  padding: 10px;
+  width: 100%;
+  border: solid 1px #d5d5d9;
+  border-radius: 4px;
+}
+
+.SearchInput:focus,
+.SearchInput:focus-visible {
+  border-color: rgb(0, 98, 99);
+  outline-color: rgb(0, 98, 99);
+}
+
+.SearchInputLabel {
+  font-weight: 500;
+  color: rgb(0, 98, 99);
+}
+
+.SearchInputContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .SearchBar {
+    flex-direction: column;
+  }
+}

@@ -19,12 +19,9 @@ test("It returns a loading status and then the data", async () => {
   const { result } = renderHook(() => usePets());
 
   expect(result.current.status).toBe("loading");
-  await waitFor(() =>
-    expect(result.current).toStrictEqual({
-      status: "success",
-      pets: [expect.objectContaining({ id: 0 })],
-    })
-  );
+  await waitFor(() => expect(result.current.status).toBe("success"));
+  expect(result.current.pets).toHaveLength(1);
+  expect(result.current.petTypes).toHaveLength(1);
 });
 
 test("It returns a loading status and then an error if data fails", async () => {
@@ -36,10 +33,6 @@ test("It returns a loading status and then an error if data fails", async () => 
   const { result } = renderHook(() => usePets());
 
   expect(result.current.status).toBe("loading");
-  await waitFor(() =>
-    expect(result.current).toStrictEqual({
-      status: "error",
-      pets: null,
-    })
-  );
+  await waitFor(() => expect(result.current.status).toBe("error"));
+  expect(result.current.pets).toBeNull();
 });

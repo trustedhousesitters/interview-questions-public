@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { expect, test } from "vitest";
 import PetList from "./PetList";
 import { http, HttpResponse } from "msw";
@@ -43,6 +43,58 @@ test("when api successful but there are no pets, it shows a not found message", 
 
   expect(await screen.findByText("No pets found")).toBeInTheDocument();
   expect(screen.queryByRole("list")).not.toBeInTheDocument();
+});
+
+test("it can filter by name and type", async () => {
+  server.use(
+    http.get("/api/pets", () => {
+      return HttpResponse.json([
+        {
+          id: 0,
+          name: "Steve",
+          type: "Cat",
+          age: 3,
+          feeds: 2,
+        },
+        {
+          id: 1,
+          name: "Ivy",
+          type: "Dog",
+          age: 3,
+          feeds: 2,
+        },
+        {
+          id: 2,
+          name: "Eve",
+          type: "Horse",
+          age: 3,
+          feeds: 2,
+        },
+      ]);
+    })
+  );
+
+  render(<PetList />);
+
+  // wait loading
+  expect(await screen.findByText("Steve")).toBeInTheDocument();
+
+  // search
+  fireEvent.change(screen.getByRole("searchbox"), { target: { value: "eve" } });
+
+  expect(screen.getByLabelText("Search for a pet name")).toHaveValue("eve");
+
+  // wait for results
+  await waitFor(() => expect(screen.getAllByRole("listitem")).toHaveLength(2));
+
+  // Select an option
+  fireEvent.change(screen.getByRole("combobox"), { target: { value: "Cat" } });
+  await waitFor(() => expect(screen.getByRole("listitem")).toBeInTheDocument());
+
+  // Clear results
+  fireEvent.change(screen.getByRole("searchbox"), { target: { value: "" } });
+  fireEvent.change(screen.getByRole("combobox"), { target: { value: "" } });
+  await waitFor(() => expect(screen.getAllByRole("listitem")).toHaveLength(3));
 });
 
 test("when api fails it shows an error message", async () => {

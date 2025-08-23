@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
-import PetList from "./components/PetList/";
 import "./App.css";
+import PetList from "./components/PetList/";
 
 const App = () => (
   <div className="App">
