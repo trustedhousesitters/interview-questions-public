@@ -6,7 +6,7 @@ const PET_NAMES = [
   "Woofo",
 ];
 
-const PET_TYPES = ["Dog", "Cat", "Antelope", "Wild Boar", "Rock"];
+const PET_TYPES = ["Dog", "Cat", "Horse", "Fish", "Poultry"];
 
 const generatePets = (numberOfPets = 3) => {
   const petList = [];

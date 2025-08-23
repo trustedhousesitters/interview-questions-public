@@ -1,17 +1,17 @@
-.Pet-item {
+.PetItem {
   display: flex;
   align-items: center;
   gap: 20px;
   border: solid 1px #d5d5d9;
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.06);
-  margin-bottom: 10px;
   padding: 20px;
+  height: 100%;
 }
 
-.Pet-image {
+.PetImage {
   width: 80px;
 }
 
-.Pet-details-label {
+.PetDetailsLabel {
   font-weight: 500;
 }

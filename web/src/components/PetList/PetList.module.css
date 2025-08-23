@@ -1,0 +1,34 @@
+.PetsTitle {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: left;
+  font-family: "Georgia, Times,'Times New Roman', serif";
+}
+
+.PetList {
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
+.PetListItem {
+  justify-items: stretch;
+}
+
+@media screen and (max-width: 780px) {
+  .PetList {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .PetList {
+    grid-template-columns: 1fr;
+  }
+}
