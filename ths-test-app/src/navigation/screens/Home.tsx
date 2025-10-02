@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
-import { Text, View, StyleSheet, FlatList } from "react-native";
+import { useEffect, useState, useContext } from "react";
+import { Text, View, StyleSheet, Button } from "react-native";
 import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
+
+import { LoggedInContext } from "@/App";
 
 const PetRow = ({name}) => (
   <View style={styles.item}>
@@ -11,38 +13,18 @@ const PetRow = ({name}) => (
 );
 
 export default function HomeScreen() {
-  const [ serverStarted, setServerStarted ] = useState(false);
-  const [ animalData, setAnimalData ] = useState([]);
   const insets = useSafeAreaInsets();
 
-  useEffect(() => {
-      async function enableMocking() {
-        if (!__DEV__) {
-          return
-        }
-        await import('../../../msw.polyfills')
-        const { server } = await import('../../mocks/server')
-        server.listen()
-        setServerStarted(true);
-      }
-
-      enableMocking();
-  }, []);
-
-  useEffect(() => {
-    if(serverStarted) {
-      fetch("/api/pets").then(response => response.json()).then(data => setAnimalData(data));
-    }
-  }, [serverStarted]);
+  const { isLoggedIn, toggleIsLoggedIn } = useContext(LoggedInContext);
+  console.log("Is logged in:", isLoggedIn);
+  console.log("Toggle function:", toggleIsLoggedIn);
   
   return (
-    <View style={[styles.container, { paddingBottom: insets.bottom }]}>
-      <FlatList
-        data={animalData}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({item}) => <PetRow name={item.name} />}
-        style={styles.list}
-      />
+    <View style={[styles.container, { paddingTop: insets.top }]}>
+      <Button
+          title={isLoggedIn ? "Log Out" : "Log In"}
+          onPress={toggleIsLoggedIn}
+        />
     </View>
   );
 }
