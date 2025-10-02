@@ -1,16 +1,10 @@
-import { useEffect, useState, useContext } from "react";
-import { Text, View, StyleSheet, Button } from "react-native";
+import { useContext } from "react";
+import { View, StyleSheet, Button } from "react-native";
 import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 
 import { LoggedInContext } from "@/App";
-
-const PetRow = ({name}) => (
-  <View style={styles.item}>
-    <Text style={styles.name}>{name}</Text>
-  </View>
-);
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
