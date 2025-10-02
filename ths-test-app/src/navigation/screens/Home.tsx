@@ -16,8 +16,6 @@ export default function HomeScreen() {
   const insets = useSafeAreaInsets();
 
   const { isLoggedIn, toggleIsLoggedIn } = useContext(LoggedInContext);
-  console.log("Is logged in:", isLoggedIn);
-  console.log("Toggle function:", toggleIsLoggedIn);
   
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
