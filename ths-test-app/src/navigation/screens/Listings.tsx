@@ -4,15 +4,15 @@ import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 
-const PetRow = ({name}) => (
+const ListingRow = ({title}) => (
   <View style={styles.item}>
-    <Text style={styles.name}>{name}</Text>
+    <Text style={styles.title}>{title}</Text>
   </View>
 );
 
 export default function HomeScreen() {
   const [ serverStarted, setServerStarted ] = useState(false);
-  const [ animalData, setAnimalData ] = useState([]);
+  const [ listingData, setListingData ] = useState([]);
   const insets = useSafeAreaInsets();
 
   useEffect(() => {
@@ -31,16 +31,16 @@ export default function HomeScreen() {
 
   useEffect(() => {
     if(serverStarted) {
-      fetch("/api/pets").then(response => response.json()).then(data => setAnimalData(data));
+      fetch("/api/listings").then(response => response.json()).then(data => setListingData(data));
     }
   }, [serverStarted]);
   
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
       <FlatList
-        data={animalData}
+        data={listingData}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({item}) => <PetRow name={item.name} />}
+        renderItem={({item}) => <ListingRow title={item.title} />}
         style={styles.list}
       />
     </View>
@@ -63,6 +63,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
   },
   title: {
-    fontSize: 32,
+    fontSize: 18,
   },
 });
