@@ -2,6 +2,10 @@ import 'react-native-gesture-handler';
 import { useEffect, useState, createContext } from "react";
 import * as SplashScreen from 'expo-splash-screen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+  useNavigationContainerRef,
+} from '@react-navigation/native';
+import { useLogger } from '@react-navigation/devtools';
 
 import { Navigation } from './navigation';
 
@@ -13,6 +17,10 @@ export function App() {
   const [ serverStarted, setServerStarted ] = useState(false);
   const [ isLoggedInRetrieved, setIsLoggedInRetrieved ] = useState(false);
   const [ isLoggedIn, setIsLoggedIn ] = useState(true);
+
+  const navigationRef = useNavigationContainerRef();
+
+  useLogger(navigationRef);
 
   useEffect(() => {
       async function enableMocking() {
@@ -67,7 +75,7 @@ export function App() {
 
   return (
     <LoggedInContext.Provider value={{ isLoggedIn, toggleIsLoggedIn }}>
-      <Navigation />
+      <Navigation ref={navigationRef} />
     </LoggedInContext.Provider>
   );
 }
