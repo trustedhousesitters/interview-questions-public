@@ -24,7 +24,7 @@ const HomeTabs = createBottomTabNavigator({
       screen: Listings,
       options: {
         headerShown: false,
-        tabBarIcon: ({ color }) => <IconSymbol size={28} name="pets" color={color} />,
+        tabBarIcon: ({ color }) => <IconSymbol size={28} name="pawprint" color={color} />,
       },
     },
   },
