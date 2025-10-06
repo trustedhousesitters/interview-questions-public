@@ -1,14 +1,26 @@
 .Pets-title {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
     text-align: left;
     font-family: "Georgia, Times,'Times New Roman', serif";
+    margin-bottom: 16px;
 }
 
 .pets-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+@media (min-width: 768px) {
+    .Pets-title {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .pets-container {
+        gap: 12px;
+    }
 }
 
 .error-message {

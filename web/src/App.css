@@ -1,12 +1,25 @@
 .App-logo {
   margin: 20px 0;
+  max-width: 100%;
+  height: auto;
 }
 
 .App-header {
-  margin: 0 20px;
+  margin: 0 16px;
 }
 
 .App-content {
-  margin: 0 20px;
-  margin-top: 60px;
+  margin: 0 16px;
+  margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+  .App-header {
+    margin: 0 20px;
+  }
+
+  .App-content {
+    margin: 0 20px;
+    margin-top: 60px;
+  }
 }

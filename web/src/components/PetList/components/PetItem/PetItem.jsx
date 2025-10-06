@@ -8,10 +8,10 @@ const PetItem = ({ pet }) => {
   const imageUrl = pet.imageUrl || dog;
   return (
     <div className="Pet-item">
-      <div>
+      <div className="Pet-image-container">
         <img src={imageUrl} className="Pet-image" alt={`Image of a ${type} named ${name}`} />
       </div>
-      <div>
+      <div className="Pet-details">
         <div>
           <span className="Pet-details-label">Name: </span>
           <span>{name}</span>
