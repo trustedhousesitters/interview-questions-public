@@ -16,7 +16,7 @@ const LoggedInContext = createContext(null);
 export function App() {
   const [ serverStarted, setServerStarted ] = useState(false);
   const [ isLoggedInRetrieved, setIsLoggedInRetrieved ] = useState(false);
-  const [ isLoggedIn, setIsLoggedIn ] = useState(true);
+  const [ isLoggedIn, setIsLoggedIn ] = useState(false);
 
   const navigationRef = useNavigationContainerRef();
 

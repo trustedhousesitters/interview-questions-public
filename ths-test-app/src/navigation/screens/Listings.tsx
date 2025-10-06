@@ -11,29 +11,12 @@ const ListingRow = ({title}) => (
 );
 
 export default function HomeScreen() {
-  const [ serverStarted, setServerStarted ] = useState(false);
   const [ listingData, setListingData ] = useState([]);
   const insets = useSafeAreaInsets();
 
   useEffect(() => {
-      async function enableMocking() {
-        if (!__DEV__) {
-          return
-        }
-        await import('../../../msw.polyfills')
-        const { server } = await import('../../mocks/server')
-        server.listen()
-        setServerStarted(true);
-      }
-
-      enableMocking();
-  }, []);
-
-  useEffect(() => {
-    if(serverStarted) {
       fetch("/api/listings").then(response => response.json()).then(data => setListingData(data));
-    }
-  }, [serverStarted]);
+  }, []);
   
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
