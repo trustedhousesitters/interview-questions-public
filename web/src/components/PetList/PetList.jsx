@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import LoadingSpinner from "../LoadingSpinner";
+import PetItem from "./components/PetItem";
 import "./PetList.css";
 
 const PetList = () => {
@@ -21,6 +22,13 @@ const PetList = () => {
     <>
       <h1 className="Pets-title">My Pets</h1>
       {loading && <LoadingSpinner size={25} />}
+      {!loading && (
+        <div className="pets-container">
+          {pets.map((pet) => (
+            <PetItem key={pet.id} pet={pet} />
+          ))}
+        </div>
+      )}
     </>
   );
 };
