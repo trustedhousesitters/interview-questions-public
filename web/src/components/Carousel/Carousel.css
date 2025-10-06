@@ -17,7 +17,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 60px;
+  padding: 0 50px;
 }
 
 .carousel-button {
@@ -27,12 +27,12 @@
   background-color: rgba(255, 255, 255, 0.9);
   border: 1px solid #ddd;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
   z-index: 10;
   transition: all 0.3s ease;
@@ -43,6 +43,7 @@
 
 .carousel-button:hover {
   background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transform: translateY(-50%) scale(1.05);
 }
 
@@ -51,29 +52,29 @@
 }
 
 .carousel-button-prev {
-  left: 10px;
+  left: 5px;
 }
 
 .carousel-button-next {
-  right: 10px;
+  right: 5px;
 }
 
-@media (max-width: 767px) {
+@media (min-width: 768px) {
   .carousel-slide {
-    padding: 0 50px;
+    padding: 0 60px;
   }
 
   .carousel-button {
-    width: 32px;
-    height: 32px;
-    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
   }
 
   .carousel-button-prev {
-    left: 5px;
+    left: 10px;
   }
 
   .carousel-button-next {
-    right: 5px;
+    right: 10px;
   }
 }
