@@ -1,12 +1,54 @@
 .App-logo {
   margin: 20px 0;
+  max-width: 100%;
+  height: auto;
 }
 
 .App-header {
-  margin: 0 20px;
+  margin: 0 16px;
 }
 
 .App-content {
-  margin: 0 20px;
-  margin-top: 60px;
+  margin: 0 16px;
+  margin-top: 40px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: left;
+  font-family: "Georgia, Times,'Times New Roman', serif";
+  margin-bottom: 16px;
+}
+
+.featured-section {
+  margin-bottom: 48px;
+}
+
+.pets-section {
+  margin-top: 48px;
+}
+
+@media (min-width: 768px) {
+  .App-header {
+    margin: 0 20px;
+  }
+
+  .App-content {
+    margin: 0 20px;
+    margin-top: 60px;
+  }
+
+  .section-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .featured-section {
+    margin-bottom: 64px;
+  }
+
+  .pets-section {
+    margin-top: 64px;
+  }
 }

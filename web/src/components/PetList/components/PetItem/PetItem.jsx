@@ -4,14 +4,14 @@ import "./PetItem.css";
 import dog from "./assets/PetsPlaceholder/Dog.svg";
 
 const PetItem = ({ pet }) => {
-  const { name, type, feeds } = pet;
+  const { name, type, age, feeds } = pet;
   const imageUrl = pet.imageUrl || dog;
   return (
     <div className="Pet-item">
-      <div>
-        <img src={imageUrl} className="Pet-image" alt="pet" />
+      <div className="Pet-image-container">
+        <img src={imageUrl} className="Pet-image" alt={`Image of a ${type} named ${name}`} />
       </div>
-      <div>
+      <div className="Pet-details">
         <div>
           <span className="Pet-details-label">Name: </span>
           <span>{name}</span>
@@ -19,6 +19,10 @@ const PetItem = ({ pet }) => {
         <div>
           <span className="Pet-details-label">Animal Type: </span>
           <span>{type}</span>
+        </div>
+        <div>
+          <span className="Pet-details-label">Age: </span>
+          <span>{age} {age === 1 ? 'year' : 'years'} old</span>
         </div>
         <div>
           <span className="Pet-details-label">Number of feeds: </span>

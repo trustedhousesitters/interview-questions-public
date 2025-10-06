@@ -1,6 +1,54 @@
 .Pets-title {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
     text-align: left;
     font-family: "Georgia, Times,'Times New Roman', serif";
+    margin-bottom: 16px;
+}
+
+.pets-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+@media (min-width: 768px) {
+    .Pets-title {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .pets-container {
+        gap: 12px;
+    }
+}
+
+.error-message {
+    background-color: #fee;
+    border: 1px solid #fcc;
+    border-radius: 4px;
+    padding: 16px;
+    margin: 20px 0;
+    display: inline-block;
+}
+
+.error-message p {
+    color: #c33;
+    margin: 0;
+    font-weight: 500;
+}
+
+.empty-state {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 40px 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.empty-state p {
+    color: #666;
+    margin: 0;
+    font-size: 16px;
 }
