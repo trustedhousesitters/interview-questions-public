@@ -45,7 +45,6 @@ export function App() {
           console.error("Failed to retrieve login status:", e);
         }
         if (storedStatus !== null) {
-          console.log("Retrieved login status from storage:", storedStatus);
           setIsLoggedIn(storedStatus === 'true');
         } else {
           try {
