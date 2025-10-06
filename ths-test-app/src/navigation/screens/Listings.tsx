@@ -10,7 +10,7 @@ const ListingRow = ({title}) => (
   </View>
 );
 
-export default function HomeScreen() {
+export default function ListingsScreen() {
   const [ listingData, setListingData ] = useState([]);
   const insets = useSafeAreaInsets();
 
