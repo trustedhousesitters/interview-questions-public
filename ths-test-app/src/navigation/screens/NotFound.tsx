@@ -1,48 +1,15 @@
-import { useEffect, useState } from "react";
-import { Text, View, StyleSheet, FlatList } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 
-const PetRow = ({name}) => (
-  <View style={styles.item}>
-    <Text style={styles.name}>{name}</Text>
-  </View>
-);
-
 export default function NotFoundScreen() {
-  const [ serverStarted, setServerStarted ] = useState(false);
-  const [ animalData, setAnimalData ] = useState([]);
   const insets = useSafeAreaInsets();
-
-  useEffect(() => {
-      async function enableMocking() {
-        if (!__DEV__) {
-          return
-        }
-        await import('../../../msw.polyfills')
-        const { server } = await import('../../mocks/server')
-        server.listen()
-        setServerStarted(true);
-      }
-
-      enableMocking();
-  }, []);
-
-  useEffect(() => {
-    if(serverStarted) {
-      fetch("/api/pets").then(response => response.json()).then(data => setAnimalData(data));
-    }
-  }, [serverStarted]);
   
   return (
     <View style={[styles.container, { paddingBottom: insets.bottom }]}>
-      <FlatList
-        data={animalData}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({item}) => <PetRow name={item.name} />}
-        style={styles.list}
-      />
+      <Text style={styles.title}>404 - Not Found</Text>
+      <Text style={styles.subtitle}>The page you are looking for does not exist.</Text>
     </View>
   );
 }
@@ -64,5 +31,9 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
+  },
+  subtitle: {
+    fontSize: 18,
+    color: 'gray',
   },
 });
