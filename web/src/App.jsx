@@ -9,7 +9,7 @@ import './App.css';
 const App = () => (
   <div className="App">
     <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
+      <img src={logo} className="App-logo" alt="TrustedHousesitters logo" />
     </header>
     <div className="App-content">
       <section className="featured-section">
