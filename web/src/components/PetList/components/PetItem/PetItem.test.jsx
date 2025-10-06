@@ -7,7 +7,9 @@ const pets = generatePets();
 
 test("renders pet image", () => {
   const { getByRole } = render(<PetItem pet={pets[0]} />);
-  expect(getByRole("img", { name: "pet" })).toBeInTheDocument();
+  const img = getByRole("img");
+  expect(img).toBeInTheDocument();
+  expect(img).toHaveAttribute("alt", `Image of a ${pets[0].type} named ${pets[0].name}`);
 });
 
 test("renders pet name", () => {

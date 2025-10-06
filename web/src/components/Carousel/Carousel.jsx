@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Carousel.css";
 
-const Carousel = ({ items, renderItem }) => {
+const Carousel = ({ items, renderItem, autoPlay = true, interval = 3000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   if (!items || items.length === 0) {
     return null;
@@ -20,8 +21,36 @@ const Carousel = ({ items, renderItem }) => {
     );
   };
 
+  useEffect(() => {
+    if (!autoPlay || isPaused) {
+      return;
+    }
+
+    const timer = setInterval(() => {
+      goToNext();
+    }, interval);
+
+    return () => clearInterval(timer);
+  }, [currentIndex, autoPlay, isPaused, interval]);
+
+  const handleMouseEnter = () => {
+    if (autoPlay) {
+      setIsPaused(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (autoPlay) {
+      setIsPaused(false);
+    }
+  };
+
   return (
-    <div className="carousel">
+    <div 
+      className="carousel"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="carousel-container">
         <button
           className="carousel-button carousel-button-prev"

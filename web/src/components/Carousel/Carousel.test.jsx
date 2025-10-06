@@ -12,7 +12,7 @@ const mockRenderItem = (item) => <div>{item.name}</div>;
 
 test("renders carousel with first item by default", () => {
   const { getByText, container } = render(
-    <Carousel items={mockItems} renderItem={mockRenderItem} />
+    <Carousel items={mockItems} renderItem={mockRenderItem} autoPlay={false} />
   );
   
   expect(container.querySelector(".carousel")).toBeInTheDocument();
@@ -21,7 +21,7 @@ test("renders carousel with first item by default", () => {
 
 test("returns null when no items provided", () => {
   const { container } = render(
-    <Carousel items={[]} renderItem={mockRenderItem} />
+    <Carousel items={[]} renderItem={mockRenderItem} autoPlay={false} />
   );
   
   expect(container.querySelector(".carousel")).not.toBeInTheDocument();
@@ -29,7 +29,7 @@ test("returns null when no items provided", () => {
 
 test("navigates between items and loops infinitely", () => {
   const { getByLabelText, getByText } = render(
-    <Carousel items={mockItems} renderItem={mockRenderItem} />
+    <Carousel items={mockItems} renderItem={mockRenderItem} autoPlay={false} />
   );
   
   // Start at Item 1

@@ -9,7 +9,7 @@ test("renders featured listing image", () => {
   const { getByRole } = render(<FeaturedListing listing={listing} />);
   const img = getByRole("img");
   expect(img).toBeInTheDocument();
-  expect(img).toHaveAttribute("alt", `${listing.name}, a featured ${listing.type}`);
+  expect(img).toHaveAttribute("alt", `Featured Image of a ${listing.type} named ${listing.name}`);
 });
 
 test("renders listing name", () => {
