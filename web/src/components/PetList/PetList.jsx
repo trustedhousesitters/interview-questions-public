@@ -39,7 +39,12 @@ const PetList = () => {
           <p>{error}</p>
         </div>
       )}
-      {!loading && !error && (
+      {!loading && !error && pets.length === 0 && (
+        <div className="empty-state">
+          <p>🐾 No pets found. Your pet list is empty!</p>
+        </div>
+      )}
+      {!loading && !error && pets.length > 0 && (
         <div className="pets-container">
           {pets.map((pet) => (
             <PetItem key={pet.id} pet={pet} />

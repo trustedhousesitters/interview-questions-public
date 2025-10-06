@@ -25,3 +25,18 @@
     margin: 0;
     font-weight: 500;
 }
+
+.empty-state {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 40px 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.empty-state p {
+    color: #666;
+    margin: 0;
+    font-size: 16px;
+}
