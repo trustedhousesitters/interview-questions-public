@@ -2,5 +2,9 @@
     font-size: 22px;
     font-weight: 600;
     text-align: left;
-    font-family: "Georgia, Times,'Times New Roman', serif";
+    /* font-family: "Georgia, Times,'Times New Roman', serif"; */
+    margin: 20px auto;
+    text-align: center;
+    color: rgb(0, 98, 99);
+    font-weight: bold;
 }

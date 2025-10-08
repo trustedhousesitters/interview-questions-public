@@ -1,0 +1,66 @@
+
+
+.PetCarousel {
+    position: relative;
+    border-radius: 10px;
+    border: 1px solid #c8c8c8;
+    padding: 8px;
+    background-color: rgba(232, 250, 233);
+    margin: auto;
+}
+
+@media screen and (min-width: 768px) {
+    .PetCarousel {
+        width: var(--container-width-large);
+    }
+}
+
+.PetCarousel-container {
+    margin: 0px auto;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    display: flex;
+}
+
+.PetCarousel-ctrl {
+    display: flex;
+    justify-content: space-between;
+    margin:0px;
+    padding-top: 10px;
+    gap: 10px;
+    flex-direction: column;
+    @media screen and (min-width: 768px) {
+        flex-direction: row;
+    }
+}
+
+.PetCarousel-tracker {
+    margin: 20px 0px;
+    font-weight: bold;
+}
+
+.PetCarousel-ctrl button {
+    border-radius: 10px;
+    height: 60px;
+    background-color: rgb(0, 57, 57);
+    color: white;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 16px;
+    padding: 4px 8px;
+    margin: 0px;
+    min-width: 120px;
+    cursor: pointer;
+    flex:1;
+    min-height: 60px;
+}
+.PetCarousel-ctrl button[data-direction="next"] {
+    right: 20px;
+}
+.PetCarousel-ctrl button[data-direction="prev"] {
+    left: 20px;
+}
+

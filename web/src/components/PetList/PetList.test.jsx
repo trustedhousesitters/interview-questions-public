@@ -1,9 +1,15 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import PetList from "./PetList";
+import mockPets from '@/mocks/pets'
 
-test("renders title", () => {
-  const { getByRole } = render(<PetList />);
+globalThis.fetch = vi.fn( () => Promise.resolve({
+  ok: true,
+  json: () => Promise.resolve(mockPets) 
+}))
 
-  expect(getByRole("heading")).toHaveTextContent("My Pets");
+test("renders title", async () => {
+  render(<PetList />);
+  const heading = await screen.findByRole('heading', {name: "My Pets"})
+  expect(heading).toBeInTheDocument()
 });
