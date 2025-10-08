@@ -1,9 +1,9 @@
-import { render } from "@testing-library/react";
-import { expect, test } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { test, expect } from "vitest";
 import App from "./App";
 
-test("renders logo", () => {
-  const { getByRole } = render(<App />);
-
-  expect(getByRole("img", { name: "logo" })).toBeInTheDocument();
+test("renders logo", async () => {
+  render(<App />);
+  const logo = await screen.findByRole("img", { name: /logo/i });
+  expect(logo).toBeInTheDocument();
 });

@@ -1,5 +1,17 @@
+:root {
+  --container-width-small: 332px;
+  --container-width-large: 660px;
+}
+
+* {
+  font-family: sans-serif;
+  font-family: Poppins, -apple-system, "system-ui", "avenir next", avenir, "segoe ui", "helvetica neue", helvetica, Ubuntu, roboto, noto, arial, sans-serif;
+}
+
 .App-logo {
-  margin: 20px 0;
+  margin: 20px auto;
+  display: block;
+
 }
 
 .App-header {
@@ -9,4 +21,5 @@
 .App-content {
   margin: 0 20px;
   margin-top: 60px;
+
 }
