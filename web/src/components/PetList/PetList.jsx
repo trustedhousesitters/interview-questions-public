@@ -34,9 +34,11 @@ const PetList = () => {
       {error ? (
         <div role="alert" className="Pets-error">{error}</div>
       ) : null}
-      {pets.map((pet) => (
-        <PetItem key={pet.id} pet={pet} />
-      ))}
+      <div role="list" className="Pets-list">
+        {pets.map((pet) => (
+          <PetItem key={pet.id} pet={pet} />
+        ))}
+      </div>
     </>
   );
 };
