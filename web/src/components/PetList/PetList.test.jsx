@@ -28,3 +28,31 @@ test("renders pets returned by API", async () => {
   const images = await screen.findAllByRole("img", { name: /pet/i });
   expect(images).toHaveLength(2);
 });
+
+test("handles server error by rendering no items and error message", async () => {
+  server.use(http.get("/api/pets", () => HttpResponse.error()));
+
+  render(<PetList />);
+
+  await screen.findByRole("heading", { name: /my pets/i });
+  expect(screen.queryAllByRole("img", { name: /pet/i })).toHaveLength(0);
+  expect(await screen.findByRole("alert")).toHaveTextContent(
+    /failed to load pets/i
+  );
+});
+
+test("handles 404 by rendering no items and error message", async () => {
+  server.use(
+    http.get("/api/pets", () =>
+      HttpResponse.json({ message: "Not found" }, { status: 404 })
+    )
+  );
+
+  render(<PetList />);
+
+  await screen.findByRole("heading", { name: /my pets/i });
+  expect(screen.queryAllByRole("img", { name: /pet/i })).toHaveLength(0);
+  expect(await screen.findByRole("alert")).toHaveTextContent(
+    /no pets found/i
+  );
+});
