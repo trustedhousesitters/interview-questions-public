@@ -1,3 +1,5 @@
+import { PET_TYPES } from "../constants";
+
 const PET_NAMES = [
   "Mr. Fluffings",
   "The Whiskertron",
@@ -5,8 +7,6 @@ const PET_NAMES = [
   "Keith",
   "Woofo",
 ];
-
-const PET_TYPES = ["Dog", "Cat", "Antelope", "Wild Boar", "Rock"];
 
 const generatePets = (numberOfPets = 3) => {
   const petList = [];
