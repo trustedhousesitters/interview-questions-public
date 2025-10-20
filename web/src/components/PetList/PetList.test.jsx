@@ -1,58 +1,44 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import PetList from "./PetList";
-import { http, HttpResponse } from "msw";
-import { server } from "@/mocks/server";
+
+const mockPets = [
+  { id: "1", name: "Fido", type: "Dog", feeds: 3, imageUrl: "" },
+  { id: "2", name: "Mittens", type: "Cat", feeds: 2, imageUrl: "" },
+];
 
 test("renders title", () => {
-  const { getByRole } = render(<PetList />);
+  const { getByRole } = render(<PetList pets={[]} />);
 
   expect(getByRole("heading")).toHaveTextContent("My Pets");
 });
 
-test("renders pets returned by API", async () => {
-  server.use(
-    http.get("/api/pets", () =>
-      HttpResponse.json([
-        { id: "1", name: "Fido", type: "Dog", feeds: 3, imageUrl: "" },
-        { id: "2", name: "Mittens", type: "Cat", feeds: 2, imageUrl: "" },
-      ])
-    )
-  );
+test("renders pets passed as props", () => {
+  render(<PetList pets={mockPets} />);
 
-  render(<PetList />);
+  expect(screen.getByText("Fido")).toBeInTheDocument();
+  expect(screen.getByText("Mittens")).toBeInTheDocument();
 
-  expect(await screen.findByText("Fido")).toBeInTheDocument();
-  expect(await screen.findByText("Mittens")).toBeInTheDocument();
-
-  const images = await screen.findAllByRole("img", { name: /pet/i });
+  const images = screen.getAllByRole("img", { name: /pet/i });
   expect(images).toHaveLength(2);
 });
 
-test("handles server error by rendering no items and error message", async () => {
-  server.use(http.get("/api/pets", () => HttpResponse.error()));
+test("renders error message when error prop is provided", () => {
+  render(<PetList pets={[]} error="Failed to load pets" />);
 
-  render(<PetList />);
-
-  await screen.findByRole("heading", { name: /my pets/i });
-  expect(screen.queryAllByRole("img", { name: /pet/i })).toHaveLength(0);
-  expect(await screen.findByRole("alert")).toHaveTextContent(
-    /failed to load pets/i
-  );
+  expect(screen.getByRole("alert")).toHaveTextContent("Failed to load pets");
 });
 
-test("handles 404 by rendering no items and error message", async () => {
-  server.use(
-    http.get("/api/pets", () =>
-      HttpResponse.json({ message: "Not found" }, { status: 404 })
-    )
-  );
+test("renders empty list when no pets provided", () => {
+  render(<PetList pets={[]} />);
 
-  render(<PetList />);
-
-  await screen.findByRole("heading", { name: /my pets/i });
+  expect(screen.getByRole("heading")).toHaveTextContent("My Pets");
   expect(screen.queryAllByRole("img", { name: /pet/i })).toHaveLength(0);
-  expect(await screen.findByRole("alert")).toHaveTextContent(
-    /no pets found/i
-  );
+});
+
+test("handles undefined pets prop", () => {
+  render(<PetList pets={undefined} />);
+
+  expect(screen.getByRole("heading")).toHaveTextContent("My Pets");
+  expect(screen.queryAllByRole("img", { name: /pet/i })).toHaveLength(0);
 });
