@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import PetItem from "./components/PetItem";
 import "./PetList.css";
 
