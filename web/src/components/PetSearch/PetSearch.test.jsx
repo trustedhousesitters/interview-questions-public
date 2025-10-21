@@ -4,29 +4,34 @@ import { vi } from "vitest";
 import PetSearch from "./PetSearch";
 import { PET_TYPES } from "../../constants";
 
-const mockPets = [
-  { id: "1", name: "Fido", type: "Dog", feeds: 3 },
-  { id: "2", name: "Mittens", type: "Cat", feeds: 2 },
-  { id: "3", name: "Rocky", type: "Rock", feeds: 0 },
-  { id: "4", name: "Buddy", type: "Dog", feeds: 1 },
-];
-
 describe("PetSearch", () => {
-  const mockOnResultsChange = vi.fn();
+  const mockOnSearchTermChange = vi.fn();
+  const mockOnPetTypeChange = vi.fn();
+  const mockOnClearSearch = vi.fn();
 
   beforeEach(() => {
-    mockOnResultsChange.mockClear();
+    mockOnSearchTermChange.mockClear();
+    mockOnPetTypeChange.mockClear();
+    mockOnClearSearch.mockClear();
   });
 
+  const defaultProps = {
+    searchTerm: "",
+    petType: "",
+    onSearchTermChange: mockOnSearchTermChange,
+    onPetTypeChange: mockOnPetTypeChange,
+    onClearSearch: mockOnClearSearch,
+  };
+
   test("renders search input", () => {
-    render(<PetSearch pets={mockPets} onResultsChange={mockOnResultsChange} />);
+    render(<PetSearch {...defaultProps} />);
     
     const searchInput = screen.getByPlaceholderText("Search by pet name");
     expect(searchInput).toBeInTheDocument();
   });
 
   test("renders all pet type buttons", () => {
-    render(<PetSearch pets={mockPets} onResultsChange={mockOnResultsChange} />);
+    render(<PetSearch {...defaultProps} />);
     
     PET_TYPES.forEach((type) => {
       expect(screen.getByRole("button", { name: type })).toBeInTheDocument();
@@ -34,163 +39,70 @@ describe("PetSearch", () => {
   });
 
   test("renders clear button", () => {
-    render(<PetSearch pets={mockPets} onResultsChange={mockOnResultsChange} />);
+    render(<PetSearch {...defaultProps} />);
     
     const clearButton = screen.getByRole("button", { name: "Clear" });
     expect(clearButton).toBeInTheDocument();
   });
 
-  test("filters pets by search term", () => {
-    render(<PetSearch pets={mockPets} onResultsChange={mockOnResultsChange} />);
+  test("calls onSearchTermChange when search input changes", () => {
+    render(<PetSearch {...defaultProps} />);
     
     const searchInput = screen.getByPlaceholderText("Search by pet name");
     fireEvent.change(searchInput, { target: { value: "Fido" } });
     
-    expect(mockOnResultsChange).toHaveBeenCalledWith([
-      { id: "1", name: "Fido", type: "Dog", feeds: 3 }
-    ]);
+    expect(mockOnSearchTermChange).toHaveBeenCalledTimes(1);
   });
 
-  test("filters pets by pet type", () => {
-    render(<PetSearch pets={mockPets} onResultsChange={mockOnResultsChange} />);
+  test("calls onPetTypeChange when pet type button is clicked", () => {
+    render(<PetSearch {...defaultProps} />);
     
     const dogButton = screen.getByRole("button", { name: "Dog" });
     fireEvent.click(dogButton);
     
-    expect(mockOnResultsChange).toHaveBeenCalledWith([
-      { id: "1", name: "Fido", type: "Dog", feeds: 3 },
-      { id: "4", name: "Buddy", type: "Dog", feeds: 1 }
-    ]);
+    expect(mockOnPetTypeChange).toHaveBeenCalledWith("Dog");
   });
 
-  test("filters pets by both search term and pet type", () => {
-    render(<PetSearch pets={mockPets} onResultsChange={mockOnResultsChange} />);
+  test("calls onClearSearch when clear button is clicked", () => {
+    render(<PetSearch {...defaultProps} />);
     
-    const searchInput = screen.getByPlaceholderText("Search by pet name");
-    const dogButton = screen.getByRole("button", { name: "Dog" });
+    const clearButton = screen.getByRole("button", { name: "Clear" });
+    fireEvent.click(clearButton);
     
-    fireEvent.change(searchInput, { target: { value: "Buddy" } });
-    fireEvent.click(dogButton);
-    
-    expect(mockOnResultsChange).toHaveBeenCalledWith([
-      { id: "4", name: "Buddy", type: "Dog", feeds: 1 }
-    ]);
+    expect(mockOnClearSearch).toHaveBeenCalled();
   });
 
-  test("shows selected state for pet type button", () => {
-    render(<PetSearch pets={mockPets} onResultsChange={mockOnResultsChange} />);
+  test("shows selected state for pet type button when petType prop matches", () => {
+    render(<PetSearch {...defaultProps} petType="Dog" />);
     
     const dogButton = screen.getByRole("button", { name: "Dog" });
-    fireEvent.click(dogButton);
-    
     expect(dogButton).toHaveClass("selected");
   });
 
-  test("clears search term and pet type when clear button is clicked", () => {
-    render(<PetSearch pets={mockPets} onResultsChange={mockOnResultsChange} />);
+  test("displays search term value from props", () => {
+    render(<PetSearch {...defaultProps} searchTerm="Fido" />);
     
     const searchInput = screen.getByPlaceholderText("Search by pet name");
-    const dogButton = screen.getByRole("button", { name: "Dog" });
-    const clearButton = screen.getByRole("button", { name: "Clear" });
-    
-    // Set search term and pet type
-    fireEvent.change(searchInput, { target: { value: "Fido" } });
-    fireEvent.click(dogButton);
-    
-    // Clear everything
-    fireEvent.click(clearButton);
-    
-    expect(searchInput).toHaveValue("");
-    expect(dogButton).not.toHaveClass("selected");
-    expect(mockOnResultsChange).toHaveBeenCalledWith(mockPets);
+    expect(searchInput).toHaveValue("Fido");
   });
 
-  test("handles case-insensitive search", () => {
-    render(<PetSearch pets={mockPets} onResultsChange={mockOnResultsChange} />);
-    
-    const searchInput = screen.getByPlaceholderText("Search by pet name");
-    fireEvent.change(searchInput, { target: { value: "fido" } });
-    
-    expect(mockOnResultsChange).toHaveBeenCalledWith([
-      { id: "1", name: "Fido", type: "Dog", feeds: 3 }
-    ]);
-  });
-
-  test("handles case-insensitive pet type filtering", () => {
-    const petsWithMixedCase = [
-      { id: "1", name: "Fido", type: "dog", feeds: 3 },
-      { id: "2", name: "Mittens", type: "CAT", feeds: 2 },
-    ];
-    
-    render(<PetSearch pets={petsWithMixedCase} onResultsChange={mockOnResultsChange} />);
-    
-    const dogButton = screen.getByRole("button", { name: "Dog" });
-    fireEvent.click(dogButton);
-    
-    expect(mockOnResultsChange).toHaveBeenCalledWith([
-      { id: "1", name: "Fido", type: "dog", feeds: 3 }
-    ]);
-  });
-
-  test("handles empty pets array", () => {
-    render(<PetSearch pets={[]} onResultsChange={mockOnResultsChange} />);
-    
-    const searchInput = screen.getByPlaceholderText("Search by pet name");
-    fireEvent.change(searchInput, { target: { value: "test" } });
-    
-    expect(mockOnResultsChange).toHaveBeenCalledWith([]);
-  });
-
-  test("handles undefined pets prop", () => {
-    render(<PetSearch pets={undefined} onResultsChange={mockOnResultsChange} />);
-    
-    const searchInput = screen.getByPlaceholderText("Search by pet name");
-    fireEvent.change(searchInput, { target: { value: "test" } });
-    
-    expect(mockOnResultsChange).toHaveBeenCalledWith([]);
-  });
-
-  test("handles pets with missing name property", () => {
-    const petsWithMissingName = [
-      { id: "1", type: "Dog", feeds: 3 },
-      { id: "2", name: "Mittens", type: "Cat", feeds: 2 },
-    ];
-    
-    render(<PetSearch pets={petsWithMissingName} onResultsChange={mockOnResultsChange} />);
-    
-    const searchInput = screen.getByPlaceholderText("Search by pet name");
-    fireEvent.change(searchInput, { target: { value: "Mittens" } });
-    
-    expect(mockOnResultsChange).toHaveBeenCalledWith([
-      { id: "2", name: "Mittens", type: "Cat", feeds: 2 }
-    ]);
-  });
-
-  test("handles pets with missing type property", () => {
-    const petsWithMissingType = [
-      { id: "1", name: "Fido", feeds: 3 },
-      { id: "2", name: "Mittens", type: "Cat", feeds: 2 },
-    ];
-    
-    render(<PetSearch pets={petsWithMissingType} onResultsChange={mockOnResultsChange} />);
-    
-    const catButton = screen.getByRole("button", { name: "Cat" });
-    fireEvent.click(catButton);
-    
-    expect(mockOnResultsChange).toHaveBeenCalledWith([
-      { id: "2", name: "Mittens", type: "Cat", feeds: 2 }
-    ]);
-  });
-
-  test("works without onResultsChange callback", () => {
+  test("works with default prop values", () => {
     expect(() => {
-      render(<PetSearch pets={mockPets} />);
+      render(<PetSearch />);
     }).not.toThrow();
   });
 
-  test("calls onResultsChange with all pets initially", () => {
-    render(<PetSearch pets={mockPets} onResultsChange={mockOnResultsChange} />);
-    
-    expect(mockOnResultsChange).toHaveBeenCalledWith(mockPets);
+  test("handles missing callback props gracefully", () => {
+    expect(() => {
+      render(<PetSearch searchTerm="" petType="" />);
+      
+      const searchInput = screen.getByPlaceholderText("Search by pet name");
+      const dogButton = screen.getByRole("button", { name: "Dog" });
+      const clearButton = screen.getByRole("button", { name: "Clear" });
+      
+      fireEvent.change(searchInput, { target: { value: "test" } });
+      fireEvent.click(dogButton);
+      fireEvent.click(clearButton);
+    }).not.toThrow();
   });
 });
