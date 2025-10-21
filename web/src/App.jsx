@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import PetSearch from './components/PetSearch';
 import PetList from './components/PetList';
+import { filterPets } from './utils';
 
 const App = () => {
   const [pets, setPets] = useState([]);
@@ -11,17 +12,7 @@ const App = () => {
   const [petType, setPetType] = useState("");
 
   const filteredPets = useMemo(() => {
-    return pets
-      .filter((pet) => {
-        if (!searchTerm) return true;
-        const name = (pet?.name || "").toString();
-        return name.toLowerCase().includes(searchTerm.toLowerCase());
-      })
-      .filter((pet) => {
-        if (!petType) return true;
-        const type = (pet?.type || "").toString();
-        return type.toLowerCase() === petType.toLowerCase();
-      });
+    return filterPets(pets, searchTerm, petType);
   }, [pets, searchTerm, petType]);
 
   const handleSearchTermChange = useCallback((e) => {
