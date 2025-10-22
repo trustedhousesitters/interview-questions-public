@@ -12,6 +12,10 @@
   width: 80px;
 }
 
-.Pet-details-label {
+.Pet-detail:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.Pet-detail-label {
   font-weight: 500;
 }
