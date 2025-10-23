@@ -1,0 +1,58 @@
+.carousel-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 60px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #000;
+}
+
+.carousel-window {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform; /* optimise the animated area */
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-window {
+    /* Override the inline styles in the component */
+    transition: none !important;
+  }
+}
+
+.carousel-slide {
+  min-width: 100%;
+}
+
+.carousel-slide img {
+  height: auto;
+}
+
+.carousel-button {
+  position: absolute;
+  top: calc(50% - 24px);
+  background-color: rgb(242, 245, 245);
+  border-radius: 100%;
+  width: 48px;
+  height: 48px;
+  border: none;
+  cursor: pointer;
+}
+
+.carousel-button-prev {
+  left: 16px;
+}
+
+.carousel-button-next {
+  right: 16px;
+}
+
+.arrow-svg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: rgb(0, 166, 155);
+}
