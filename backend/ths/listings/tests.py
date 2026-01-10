@@ -30,7 +30,7 @@ class ListingList(APITestCase):
     def test_get_data(self):
         response = self.client.get("/listings/")
         self.assertEqual(
-            response.data,
+            response.data['results'],
             [
                 {
                     "first_name": self.listing_1.first_name,
@@ -46,3 +46,34 @@ class ListingList(APITestCase):
                 },
             ],
         )
+
+
+class ListingDetail(APITestCase):
+    def setUp(self):
+        self.listing = Listing.objects.create(first_name="Ross", last_name="Geller")
+        tomorrow = date.today() + timedelta(days=1)
+        self.assignment = Assignment.objects.create(
+            start_date=tomorrow,
+            end_date=tomorrow + timedelta(days=8),
+            listing=self.listing,
+        )
+
+    def test_get_200(self):
+        response = self.client.get(f"/listings/{self.listing.pk}/")
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_get_data(self):
+        response = self.client.get(f"/listings/{self.listing.pk}/")
+        self.assertEqual(
+            response.data,
+            {
+                "first_name": self.listing.first_name,
+                "last_name": self.listing.last_name,
+                "pets": [],
+                "assignments": [self.assignment.pk],
+            },
+        )
+
+    def test_get_not_found(self):
+        response = self.client.get("/listings/99999/")
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)

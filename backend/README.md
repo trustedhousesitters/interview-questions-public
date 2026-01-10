@@ -38,13 +38,29 @@ cd ths
 
 This runs the Django devserver on port 8000.
 
-You can now access the API using curl, e.g.
+API Endpoints
+-------------
 
+**Listings** (paginated, 20 per page):
 ```
+# Get all listings (first page)
 curl http://localhost:8000/listings/
+
+# Get a specific page
+curl http://localhost:8000/listings/?page=2
+
+# Get a single listing by ID
+curl http://localhost:8000/listings/1/
 ```
 
-or go to http://localhost:8000/listings/ in your browser
+**Assignments** (create):
+```
+curl -X POST http://localhost:8000/assignments/ \
+  -H "Content-Type: application/json" \
+  -d '{"listing": 1, "start_date": "2026-02-01", "end_date": "2026-02-10"}'
+```
+
+Or visit these URLs in your browser to use the DRF browsable API.
 
 
 Run test suite
@@ -55,3 +71,20 @@ source venv/bin/activate
 cd ths
 ./manage.py test
 ````
+
+Generate dummy data
+===================
+
+For performance testing, you can generate bulk dummy data using the script
+in `tools/`:
+
+```
+source venv/bin/activate
+cd ths
+python tools/generate_dummy_data.py --listings 1000
+```
+
+Options:
+- `--listings N` - Number of listings to create (default: 1000)
+- `--pets-per-listing N` - Max pets per listing (default: 3)
+- `--assignments-per-listing N` - Max assignments per listing (default: 2)
