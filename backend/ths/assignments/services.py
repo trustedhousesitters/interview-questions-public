@@ -11,6 +11,9 @@ def create_assignment(
     start_date: date,
     end_date: date,
 ) -> Assignment:
+    if start_date >= end_date:
+        raise ValidationError("Start date must be before end date.")
+
     tomorrow = date.today() + timedelta(days=1)
 
     if start_date < tomorrow:

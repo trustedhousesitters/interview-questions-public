@@ -51,6 +51,26 @@ class CreateAssignmentServiceTests(TestCase):
 
         self.assertIn("tomorrow or later", str(context.exception))
 
+    def test_create_assignment_start_date_after_end_date_fails(self):
+        with self.assertRaises(ValidationError) as context:
+            create_assignment(
+                listing_id=self.listing.id,
+                start_date=self.tomorrow + timedelta(days=5),
+                end_date=self.tomorrow,
+            )
+
+        self.assertIn("Start date must be before end date", str(context.exception))
+
+    def test_create_assignment_start_date_equals_end_date_fails(self):
+        with self.assertRaises(ValidationError) as context:
+            create_assignment(
+                listing_id=self.listing.id,
+                start_date=self.tomorrow,
+                end_date=self.tomorrow,
+            )
+
+        self.assertIn("Start date must be before end date", str(context.exception))
+
     def test_create_assignment_overlapping_fails(self):
         Assignment.objects.create(
             listing=self.listing,
