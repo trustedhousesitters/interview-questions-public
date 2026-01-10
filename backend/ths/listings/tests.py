@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, timedelta
 
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -10,14 +10,16 @@ class ListingList(APITestCase):
     def setUp(self):
         self.listing_1 = Listing.objects.create(first_name="Ross", last_name="Geller")
         self.listing_2 = Listing.objects.create(first_name="Phoebe", last_name="Buffay")
+        tomorrow = date.today() + timedelta(days=1)
+
         self.assignment_1 = Assignment.objects.create(
-            start_date=date(2023, 2, 7),
-            end_date=date(2023, 2, 15),
+            start_date=tomorrow,
+            end_date=tomorrow + timedelta(days=8),
             listing=self.listing_1,
         )
         self.assignment_2 = Assignment.objects.create(
-            start_date=date(2023, 4, 1),
-            end_date=date(2023, 4, 4),
+            start_date=tomorrow + timedelta(days=30),
+            end_date=tomorrow + timedelta(days=33),
             listing=self.listing_2,
         )
 
