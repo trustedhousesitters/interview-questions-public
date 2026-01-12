@@ -3,13 +3,13 @@ import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 
-export default function NotFoundScreen() {
+export default function LoginRequiredScreen() {
   const insets = useSafeAreaInsets();
-  
+
   return (
     <View style={[styles.container, { paddingBottom: insets.bottom }]}>
-      <Text style={styles.title}>404 - Not Found</Text>
-      <Text style={styles.subtitle}>The page you are looking for does not exist.</Text>
+      <Text style={styles.title}>Login Required</Text>
+      <Text style={styles.subtitle}>Please log in to view this listing.</Text>
     </View>
   );
 }

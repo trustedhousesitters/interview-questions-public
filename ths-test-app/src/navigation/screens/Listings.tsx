@@ -1,34 +1,43 @@
-import { useEffect, useState } from "react";
-import { Text, View, StyleSheet, FlatList } from "react-native";
-import {
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { useContext, useEffect } from 'react';
+import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-interface Listing {
-  id: number;
-  title: string;
-}
+import { LoggedInContext } from '@/App';
+import { useListings } from '@/hooks/useListings';
+import LoginRequiredScreen from './LoginRequired';
 
-const ListingRow = ({title}: {title: string}) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
+const ListingRow = ({id, title}: {id: string, title: string}) => {
+  const navigation = useNavigation<NavigationProp<ReactNavigation.RootParamList>>();
+
+  return (
+    <Pressable onPress={() => navigation.navigate('ListingDetails', { id })} style={styles.item}>
+      <Text style={styles.title}>{title}</Text>
+    </Pressable>
+  );
+};
 
 export default function ListingsScreen() {
-  const [ listingData, setListingData ] = useState<Listing[]>([]);
+  const { listingData, getAllListings } = useListings();
   const insets = useSafeAreaInsets();
+  const { isLoggedIn } = useContext(LoggedInContext);
 
   useEffect(() => {
-      fetch("/api/listings").then(response => response.json()).then(data => setListingData(data));
-  }, []);
-  
+    if (isLoggedIn) {
+      getAllListings();
+    }
+  }, [getAllListings, isLoggedIn]);
+
+  if (!isLoggedIn) {
+    return <LoginRequiredScreen />;
+  }
+
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={[styles.container, { paddingTop: insets.top, paddingBottom: insets.bottom + 60 }]}>
       <FlatList
         data={listingData}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({item}) => <ListingRow title={item.title} />}
+        keyExtractor={(item) => item.id}
+        renderItem={({item}) => <ListingRow id={item.id} title={item.title} />}
         style={styles.list}
       />
     </View>

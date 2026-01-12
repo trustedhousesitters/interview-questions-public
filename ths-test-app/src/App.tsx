@@ -8,6 +8,7 @@ import {
 import { useLogger } from '@react-navigation/devtools';
 
 import { Navigation } from './navigation';
+import { useDeepLinking } from './hooks/useDeepLinking';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -26,6 +27,7 @@ export function App() {
   const navigationRef = useNavigationContainerRef();
 
   useLogger(navigationRef);
+  useDeepLinking(navigationRef, isLoggedIn);
 
   useEffect(() => {
       async function enableMocking() {

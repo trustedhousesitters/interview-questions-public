@@ -5,6 +5,8 @@ import { Platform } from 'react-native';
 
 import HomeScreen from './screens/Home';
 import Listings from './screens/Listings';
+import ListingDetails from './screens/ListingDetails';
+import LoginRequired from './screens/LoginRequired';
 import NotFound from './screens/NotFound';
 
 import { HapticTab } from '../components/HapticTab';
@@ -50,6 +52,22 @@ const RootStack = createNativeStackNavigator({
         headerShown: false,
       },
     },
+    ListingDetails: {
+      screen: ListingDetails,
+      options: {
+        title: 'Listing Details',
+      },
+      linking: {
+        path: 'listing',
+        exact: true,
+      },
+    },
+    LoginRequired: {
+      screen: LoginRequired,
+      options: {
+        title: 'Login Required',
+      },
+    },
     NotFound: {
       screen: NotFound,
       options: {
@@ -68,7 +86,9 @@ type RootStackParamList = StaticParamList<typeof RootStack>;
 
 declare global {
   namespace ReactNavigation {
-    // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-    interface RootParamList extends RootStackParamList {}
+    interface RootParamList extends RootStackParamList {
+      ListingDetails: { id?: string; listingId?: string };
+      [key: string]: object | undefined;
+    }
   }
 }
