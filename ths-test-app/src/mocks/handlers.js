@@ -535,6 +535,9 @@ const handlers = [
       return HttpResponse.json({ error: "Listing not found" }, { status: 404 });
     }
   }),
+  http.post("/symbolicate", () => {
+    return HttpResponse.json({});
+  }),
 ];
 
 export default handlers;
