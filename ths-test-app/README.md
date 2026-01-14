@@ -1,61 +1,36 @@
-# Starter Template with React Navigation
+# Technical Assessment: App
 
-This is a minimal starter template for React Native apps using Expo and React Navigation.
+The test app is a simple Expo/React Native application using react-navigation, created using [‘npx create-expo-app --example with-react-navigation’](https://docs.expo.dev/more/create-expo/).
 
-## Launch your own
+In the existing navigation structure there is a stack navigator, containing a tab navigator with two tabs - Home and Listings. The listings screen displays a list of mock data, similar to the data we hold for listings on our platform.
 
-[![Launch with Expo](https://github.com/expo/examples/blob/master/.gh-assets/launch.svg?raw=true)](https://launch.expo.dev/?github=https://github.com/expo/examples/tree/master/with-react-navigation)
+There is a mock API at /api/listings that currently returns that mock data - this is implemented using Mock Service Worker. There is also mock log in/log out functionality, implemented with AsyncStorage, and you can change that value using the button on the Home screen.
 
-It includes the following:
+As long as you are [set up to create an expo development build](https://docs.expo.dev/get-started/set-up-your-environment/?mode=development-build), you should be able to clone the repository, run ‘npm install’ inside the ‘ths-test-app’ directory, and then run ‘npm run android’ or ‘npm run ios’ to build the project.
+The test will focus primarily on implementing navigation and external linking related features. Note: we are using [nvm](https://github.com/nvm-sh/nvm) to manage node versions and have tested this against the node version listed in the `.nvmrc`.
 
-- Example [Native Stack](https://reactnavigation.org/docs/native-stack-navigator) with a nested [Bottom Tab](https://reactnavigation.org/docs/bottom-tab-navigator)
-- Web support with [React Native for Web](https://necolas.github.io/react-native-web/)
-- TypeScript support and configured for React Navigation
-- Automatic [deep link](https://reactnavigation.org/docs/deep-linking) and [URL handling configuration](https://reactnavigation.org/docs/configuring-links)
-- Theme support [based on system appearance](https://reactnavigation.org/docs/themes/#using-the-operating-system-preferences)
-- Expo [Development Build](https://docs.expo.dev/develop/development-builds/introduction/) with [Continuous Native Generation](https://docs.expo.dev/workflow/continuous-native-generation/)
-- Edge-to-edge configured on Android with [`react-native-edge-to-edge`](https://www.npmjs.com/package/react-native-edge-to-edge)
+Unless otherwise stated, you’re welcome to use external libraries and dependencies as needed.
 
-## Getting Started
+## The Tasks
 
-1. Create a new project using this template:
+We’d like you to add the following functionality:
+- Create a new screen for an individual listing, accessible by tapping one of the list items on the Listings screen. Display some of the listing data on that screen.
+- Make the listings and listing screens only accessible when logged in
+- Add configuration to handle a URL such as ‘ths-test-app://listing?listingId=123456’ and open the correct individual listing
+- Opening a listing URL while on the listing screen should add a new listing screen on top of the existing one
+- Gracefully handle a link to a listing that can't be retrieved over the network
+- Ensure your new features are reliable and maintainable. We use Jest and React Native Testing Library in our codebase.
 
-   ```sh
-   npx create-expo-app --example with-react-navigation
-   yarn create expo-app --example with-react-navigation
-   pnpm create expo-app --example with-react-navigation
-   bun create expo-app --example with-react-navigation
-   ```
+We recommend spending no more than a few hours on this exercise. In our next conversation, we’ll discuss your implementation, cover any parts not completed, and talk through possible improvements.
 
-## Running the app
+Once you’re done, please add Jack-Gill-TH as a collaborator to your repo so we can view your solutions.
 
-- Install the dependencies:
+If anything is unclear or you have any questions at any stage, please don’t hesitate to reach out.
 
-  ```sh
-  npx expo install
-  ```
+We look forward to seeing your approach and discussing your work further!
 
-- Start the development server:
-
-  ```sh
-  npx expo start
-  ```
-
-- Build and run iOS and Android development builds:
-
-  ```sh
-  npm run ios
-  # or
-  npm run android
-  ```
-
-- In the terminal running the development server, press `i` to open the iOS simulator, `a` to open the Android device or emulator, or `w` to open the web browser.
 
 ## Resources
 
 - [React Navigation documentation](https://reactnavigation.org/)
 - [Expo documentation](https://docs.expo.dev/)
-
----
-
-Demo assets are from [lucide.dev](https://lucide.dev/)
