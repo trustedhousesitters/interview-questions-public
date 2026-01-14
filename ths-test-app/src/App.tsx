@@ -46,7 +46,7 @@ export function App() {
     if (parsed.pathname === "/listing") {
       const id = parsed.searchParams.get("id");
       if (id) {
-        navigationRef.current?.navigate("Listing", { id: parseInt(id, 10) });
+        navigationRef.current?.navigate("IndividualListing", { id: parseInt(id, 10) });
       }
     }
   };
