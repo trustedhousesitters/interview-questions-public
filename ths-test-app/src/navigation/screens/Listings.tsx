@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
-import { Text, View, StyleSheet, FlatList } from "react-native";
-import {
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-import { Pressable } from "react-native";
+import { useContext, useEffect, useState } from "react";
+import { Text, View, StyleSheet, FlatList, Pressable } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
+import { LoggedInContext } from "@/App";
 
 interface Listing {
   id: number;
@@ -21,6 +19,8 @@ export default function ListingsScreen() {
   const [ listingData, setListingData ] = useState<Listing[]>([]);
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<any>();
+  const { isLoggedIn } = useContext(LoggedInContext);
+
 
   useEffect(() => {
       fetch("/api/listings").then(response => response.json()).then(data => setListingData(data));
@@ -28,20 +28,26 @@ export default function ListingsScreen() {
   
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
-      <FlatList
-        data={listingData}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
+      {isLoggedIn ? (
+        <FlatList
+          data={listingData}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
             <Pressable
               onPress={() =>
                 navigation.navigate("Listing", { listingId: item.id })
               }
             >
-            <ListingRow title={item.title} />
-          </Pressable>
-        )}
-        style={styles.list}
-      />
+              <ListingRow title={item.title} />
+            </Pressable>
+          )}
+          style={styles.list}
+        />
+      ) : (
+        <View>
+          <Text>Please log in to view listings...</Text>
+        </View>
+      )}
     </View>
   );
 }
