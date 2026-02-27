@@ -25,10 +25,17 @@ export default function ListingsScreen() {
   useEffect(() => {
       fetch("/api/listings").then(response => response.json()).then(data => setListingData(data));
   }, []);
+
+  if (!isLoggedIn) {
+    return (
+      <View style={styles.container}>
+        <Text>Please log in to view listings.</Text>
+      </View>
+    );
+  }
   
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
-      {isLoggedIn ? (
         <FlatList
           data={listingData}
           keyExtractor={(item) => item.id.toString()}
@@ -43,11 +50,6 @@ export default function ListingsScreen() {
           )}
           style={styles.list}
         />
-      ) : (
-        <View>
-          <Text>Please log in to view listings...</Text>
-        </View>
-      )}
     </View>
   );
 }

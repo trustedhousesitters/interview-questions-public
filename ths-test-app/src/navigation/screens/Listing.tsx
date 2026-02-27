@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import MapView, { Marker } from 'react-native-maps';
+import { LoggedInContext } from "@/App";
 
 type ListingRouteParams = {
   Listing: {
@@ -57,6 +58,7 @@ interface Coordinates {
   export default function Listing() {
     const route = useRoute<RouteProp<ListingRouteParams, "Listing">>();
     const { listingId } = route.params;
+    const { isLoggedIn } = useContext(LoggedInContext);
   
     const [listing, setListing] = useState<Listing>();
   
@@ -65,6 +67,14 @@ interface Coordinates {
         .then(response => response.json())
         .then(data => setListing(data));
     }, [listingId]);
+
+    if (!isLoggedIn) {
+        return (
+          <View style={styles.container}>
+            <Text>Please log in to view listings.</Text>
+          </View>
+        );
+      }
   
     return (
         <ScrollView>
