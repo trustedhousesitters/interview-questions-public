@@ -10,6 +10,7 @@ import NotFound from './screens/NotFound';
 import { HapticTab } from '../components/HapticTab';
 import { IconSymbol } from '../components/ui/IconSymbol';
 import TabBarBackground from '../components/ui/TabBarBackground';
+import Listing from '@/navigation/screens/Listing';
 
 const HomeTabs = createBottomTabNavigator({
   screens: {
@@ -49,6 +50,9 @@ const RootStack = createNativeStackNavigator({
       options: {
         headerShown: false,
       },
+    },
+    Listing: {
+      screen: Listing,
     },
     NotFound: {
       screen: NotFound,

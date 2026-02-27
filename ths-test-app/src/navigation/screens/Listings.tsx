@@ -3,6 +3,8 @@ import { Text, View, StyleSheet, FlatList } from "react-native";
 import {
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
+import { Pressable } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 interface Listing {
   id: number;
@@ -18,6 +20,7 @@ const ListingRow = ({title}: {title: string}) => (
 export default function ListingsScreen() {
   const [ listingData, setListingData ] = useState<Listing[]>([]);
   const insets = useSafeAreaInsets();
+  const navigation = useNavigation<any>();
 
   useEffect(() => {
       fetch("/api/listings").then(response => response.json()).then(data => setListingData(data));
@@ -28,7 +31,15 @@ export default function ListingsScreen() {
       <FlatList
         data={listingData}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({item}) => <ListingRow title={item.title} />}
+        renderItem={({ item }) => (
+            <Pressable
+              onPress={() =>
+                navigation.navigate("Listing", { listingId: item.id })
+              }
+            >
+            <ListingRow title={item.title} />
+          </Pressable>
+        )}
         style={styles.list}
       />
     </View>
