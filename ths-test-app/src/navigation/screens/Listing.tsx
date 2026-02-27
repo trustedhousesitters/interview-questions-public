@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { RouteProp, useRoute } from "@react-navigation/native";
+import MapView, { Marker } from 'react-native-maps';
 
 type ListingRouteParams = {
   Listing: {
@@ -71,7 +72,7 @@ interface Coordinates {
 
             <View style={styles.card}>
                 <View style={styles.cardDetail}>
-                    <Text>Description: {listing?.title}</Text>
+                    <Text>{listing?.title}</Text>
                     <Text>Published: {listing?.published &&
                         new Date(listing.published).toLocaleString()}
                     </Text>
@@ -81,7 +82,7 @@ interface Coordinates {
             <View style={styles.card}>
                 <Text>Owner: </Text>
                 <View style={styles.cardDetail}>
-                    <Text>Username: {listing?.user.firstName}</Text>
+                    <Text>Name: {listing?.user.firstName}</Text>
                     <Text>Referrals: {listing?.user.referredCount}</Text>
                 </View>
             </View>
@@ -93,20 +94,35 @@ interface Coordinates {
                     {listing?.location.admin2Name},{" "}
                     {listing?.location.countryName}
                 </Text>
+
+                <MapView
+                style={styles.map}
+                region={{
+                    latitude: listing?.location.coordinates.lat,
+                    longitude: listing?.location.coordinates.lon,
+                    latitudeDelta: 0.01,
+                    longitudeDelta: 0.01,
+                }}
+                >
+                <Marker coordinate={{
+                    latitude: listing?.location.coordinates.lat,
+                    longitude: listing?.location.coordinates.lon,
+                }} />
+                </MapView>
             </View>
 
             {listing?.animals?.some(animal => animal.count > 0) && (
                 <View style={styles.card}>
-                    <Text>Animals:</Text>
+                    <Text>Animal(s):</Text>
 
                     <View style={styles.cardDetail}>
-                        {listing.animals
-                            .filter(animal => animal.count > 0)
-                            .map(animal => (
-                                <Text key={animal.slug}>
-                                    {animal.name} ({animal.count})
-                                </Text>
-                            ))}
+                    {listing.animals
+                        .filter(animal => animal.count > 0)
+                        .map(animal => (
+                        <Text key={animal.slug}>
+                            {animal.name?.charAt(0).toUpperCase() + animal.name?.slice(1)} ({animal.count})
+                        </Text>
+                        ))}
                     </View>
                 </View>
             )}
@@ -120,25 +136,19 @@ const styles = StyleSheet.create({
         flex: 1, 
         padding: 16,
     },
-    list: {
-        width: '100%',
-    },
-    item: {
-        backgroundColor: '#f9c2ff',
-        padding: 20,
-        marginVertical: 8,
-        marginHorizontal: 16,
-    },
-    title: {
-        fontSize: 18,
-    },
     card: {
-        borderWidth: 1,
+        borderWidth: 3,
+        borderColor: '#f9c2ff',
         padding: 20,
         margin: 5,
     },
     cardDetail: {
         left: 10,
     },
+    map: {
+        height: 200, 
+        width: '100%',
+        marginTop: 20
+    }
 });
   
