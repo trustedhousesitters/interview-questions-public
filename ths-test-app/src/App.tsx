@@ -11,7 +11,7 @@ import { useLogger } from '@react-navigation/devtools';
 import { Navigation } from './navigation';
 
 const linking = {
-  prefixes: [Linking.createURL("/"), "thstestapp://"],
+  prefixes: ["thstestapp://"],
   config: {
     screens: {
       Listing: "listing",
