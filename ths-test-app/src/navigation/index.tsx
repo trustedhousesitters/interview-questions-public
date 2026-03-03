@@ -53,6 +53,9 @@ const RootStack = createNativeStackNavigator({
     },
     Listing: {
       screen: Listing,
+      linking: {
+        path: 'listing',
+      },
     },
     NotFound: {
       screen: NotFound,

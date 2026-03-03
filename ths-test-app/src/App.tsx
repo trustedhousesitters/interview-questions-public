@@ -1,6 +1,7 @@
 import 'react-native-gesture-handler';
 import { useEffect, useState, createContext } from "react";
 import * as SplashScreen from 'expo-splash-screen';
+import * as Linking from "expo-linking";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   useNavigationContainerRef,
@@ -8,6 +9,16 @@ import {
 import { useLogger } from '@react-navigation/devtools';
 
 import { Navigation } from './navigation';
+
+const linking = {
+  prefixes: [Linking.createURL("/"), "thstestapp://"],
+  config: {
+    screens: {
+      Listing: "listing",
+      NotFound: "*",
+    },
+  },
+};
 
 SplashScreen.preventAutoHideAsync();
 
@@ -79,7 +90,7 @@ export function App() {
 
   return (
     <LoggedInContext.Provider value={{ isLoggedIn, toggleIsLoggedIn }}>
-      <Navigation ref={navigationRef} />
+      <Navigation ref={navigationRef} linking={linking}/>
     </LoggedInContext.Provider>
   );
 }
