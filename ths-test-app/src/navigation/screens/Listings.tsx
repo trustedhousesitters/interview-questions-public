@@ -23,7 +23,9 @@ export default function ListingsScreen() {
 
 
   useEffect(() => {
+    if (isLoggedIn) {
       fetch("/api/listings").then(response => response.json()).then(data => setListingData(data));
+    }
   }, []);
 
   if (!isLoggedIn) {
