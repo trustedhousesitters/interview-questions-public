@@ -1,3 +1,52 @@
+# The task
+
+**Exercise:** Add an OpenSearch domain to the `search` service account, following existing patterns.
+
+**Format:**
+- ~30 min pre-work (read repo, run dev container)
+- 60-90 min live pairing in a preconfigured dev container
+- AI tools allowed for code gen/research — we test reasoning and architecture
+
+## Pre-Work Instructions
+
+> **Pre-Work for Platform Engineering Assessment (~30 minutes)**
+>
+> You will receive access to a Git repository containing infrastructure-as-code for a
+> multi-account AWS organization using Pulumi (Python). During the live session, you
+> will pair with us to add a new service (OpenSearch) to the architecture.
+>
+> **Before the session, please:**
+>
+> 1. **Clone the repo** and read `README.md` for an architecture overview.
+>
+> 2. **Study the existing patterns.** Focus on:
+>    - `infrastructure/package/components/elasticache/elasticache.py` — a complete Pulumi component
+>    - `infrastructure/cache-service/__main__.py` — a complete service account stack
+>    - `infrastructure/network/Pulumi.test.eu-west-1.yaml` — how subnets and security groups are configured
+>    - `infrastructure/package/project_exports.py` — the export pattern
+>
+> 4. **Come prepared to discuss:**
+>    - What questions would you ask before building this in production?
+>    - What AWS resources does an OpenSearch domain need in a shared VPC?
+>    - How would you handle security group access from the management account?
+>
+> **You may use AI tools** (Copilot, ChatGPT, Claude, etc.) for code generation and
+> research. We care about your reasoning and architectural decisions, not memorized syntax.
+>
+> **Environment:** A dev container with Python 3.11 and Pulumi CLI pre-installed is
+> provided. A local Pulumi backend is seeded with mock network stack outputs, so you
+> can validate your code with `pulumi preview`:
+>
+> ```bash
+> cd infrastructure/search
+> source venv/bin/activate
+> pulumi preview --stack organization/search/test.eu-west-1
+> ```
+>
+> This won't create real AWS resources — it resolves your Python code and shows the
+> planned resource graph, which is enough to catch import errors, missing config, and
+> structural issues. No AWS credentials are needed.
+
 # PetMatch Infrastructure
 
 Infrastructure-as-Code for PetMatch's multi-account AWS organization using [Pulumi](https://www.pulumi.com/) (Python).
