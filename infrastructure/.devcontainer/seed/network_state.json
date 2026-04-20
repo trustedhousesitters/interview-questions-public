@@ -1,0 +1,82 @@
+{
+  "version": 3,
+  "deployment": {
+    "manifest": {
+      "time": "2024-01-01T00:00:00.000000000Z",
+      "magic": "hmacsha256:placeholder",
+      "version": "v3.100.0"
+    },
+    "resources": [
+      {
+        "urn": "urn:pulumi:test.eu-west-1::network::pulumi:pulumi:Stack::network-test.eu-west-1",
+        "custom": false,
+        "type": "pulumi:pulumi:Stack",
+        "outputs": {
+          "vpc": {
+            "vpc": {
+              "arn": "arn:aws:ec2:eu-west-1:222222222222:vpc/vpc-0mock1234567890ab",
+              "id": "vpc-0mock1234567890ab"
+            },
+            "ingress": {
+              "subnets": {
+                "arns": [
+                  "arn:aws:ec2:eu-west-1:222222222222:subnet/subnet-0mock-ingress-1a",
+                  "arn:aws:ec2:eu-west-1:222222222222:subnet/subnet-0mock-ingress-1b"
+                ],
+                "ids": ["subnet-0mock-ingress-1a", "subnet-0mock-ingress-1b"],
+                "cidrs": ["10.1.1.0/25", "10.1.1.128/25"],
+                "azs": ["eu-west-1a", "eu-west-1b"],
+                "route_table_ids": ["rtb-0mock-public"]
+              }
+            },
+            "private": {
+              "subnets": {
+                "arns": [
+                  "arn:aws:ec2:eu-west-1:222222222222:subnet/subnet-0mock-private-1a",
+                  "arn:aws:ec2:eu-west-1:222222222222:subnet/subnet-0mock-private-1b"
+                ],
+                "ids": ["subnet-0mock-private-1a", "subnet-0mock-private-1b"],
+                "cidrs": ["10.1.2.0/25", "10.1.2.128/25"],
+                "azs": ["eu-west-1a", "eu-west-1b"],
+                "route_table_ids": ["rtb-0mock-private-1a", "rtb-0mock-private-1b"]
+              }
+            },
+            "groups": {
+              "cache-service-private": {
+                "subnets": {
+                  "arns": [
+                    "arn:aws:ec2:eu-west-1:222222222222:subnet/subnet-0mock-cache-1a",
+                    "arn:aws:ec2:eu-west-1:222222222222:subnet/subnet-0mock-cache-1b"
+                  ],
+                  "ids": ["subnet-0mock-cache-1a", "subnet-0mock-cache-1b"],
+                  "cidrs": ["10.1.5.0/24", "10.1.6.0/24"],
+                  "azs": ["eu-west-1a", "eu-west-1b"],
+                  "route_table_ids": ["rtb-0mock-private-1a", "rtb-0mock-private-1b"]
+                }
+              },
+              "search-private": {
+                "subnets": {
+                  "arns": [
+                    "arn:aws:ec2:eu-west-1:222222222222:subnet/subnet-0mock-search-1a",
+                    "arn:aws:ec2:eu-west-1:222222222222:subnet/subnet-0mock-search-1b"
+                  ],
+                  "ids": ["subnet-0mock-search-1a", "subnet-0mock-search-1b"],
+                  "cidrs": ["10.1.7.0/24", "10.1.8.0/24"],
+                  "azs": ["eu-west-1a", "eu-west-1b"],
+                  "route_table_ids": ["rtb-0mock-private-1a", "rtb-0mock-private-1b"]
+                }
+              }
+            }
+          },
+          "network_internal": {
+            "internal_services_security_group_id": "sg-0mock-internal-services",
+            "internal_account_id": "222222222222",
+            "cache_service_elasticache_security_group_id": "sg-0mock-cache-elasticache",
+            "search_opensearch_security_group_id": "sg-0mock-search-opensearch"
+          },
+          "shared": []
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+config:
+  aws:region: eu-west-1
+  aws:profile: cache-service-test-iac
+  aws:skipCredentialsValidation: "true"
+  aws:skipRequestingAccountId: "true"
+  cache-service:bucket_names:
+    - petmatch-assets-test
+  cache-service:network:
+    stack_name: "test.eu-west-1"
+  cache-service:elasticache:
+    replication_group_id: cache-service-elasticache-test
+    engine_version: "6.2"
+    node_type: cache.t4g.small
+    num_cache_clusters: 1
+    parameter_group_family: redis6.x
+    parameter_group_parameters:
+      - name: slowlog-log-slower-than
+        value: "0"
+    auto_minor_version_upgrade: true
+    maintenance_window: mon:23:30-tue:00:30
+    snapshot_window: "02:30-03:30"
+    snapshot_retention_limit: 0
+    referenced_security_group_ids:
+      - "111111111111/sg-0abc1234def56789a" # management account - app containers
+encryptionsalt: v1:ZtRmhgbVVpE=:v1:D5Ux0vqNq6C7qpnd:lnVLG6x2S073C1Ac/5l+jRe627UCPA==
