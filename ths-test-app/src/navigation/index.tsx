@@ -54,6 +54,7 @@ const HomeTabs = createBottomTabNavigator({
       screen: ListingsStack,
       options: {
         headerShown: false,
+        lazy: false,
         tabBarIcon: ({ color }) => <IconSymbol size={28} name="pawprint" color={color} />,
       },
     },
