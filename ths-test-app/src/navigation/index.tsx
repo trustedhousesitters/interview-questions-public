@@ -6,6 +6,7 @@ import { Platform } from 'react-native';
 import HomeScreen from './screens/Home';
 import Listings from './screens/Listings';
 import NotFound from './screens/NotFound';
+import { useIsLoggedIn } from '@/hooks/useIsLoggedIn';
 
 import { HapticTab } from '../components/HapticTab';
 import { IconSymbol } from '../components/ui/IconSymbol';
@@ -21,6 +22,7 @@ const HomeTabs = createBottomTabNavigator({
       },
     },
     Listings: {
+      if: useIsLoggedIn,
       screen: Listings,
       options: {
         headerShown: false,
