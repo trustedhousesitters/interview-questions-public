@@ -1,39 +1,48 @@
 import { useEffect, useState } from "react";
-import { Text, View, StyleSheet, FlatList } from "react-native";
-import {
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+import { Text, View, StyleSheet, FlatList, TouchableOpacity } from "react-native";
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 
-interface Listing {
-  id: number;
-  title: string;
-}
+import type { Listing } from '@/types/listing';
+import { listingsApi } from '@/services/listings';
+import type { RootNavigation } from '@/navigation/types';
 
-const ListingRow = ({title}: {title: string}) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
+const ListingRow = ({ listing, onPress }: { listing: Listing; onPress: () => void }) => (
+  <TouchableOpacity style={styles.item} onPress={onPress} accessibilityRole="button">
+    <Text style={styles.title}>{listing.title}</Text>
+    <Text style={styles.location}>{listing.location.name}, {listing.location.countryName}</Text>
+  </TouchableOpacity>
 );
 
 export default function ListingsScreen() {
-  const [ listingData, setListingData ] = useState<Listing[]>([]);
+  const [listingData, setListingData] = useState<Listing[]>([]);
   const insets = useSafeAreaInsets();
+  const navigation = useNavigation<RootNavigation>();
 
   useEffect(() => {
-      fetch("/api/listings").then(response => response.json()).then(data => setListingData(data));
+    const loadListings = async () => {
+      const result = await listingsApi.getAll();
+      if (result.ok) setListingData(result.data);
+    };
+    loadListings();
   }, []);
-  
+
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
       <FlatList
         data={listingData}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({item}) => <ListingRow title={item.title} />}
+        renderItem={({ item }) => (
+          <ListingRow
+            listing={item}
+            onPress={() => navigation.navigate('Listing', { listingId: item.id })}
+          />
+        )}
         style={styles.list}
       />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -52,5 +61,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
+  },
+  location: {
+    fontSize: 14,
+    color: '#555',
+    marginTop: 4,
   },
 });
