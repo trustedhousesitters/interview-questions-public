@@ -103,8 +103,8 @@ test('navigating to a different listing pushes it on top of the existing one', a
   await screen.findByText('Listings');
   await waitFor(() => expect(ref.isReady()).toBe(true));
 
-  const navigateToListing = (listingId: string) =>
-    act(() => {
+  const navigateToListing = async (listingId: string) =>
+    await act(async () => {
       ref.dispatch({
         type: 'NAVIGATE',
         payload: {
@@ -126,6 +126,6 @@ test('navigating to a different listing pushes it on top of the existing one', a
   expect(await screen.findByText('Listing 2')).toBeTruthy();
 
   // Go back — should reveal listing '1', not the list root
-  act(() => ref.goBack());
+  await act(async () => ref.goBack());
   expect(await screen.findByText('Listing 1')).toBeTruthy();
 });

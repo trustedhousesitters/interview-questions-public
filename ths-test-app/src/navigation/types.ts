@@ -12,7 +12,4 @@ type RootParams = ReactNavigation.RootParamList & ParamListBase;
 
 export type RootNavigation = NavigationProp<RootParams>;
 
-export type HomeScreenRouteProps = RouteProp<RootParams, 'HomeTabs'>;
-export type ListingsScreenRouteProps = RouteProp<RootParams, 'HomeTabs'>;
 export type ListingScreenRouteProps = RouteProp<RootParams, 'Listing'>;
-export type NotFoundScreenRouteProps = RouteProp<RootParams, 'NotFound'>;
