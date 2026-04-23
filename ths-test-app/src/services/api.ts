@@ -1,9 +1,11 @@
 const BASE_URL = '/api';
 const REQUEST_TIMEOUT_MS = 10_000;
 
+export type ApiErrorStatus = 'not_found' | 'error';
+
 export type ApiResult<T> =
   | { ok: true; data: T }
-  | { ok: false; status: 'not_found' | 'error' };
+  | { ok: false; status: ApiErrorStatus };
 
 export const get = async <T>(
   path: string,

@@ -4,10 +4,12 @@ import * as SplashScreen from 'expo-splash-screen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   useNavigationContainerRef,
+  ParamListBase,
 } from '@react-navigation/native';
 import { useLogger } from '@react-navigation/devtools';
 
 import { Navigation } from './navigation';
+import { linkingConfig } from './navigation/linkingConfig';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -23,7 +25,7 @@ export function App() {
   const [ isLoggedInRetrieved, setIsLoggedInRetrieved ] = useState(false);
   const [ isLoggedIn, setIsLoggedIn ] = useState(false);
 
-  const navigationRef = useNavigationContainerRef();
+  const navigationRef = useNavigationContainerRef<ParamListBase>();
 
   useLogger(navigationRef);
 
@@ -79,7 +81,7 @@ export function App() {
 
   return (
     <LoggedInContext.Provider value={{ isLoggedIn, toggleIsLoggedIn }}>
-      <Navigation ref={navigationRef} />
+      <Navigation linking={linkingConfig} ref={navigationRef} />
     </LoggedInContext.Provider>
   );
 }
