@@ -90,7 +90,6 @@ const RootStack = createNativeStackNavigator({
         path: '*',
       },
     },
-
   },
 });
 
