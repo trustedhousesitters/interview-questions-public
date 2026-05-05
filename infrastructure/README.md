@@ -25,7 +25,7 @@
 >    - `infrastructure/network/Pulumi.test.eu-west-1.yaml` — how subnets and security groups are configured
 >    - `infrastructure/package/project_exports.py` — the export pattern
 >
-> 4. **Come prepared to discuss:**
+> 3. **Come prepared to discuss:**
 >    - What questions would you ask before building this in production?
 >    - What AWS resources does an OpenSearch domain need in a shared VPC?
 >    - How would you handle security group access from the management account?
@@ -34,8 +34,14 @@
 > research. We care about your reasoning and architectural decisions, not memorized syntax.
 >
 > **Environment:** A dev container with Python 3.11 and Pulumi CLI pre-installed is
-> provided. A local Pulumi backend is seeded with mock network stack outputs, so you
-> can validate your code with `pulumi preview`:
+> provided.
+>
+> **Opening the dev container:**
+> - **VS Code (recommended):** Install the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension, then open the repo and run **Dev Containers: Reopen in Container** from the Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`). VS Code will build the container and reopen the workspace inside it automatically.
+> - **Other options:** JetBrains IDEs (IntelliJ, PyCharm, etc.) support dev containers via the [JetBrains Gateway](https://www.jetbrains.com/remote-development/gateway/). You can also use the [Dev Container CLI](https://github.com/devcontainers/cli) (`devcontainer up` / `devcontainer exec`) to run the container from any terminal without an IDE.
+>
+> A local Pulumi backend is seeded with mock network stack outputs, so you
+> can validate your code with `pulumi preview`.
 >
 > ```bash
 > cd infrastructure/search
