@@ -1,0 +1,6 @@
+.git
+INTERVIEWER_ONLY
+__pycache__
+*.pyc
+venv
+*.egg-info

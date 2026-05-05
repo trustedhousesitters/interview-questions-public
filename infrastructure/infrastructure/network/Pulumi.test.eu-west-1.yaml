@@ -1,0 +1,59 @@
+config:
+  aws:region: eu-west-1
+  aws:profile: network-prod-iac
+  aws:skipCredentialsValidation: "true"
+  aws:skipRequestingAccountId: "true"
+  network:vpc:
+    cidr: 10.1.0.0/16
+    nat:
+      azs:
+        - eu-west-1a
+        - eu-west-1b
+      cidrs:
+        - 10.1.0.0/25
+        - 10.1.0.128/25
+    ingress:
+      azs:
+        - eu-west-1a
+        - eu-west-1b
+      cidrs:
+        - 10.1.1.0/25
+        - 10.1.1.128/25
+    private:
+      azs:
+        - eu-west-1a
+        - eu-west-1b
+      cidrs:
+        - 10.1.2.0/25
+        - 10.1.2.128/25
+  network:security-groups:
+    internal-services:
+      shares: []
+    cache-service-elasticache:
+      shares:
+        - "management"
+    search-opensearch:
+      shares:
+        - "management"
+  network:services:
+    cache-service-private:
+      azs:
+        - eu-west-1a
+        - eu-west-1b
+      cidrs:
+        - 10.1.5.0/24
+        - 10.1.6.0/24
+      public: false
+      shares:
+        - "cache-service-test"
+    search-private:
+      azs:
+        - eu-west-1a
+        - eu-west-1b
+      cidrs:
+        - 10.1.7.0/24
+        - 10.1.8.0/24
+      public: false
+      shares:
+        - "search-test"
+encryptionsalt: v1:cCJjUE4wUus=:v1:V5P8LqH148ziECpU:3AXPLbyQecMk4Aodoh4MRaqqpS16hA==

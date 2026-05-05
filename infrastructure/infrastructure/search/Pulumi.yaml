@@ -1,0 +1,10 @@
+name: search
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: Search service infrastructure (OpenSearch)
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: aws-python

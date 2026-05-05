@@ -1,0 +1,56 @@
+config:
+  aws:region: eu-west-1
+  aws:profile: network-prod-iac
+  network:vpc:
+    cidr: 10.0.0.0/16
+    nat:
+      azs:
+        - eu-west-1a
+        - eu-west-1b
+      cidrs:
+        - 10.0.0.0/25
+        - 10.0.0.128/25
+    ingress:
+      azs:
+        - eu-west-1a
+        - eu-west-1b
+      cidrs:
+        - 10.0.1.0/25
+        - 10.0.1.128/25
+    private:
+      azs:
+        - eu-west-1a
+        - eu-west-1b
+      cidrs:
+        - 10.0.2.0/25
+        - 10.0.2.128/25
+  network:security-groups:
+    internal-services:
+      shares: []
+    cache-service-elasticache:
+      shares:
+        - "cache-service-prod"
+    search-opensearch:
+      shares:
+        - "search-prod"
+  network:services:
+    cache-service-private:
+      azs:
+        - eu-west-1a
+        - eu-west-1b
+      cidrs:
+        - 10.0.5.0/24
+        - 10.0.6.0/24
+      public: false
+      shares:
+        - "cache-service-prod"
+    search-private:
+      azs:
+        - eu-west-1a
+        - eu-west-1b
+      cidrs:
+        - 10.0.7.0/24
+        - 10.0.8.0/24
+      public: false
+      shares:
+        - "search-prod"

@@ -1,0 +1,10 @@
+name: cache-service
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: Cache service infrastructure (ElastiCache + S3)
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: aws-python

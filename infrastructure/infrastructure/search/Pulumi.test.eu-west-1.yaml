@@ -1,0 +1,9 @@
+config:
+  aws:region: eu-west-1
+  aws:profile: search-test-iac
+  aws:skipCredentialsValidation: "true"
+  aws:skipRequestingAccountId: "true"
+  search:network:
+    stack_name: "test.eu-west-1"
+  # TODO: Add OpenSearch configuration here
+encryptionsalt: v1:K+wBRkY5I0Y=:v1:Qaqq+LOFURowT9up:Mi1nKTAs+YUn5DSJ6NtCfpVjoyRhUg==

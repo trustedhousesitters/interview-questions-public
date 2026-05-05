@@ -1,0 +1,10 @@
+name: network
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: Base VPC for networking including shared resources
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: aws-python

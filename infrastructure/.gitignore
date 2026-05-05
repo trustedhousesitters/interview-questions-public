@@ -1,0 +1,6 @@
+venv/
+__pycache__/
+*.pyc
+.pulumi/
+*.egg-info/
+INTERVIEWER_ONLY/

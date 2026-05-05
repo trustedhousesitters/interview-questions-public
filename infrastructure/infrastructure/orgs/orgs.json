@@ -1,0 +1,35 @@
+{
+  "management_alias": "management",
+  "accounts": [
+    {
+      "account_number": "111111111111",
+      "alias": "management",
+      "profile_name": "management-iac"
+    },
+    {
+      "account_number": "222222222222",
+      "alias": "network-prod",
+      "profile_name": "network-prod-iac"
+    },
+    {
+      "account_number": "333333333333",
+      "alias": "search-prod",
+      "profile_name": "search-prod-iac"
+    },
+    {
+      "account_number": "444444444444",
+      "alias": "search-test",
+      "profile_name": "search-test-iac"
+    },
+    {
+      "account_number": "555555555555",
+      "alias": "cache-service-prod",
+      "profile_name": "cache-service-prod-iac"
+    },
+    {
+      "account_number": "666666666666",
+      "alias": "cache-service-test",
+      "profile_name": "cache-service-test-iac"
+    }
+  ]
+}
